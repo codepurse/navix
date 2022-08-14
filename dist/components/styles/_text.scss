@@ -1,0 +1,16 @@
+.inputIconLeft {
+  position: absolute;
+  left: 3px;
+  font-size: 1.5rem;
+  top: calc(50% - 0.5em);
+}
+.inputIconRight {
+  position: absolute;
+  right: 3px;
+  font-size: 1.5rem;
+  top: calc(50% - 0.5em);
+}
+.input-wrapper {
+  position: relative;
+  width: max-content;
+}

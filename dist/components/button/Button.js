@@ -53,7 +53,7 @@ Button.propTypes = {
 };
 
 function Button(props) {
-  var _props$css;
+  var _props$css, _props$css2;
 
   const buttonClassName = (0, _classnames.default)(_buttonModule.default.btnNvxDefault, props.className, {
     "btn--loading btnLoad": props.isLoading === true
@@ -84,7 +84,7 @@ function Button(props) {
   }, props.isLoading ? /*#__PURE__*/_react.default.createElement("span", {
     className: "spanLoad"
   }, /*#__PURE__*/_react.default.createElement("b", {
-    style: props.css.button.dots
+    style: (_props$css2 = props.css) === null || _props$css2 === void 0 ? void 0 : _props$css2.button.dots
   }), /*#__PURE__*/_react.default.createElement("b", null), /*#__PURE__*/_react.default.createElement("b", null)) : /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("i", {
     className: _buttonModule.default.iNvxIconLeft
   }, props.iconLeft), props.children, /*#__PURE__*/_react.default.createElement("i", {
