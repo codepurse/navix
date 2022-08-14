@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import styles from "../button/button.module.scss";
 import { buttonSize, buttonType } from "../button/buttonStyles";
 const BUTTON_SIZES = ["lg", "sm", "md"];

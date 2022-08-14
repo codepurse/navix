@@ -1,5 +1,7 @@
 "use strict";
 
+require("core-js/modules/web.dom-collections.iterator.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,11 +11,15 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = require("prop-types");
 
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
 
 var _buttonModule = _interopRequireDefault(require("../button/button.module.scss"));
 
 var _buttonStyles = require("../button/buttonStyles");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62,7 +68,7 @@ function Button(props) {
 
   const customStyle = _objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.button);
 
-  return /*#__PURE__*/React.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("button", {
     style: customStyle,
     className: buttonClassName,
     onClick: e => {
@@ -75,13 +81,13 @@ function Button(props) {
         } catch (error) {}
       }
     }
-  }, props.isLoading ? /*#__PURE__*/React.createElement("span", {
+  }, props.isLoading ? /*#__PURE__*/_react.default.createElement("span", {
     className: "spanLoad"
-  }, /*#__PURE__*/React.createElement("b", {
+  }, /*#__PURE__*/_react.default.createElement("b", {
     style: props.css.button.dots
-  }), /*#__PURE__*/React.createElement("b", null), /*#__PURE__*/React.createElement("b", null)) : /*#__PURE__*/React.createElement(_react.Fragment, null, /*#__PURE__*/React.createElement("i", {
+  }), /*#__PURE__*/_react.default.createElement("b", null), /*#__PURE__*/_react.default.createElement("b", null)) : /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("i", {
     className: _buttonModule.default.iNvxIconLeft
-  }, props.iconLeft), props.children, /*#__PURE__*/React.createElement("i", {
+  }, props.iconLeft), props.children, /*#__PURE__*/_react.default.createElement("i", {
     className: _buttonModule.default.iNvxIconRight
   }, props.iconRight)));
 }
