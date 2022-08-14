@@ -61,7 +61,7 @@ export default function Button(props) {
     >
       {props.isLoading ? (
         <span className="spanLoad">
-          <b style={props.css.button.dots}></b>
+          <b style={props.css?.button.dots}></b>
           <b></b>
           <b></b>
         </span>

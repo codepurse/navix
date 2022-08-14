@@ -1,6 +1,6 @@
 import "./App.css";
-import Button from "./lib/components/button/Button";
-
+import "./lib/components/styles/main.scss";
+import Text from "./lib/components/text/text";
 function App() {
   return (
     <div
@@ -13,7 +13,7 @@ function App() {
         padding: "5rem",
       }}
     >
-      <Button fill>test</Button>
+      <Text placeholder="test" fill alignText="right" onlyNuber></Text>
     </div>
   );
 }
