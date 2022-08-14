@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "sass": "node-sass src/lib/components/styles/main.scss src/App.css -w",
+    "sass": "sass src/lib/components/styles/main.scss src/App.css -w",
     "build": "del -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "eject": "react-scripts eject"
   },
