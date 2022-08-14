@@ -1,0 +1,21 @@
+.btnNvxDefault {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 0px;
+  box-shadow: 0 2px 12px -6px #424242 !important;
+  color: white;
+}
+.iNvxIconLeft {
+  margin-right: 10px;
+  svg {
+    margin-bottom: -2px;
+  }
+}
+.iNvxIconRight {
+  margin-left: 10px;
+  margin-bottom: -5px;
+  svg {
+    margin-bottom: -2px;
+  }
+}

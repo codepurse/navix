@@ -1,13 +1,13 @@
 {
-  "name": "Navix-ui",
+  "name": "@codepurse/navix",
   "description": "Npm Package for Navix",
   "author": "Alfon Labadan",
   "keywords": [
     "react",
     "components"
   ],
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
+  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,14 +20,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codepurse/NavixUi.git"
+    "url": "git+https://github.com/codepurse/navix.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "classnames": "^2.3.1",
     "node-sass": "^5.0.0",
+    "prop-types": "^15.8.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

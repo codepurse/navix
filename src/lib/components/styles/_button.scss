@@ -1,7 +1,7 @@
 %btn {
   height: 3rem;
   min-width: 3rem;
-  border-radius: $border-small; 
+  border-radius: $border-small;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +14,8 @@
   }
   &:active,
   &--active {
-      background-color: $sand2;
-    }
+    background-color: $sand2;
+  }
   &:disabled {
     cursor: not-allowed;
     &:hover {
@@ -26,8 +26,8 @@
 
 //general additional styles for all buttons
 .btn {
-  @extend %btn; 
-  &--primary { 
+  @extend %btn;
+  &--primary {
     background-color: $sand3;
   }
   &--outline {
@@ -38,21 +38,87 @@
     background-color: $sand2;
   }
   &--inline {
-      background-color: inherit;
-   }
-  &--warning{
-      color: $error;
-      background-color: $error-light; 
-      &:hover {
-        background-color: $error-light; 
-      }
+    background-color: inherit;
+  }
+  &--warning {
+    color: $error;
+    background-color: $error-light;
+    &:hover {
+      background-color: $error-light;
     }
+  }
 }
 
 //LONG BUTTON
-.CTA { 
+.CTA {
   min-width: 6rem;
   padding: 0 0.5rem;
   border: 3px solid transparent;
 }
 
+@mixin dot-animation {
+  animation: {
+    direction: alternate;
+    duration: 0.5s;
+    fill-mode: none;
+    iteration-count: infinite;
+    name: stretch;
+    play-state: running;
+    timing-function: ease-out;
+  }
+  border-radius: 100%;
+  display: block;
+  height: 10px;
+  margin: 0 1px;
+  width: 10px;
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(0.5);
+    background-color: whitesmoke;
+  }
+
+  50% {
+    background-color: whitesmoke;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: white;
+  }
+}
+.btnLoad {
+  align-items: center !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  &.btn--loading {
+    font-size: 0 !important;
+    .spanLoad {
+      display: flex;
+      b {
+        @include dot-animation;
+        animation-delay: 0.1s;
+        margin: 0 5px;
+
+        &:first-child {
+          animation-delay: 0s;
+          margin: 0;
+        }
+
+        &:last-child {
+          animation-delay: 0.2s;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  b {
+    font-weight: normal;
+  }
+
+  .spanLoad {
+    display: none;
+  }
+}

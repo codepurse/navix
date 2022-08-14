@@ -18,6 +18,6 @@ Object.defineProperty(exports, "Button", {
 
 var _Badge = _interopRequireDefault(require("./components/Badge"));
 
-var _Button = _interopRequireDefault(require("./components/Button"));
+var _Button = _interopRequireDefault(require("./components/button/Button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
