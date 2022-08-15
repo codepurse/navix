@@ -1,17 +1,8 @@
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  font-size: 1rem;
-  background-color: $accent2;
-  border-radius: 1px;
-  color: $off-white;
-  height: 1.5rem;
-  min-width: 1.5rem;
-  line-height: 100%; // center text 
-  cursor: pointer;
-    &--none {
-      background-color: $body-lightest;
-    } 
+.nvxSpan {
+  color: #2a6b89;
+  padding: 4px;
+  border-radius: 5px;
+  font-weight: 600;
+  border: 2px solid;
+  background-color: #f2f6f8;
 }

@@ -1,0 +1,22 @@
+.nvxDivHeader {
+  width: 100%;
+  #nvxH1 {
+    font-size: 4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #nvxH2 {
+    font-size: 3rem;
+  }
+  #nvxH3 {
+    font-size: 2rem;
+  }
+  #nvxH4 {
+    font-size: 1.5rem;
+  }
+  #nvxDefault {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}

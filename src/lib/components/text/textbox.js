@@ -9,7 +9,7 @@ const TEXT_TYPES = ["default", "disabled", "danger"];
 
 const TEXT_ALIGN_TEST = ["left", "center", "right"];
 
-text.propTypes = {
+textbox.propTypes = {
   placeholder: PropTypes.string,
   fill: PropTypes.bool,
   iconLeft: PropTypes.node,
@@ -26,7 +26,7 @@ text.propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
 };
-export default function text(props) {
+export default function textbox(props) {
   const textClassName = classNames(styles.txtNvxDefault, props.className);
 
   const numberOnly = (event) => {
