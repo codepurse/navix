@@ -1,9 +1,6 @@
 import Accordion from "./components/accordion/accordion";
 import AccordionItem from "./components/accordion/accordionItem";
-import {
-  default as Alert,
-  default as AlertContainer,
-} from "./components/alert/alert";
+import { Alert, default as AlertContainer } from "./components/alert/alert";
 import Avatar from "./components/avatar/avatar";
 import AvatarBatch from "./components/avatar/avatarBatch";
 import Badge from "./components/badge/badge";

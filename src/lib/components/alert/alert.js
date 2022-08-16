@@ -106,7 +106,7 @@ const AlertContainer = ({ options = initialOptions }) => {
   };
 
   useEffect(() => {
-    alert.add = addToast;
+    Alert.add = addToast;
   }, [toasts, refs]);
 
   return (
@@ -122,12 +122,12 @@ const AlertContainer = ({ options = initialOptions }) => {
   );
 };
 
-export const alert = {
+export const Alert = {
   add: null,
-  info: (message, options) => alert.add("info", message, options),
-  success: (message, options) => alert.add("success", message, options),
-  warning: (message, options) => alert.add("warning", message, options),
-  error: (message, options) => alert.add("error", message, options),
+  info: (message, options) => Alert.add("info", message, options),
+  success: (message, options) => Alert.add("success", message, options),
+  warning: (message, options) => Alert.add("warning", message, options),
+  error: (message, options) => Alert.add("error", message, options),
 };
 
 export default AlertContainer;

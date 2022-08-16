@@ -1,8 +1,8 @@
 import "./App.css";
-import AlertContainer, { alert } from "./lib/components/alert/alert";
+import { Alert, AlertContainer } from "./lib";
 import "./lib/components/styles/main.scss";
 function App() {
-  const notify = () => alert.success("Change applied succesfully");
+  const notify = () => Alert.success("Change applied succesfully");
   return (
     <div
       style={{
