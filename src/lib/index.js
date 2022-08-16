@@ -1,3 +1,5 @@
+import Accordion from "./components/accordion/accordion";
+import AccordionItem from "./components/accordion/accordionItem";
 import Avatar from "./components/avatar/avatar";
 import AvatarBatch from "./components/avatar/avatarBatch";
 import Badge from "./components/badge/badge";
@@ -10,7 +12,6 @@ import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
-
 export {
   Badge,
   Button,
@@ -24,4 +25,6 @@ export {
   TabContent,
   TabHeader,
   Tabs,
+  Accordion,
+  AccordionItem,
 };

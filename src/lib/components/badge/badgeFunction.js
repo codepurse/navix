@@ -10,7 +10,7 @@ export const badgeType = (value) => {
       return {
         color: "#e63b3b",
         backgroundColor: "#ffe7e7",
-        borderColor: "#f5f5f5",
+        borderColor: "#e63b3b",
       };
     case "warning":
       return {
