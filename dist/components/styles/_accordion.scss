@@ -1,0 +1,54 @@
+.nvxAccordion {
+  width: 100%;
+  transition: all 0.2s;
+  .nvxAccordionSeparated {
+    margin-bottom: 15px;
+  }
+  .nvxAccordionContent {
+    display: block;
+    margin-top: 20px;
+  }
+  .nvxAccordionItem {
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid lightgray;
+    transition: all 0.2s;
+    padding: 15px;
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: normal;
+      align-items: stretch;
+      align-content: normal;
+      .nvxAccordionArrow {
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-block;
+      }
+      .nvxAccordionShow {
+        transform: rotate(180deg) !important;
+      }
+    }
+
+    .flex-items:nth-child(1) {
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      width: 100%;
+      order: 0;
+    }
+
+    .flex-items:nth-child(2) {
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      width: 30px;
+      order: 0;
+    }
+  }
+}
