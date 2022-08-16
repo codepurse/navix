@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.alert = void 0;
+exports.default = exports.Alert = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -108,7 +108,7 @@ const AlertContainer = (_ref2) => {
   };
 
   (0, _react.useEffect)(() => {
-    alert.add = addToast;
+    Alert.add = addToast;
   }, [toasts, refs]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "toastArea".concat(options.reverse ? " reverse" : "", " area-").concat(toastPosition)
@@ -119,13 +119,13 @@ const AlertContainer = (_ref2) => {
   }));
 };
 
-const alert = {
+const Alert = {
   add: null,
-  info: (message, options) => alert.add("info", message, options),
-  success: (message, options) => alert.add("success", message, options),
-  warning: (message, options) => alert.add("warning", message, options),
-  error: (message, options) => alert.add("error", message, options)
+  info: (message, options) => Alert.add("info", message, options),
+  success: (message, options) => Alert.add("success", message, options),
+  warning: (message, options) => Alert.add("warning", message, options),
+  error: (message, options) => Alert.add("error", message, options)
 };
-exports.alert = alert;
+exports.Alert = Alert;
 var _default = AlertContainer;
 exports.default = _default;
