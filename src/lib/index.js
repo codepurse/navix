@@ -9,6 +9,8 @@ import Checkbox from "./components/checkbox/checkbox";
 import CircularLoader from "./components/circularProgress/CircularProgress";
 import Header from "./components/header/Header";
 import Paragraph from "./components/paragraph/paragraph";
+import Radio from "./components/radio/radio";
+import RadioGroup from "./components/radio/radioGroup";
 import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
@@ -30,4 +32,6 @@ export {
   AccordionItem,
   Alert,
   AlertContainer,
+  Radio,
+  RadioGroup,
 };

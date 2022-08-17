@@ -1,8 +1,10 @@
+import { useState } from "react";
 import "./App.css";
-import { Alert, AlertContainer } from "./lib";
+import Radio from "./lib/components/radio/radio";
+import RadioGroup from "./lib/components/radio/radioGroup";
 import "./lib/components/styles/main.scss";
 function App() {
-  const notify = () => Alert.success("Change applied succesfully");
+  const [num, setNum] = useState("3");
   return (
     <div
       style={{
@@ -14,13 +16,18 @@ function App() {
         padding: "5rem",
       }}
     >
-      <button onClick={notify}>test</button>
-      <AlertContainer
-        options={{
-          position: "top-center",
-          progress: "false",
+      <button
+        onClick={(e) => {
+          setNum("2");
         }}
-      />
+      >
+        test
+      </button>
+      <RadioGroup defaultCheck={num} onChange={(e, value) => {}}>
+        <Radio value="1" label="Male 2" />
+        <Radio value="2" label="Male 1" />
+        <Radio value="3" label="Male 1" />
+      </RadioGroup>
     </div>
   );
 }
