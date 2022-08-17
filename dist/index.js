@@ -77,6 +77,18 @@ Object.defineProperty(exports, "Paragraph", {
     return _paragraph.default;
   }
 });
+Object.defineProperty(exports, "Radio", {
+  enumerable: true,
+  get: function get() {
+    return _radio.default;
+  }
+});
+Object.defineProperty(exports, "RadioGroup", {
+  enumerable: true,
+  get: function get() {
+    return _radioGroup.default;
+  }
+});
 Object.defineProperty(exports, "TabContent", {
   enumerable: true,
   get: function get() {
@@ -123,6 +135,10 @@ var _CircularProgress = _interopRequireDefault(require("./components/circularPro
 var _Header = _interopRequireDefault(require("./components/header/Header"));
 
 var _paragraph = _interopRequireDefault(require("./components/paragraph/paragraph"));
+
+var _radio = _interopRequireDefault(require("./components/radio/radio"));
+
+var _radioGroup = _interopRequireDefault(require("./components/radio/radioGroup"));
 
 var _tabContent = _interopRequireDefault(require("./components/tabs/tabContent"));
 

@@ -1,0 +1,56 @@
+.nvxRadioDiv {
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  .nvxRadio {
+    appearance: none;
+  }
+
+  .nvxRadio + .nvxRadioLabel {
+    cursor: pointer;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .nvxRadio + .nvxRadioLabel::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    aspect-ratio: 1;
+    border: 1px solid #686de0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: all 0.3s;
+  }
+
+  .nvxRadio + .nvxRadioLblInvalid::before {
+    border: 1px solid red !important;
+  }
+
+  .nvxRadio + #nvxRadioLblInvalid::after {
+    background: gray !important;
+  }
+  .nvxRadio + .nvxRadioLabel::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    aspect-ratio: 1;
+    border: 1px solid #686de0;
+    background: #686de0;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .nvxRadio:checked + .nvxRadioLabel::after {
+    opacity: 1;
+  }
+}
