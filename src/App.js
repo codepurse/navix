@@ -37,7 +37,6 @@ function App() {
     {
       id: "two",
       label: "Button Two",
-      disabled: true,
     },
   ];
 
@@ -86,7 +85,7 @@ function App() {
         <span>asdsa</span>
         <Switch />
       </div>
-      <List type="ol">
+      <List>
         <ListItem
           label="Landing page design"
           subLabel="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
