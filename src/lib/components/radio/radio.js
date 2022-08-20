@@ -34,7 +34,9 @@ export default function Radio(props) {
 
   useEffect(
     (e) => {
-      document.getElementById(active).checked = true;
+      try {
+        document.getElementById(active).checked = true;
+      } catch (error) {}
     },
     [active]
   );

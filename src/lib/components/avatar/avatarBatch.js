@@ -10,11 +10,19 @@ AvatarBatch.propTypes = {
 
 export default function AvatarBatch(props) {
   const [count, setCount] = useState();
+  const [max, setMax] = useState(0);
   const isMounted = useRef(false);
   useEffect(() => {
     if (isMounted) {
       setCount(props.children.length);
+      console.log(props.children);
+      setMax(props.max);
       console.log("Test");
+    }
+    if (props.max) {
+      setMax(props.max);
+    } else {
+      setMax(100000);
     }
     return () => (isMounted.current = false);
   }, [props]);
@@ -31,7 +39,7 @@ export default function AvatarBatch(props) {
                     .filter((event) => event.type?.name.includes("Avatar"))
                     .map(
                       (filteredComponent, key) =>
-                        key < parseInt(props.max) && (
+                        key < parseInt(max) && (
                           <Fragment key={key}>{filteredComponent}</Fragment>
                         )
                     )}
@@ -42,10 +50,10 @@ export default function AvatarBatch(props) {
             }
           })()}
           {(() => {
-            if (count > parseInt(props.max)) {
+            if (count > parseInt(max)) {
               return (
                 <div className="nvxAvatar">
-                  <span>+{count - props.max}</span>
+                  <span>+{count - max}</span>
                 </div>
               );
             }

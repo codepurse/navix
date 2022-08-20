@@ -5,19 +5,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = textbox;
 
+require("core-js/modules/es.regexp.exec.js");
+
+require("core-js/modules/es.regexp.test.js");
+
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = require("prop-types");
 
-var _textModule = _interopRequireDefault(require("../text/text.module.scss"));
+var _react = _interopRequireDefault(require("react"));
 
 var _textStyles = require("./textStyles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -45,7 +49,7 @@ textbox.propTypes = {
 function textbox(props) {
   var _props$css, _props$css2, _props$css2$text, _props$css3, _props$css3$text;
 
-  const textClassName = (0, _classnames.default)(_textModule.default.txtNvxDefault, props.className);
+  const textClassName = (0, _classnames.default)("txtNvxDefault", props.className);
 
   const numberOnly = event => {
     if (!/[0-9]/.test(event.key)) {
@@ -70,12 +74,12 @@ function textbox(props) {
 
   const customStyle = _objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.text);
 
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: "input-wrapper",
     style: {
       width: props.fill && "100%"
     }
-  }, /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("input", {
     style: customStyle,
     type: "text",
     disabled: props.disabled && true,
@@ -96,10 +100,10 @@ function textbox(props) {
         props.onChange(e);
       } catch (error) {}
     }
-  }), /*#__PURE__*/React.createElement("i", {
+  }), /*#__PURE__*/_react.default.createElement("i", {
     className: "inputIconLeft",
     style: (_props$css2 = props.css) === null || _props$css2 === void 0 ? void 0 : (_props$css2$text = _props$css2.text) === null || _props$css2$text === void 0 ? void 0 : _props$css2$text.iconLeft
-  }, props.iconLeft), /*#__PURE__*/React.createElement("i", {
+  }, props.iconLeft), /*#__PURE__*/_react.default.createElement("i", {
     className: "inputIconRight",
     style: (_props$css3 = props.css) === null || _props$css3 === void 0 ? void 0 : (_props$css3$text = _props$css3.text) === null || _props$css3$text === void 0 ? void 0 : _props$css3$text.iconRight
   }, props.iconRight));

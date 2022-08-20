@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.textSize = exports.borderType = exports.textType = void 0;
+exports.textType = exports.textSize = exports.borderType = void 0;
 
 const textType = value => {
   switch (value) {

@@ -18,7 +18,9 @@ export default function Paragraph(props) {
     WebkitLineClamp: props.showLineNo ? props.showLineNo : "",
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
+    width: "100%",
     textDecoration: props.underline ? "underline" : "",
+    ...props.style,
   };
 
   return React.createElement(

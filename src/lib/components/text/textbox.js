@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import styles from "../text/text.module.scss";
+import React from "react";
 import { borderType, textType } from "./textStyles";
 
 const TEXT_SIZES = ["lg", "sm", "md"];
@@ -27,7 +27,7 @@ textbox.propTypes = {
   min: PropTypes.number,
 };
 export default function textbox(props) {
-  const textClassName = classNames(styles.txtNvxDefault, props.className);
+  const textClassName = classNames("txtNvxDefault", props.className);
 
   const numberOnly = (event) => {
     if (!/[0-9]/.test(event.key)) {

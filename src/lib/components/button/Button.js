@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
 import React, { Fragment } from "react";
-import styles from "../button/button.module.scss";
 import { buttonSize, buttonType } from "../button/buttonStyles";
 const BUTTON_SIZES = ["lg", "sm", "md"];
 
@@ -31,7 +30,7 @@ Button.propTypes = {
 };
 
 export default function Button(props) {
-  const buttonClassName = classNames(styles.btnNvxDefault, props.className, {
+  const buttonClassName = classNames("btnNvxDefault", props.className, {
     "btn--loading btnLoad": props.isLoading === true,
   });
 
@@ -67,9 +66,9 @@ export default function Button(props) {
         </span>
       ) : (
         <Fragment>
-          <i className={styles.iNvxIconLeft}>{props.iconLeft}</i>
+          <i className={"iNvxIconLeft"}>{props.iconLeft}</i>
           {props.children}
-          <i className={styles.iNvxIconRight}>{props.iconRight}</i>
+          <i className={"iNvxIconRight"}>{props.iconRight}</i>
         </Fragment>
       )}
     </button>

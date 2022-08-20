@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.buttonSize = exports.buttonType = void 0;
+exports.buttonType = exports.buttonSize = void 0;
 
 const buttonType = value => {
   switch (value) {

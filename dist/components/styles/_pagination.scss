@@ -1,0 +1,28 @@
+.nvxPagination {
+  width: max-content;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+    li {
+      float: left;
+    }
+
+    .nvxLiBck {
+      transform: rotate(90deg) !important;
+      color: white;
+    }
+    .nvxLiNxt {
+      transform: rotate(-90deg) !important;
+      color: white;
+    }
+    li a {
+      display: block;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.nvxList {
+  width: max-content;
+  .nvxListItem {
+    display: flex;
+    padding: 10px 5px;
+    border-bottom: 1px solid lightgray;
+  }
+  ul {
+    list-style-type: none;
+    list-style-position: inside;
+  }
+  .nvxIconList {
+    color: black;
+    font-size: 1rem;
+    padding: 0px;
+  }
+  .nvxListInner {
+    padding-left: 15px;
+    display: inline-block;
+    margin-top: 1px;
+    .nvxListHeader {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0px;
+    }
+    .nvxListHeaderSub {
+      font-size: 14px;
+      color: #757575;
+      margin-top: 8px;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import Accordion from "./components/accordion/accordion";
+import AccordionContent from "./components/accordion/accordionContent";
 import AccordionItem from "./components/accordion/accordionItem";
 import { Alert, default as AlertContainer } from "./components/alert/alert";
 import Avatar from "./components/avatar/avatar";
@@ -8,9 +9,14 @@ import Button from "./components/button/Button";
 import Checkbox from "./components/checkbox/checkbox";
 import CircularLoader from "./components/circularProgress/CircularProgress";
 import Header from "./components/header/Header";
+import List from "./components/list/list";
+import ListItem from "./components/list/listItem";
+import Pagination from "./components/pagination/pagination";
 import Paragraph from "./components/paragraph/paragraph";
 import Radio from "./components/radio/radio";
 import RadioGroup from "./components/radio/radioGroup";
+import SegmentedButton from "./components/segmented/segmentedButton";
+import Switch from "./components/switch/switch";
 import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
@@ -34,4 +40,10 @@ export {
   AlertContainer,
   Radio,
   RadioGroup,
+  AccordionContent,
+  Switch,
+  ListItem,
+  List,
+  Pagination,
+  SegmentedButton,
 };

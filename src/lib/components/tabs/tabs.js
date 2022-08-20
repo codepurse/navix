@@ -17,6 +17,7 @@ export default function Tabs(props) {
   const [activeKey, setActiveKey] = useState(null);
   const [countHeader, setCountHeader] = useState();
   const [countContent, setCountContent] = useState();
+  const [variant, setVariant] = useState("");
   const propStyle = {
     backgroundColor: props.backDrop,
     variant: props.variant,
@@ -37,6 +38,7 @@ export default function Tabs(props) {
       }).length;
       setCountContent(filteredContent);
       setCountHeader(filteredHeader);
+      setVariant(props.variant);
       if (props.defaultKey) {
         setActiveKey(props.defaultKey);
       }
@@ -47,7 +49,7 @@ export default function Tabs(props) {
   return (
     <div id="tsum-tabs">
       <main style={props.centered ? centered : null}>
-        <TabContext.Provider value={{ propStyle, activeKey }}>
+        <TabContext.Provider value={{ propStyle, activeKey, variant }}>
           {(() => {
             if (countHeader > 1) {
               return (

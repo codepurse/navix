@@ -11,6 +11,12 @@ Object.defineProperty(exports, "Accordion", {
     return _accordion.default;
   }
 });
+Object.defineProperty(exports, "AccordionContent", {
+  enumerable: true,
+  get: function get() {
+    return _accordionContent.default;
+  }
+});
 Object.defineProperty(exports, "AccordionItem", {
   enumerable: true,
   get: function get() {
@@ -71,6 +77,24 @@ Object.defineProperty(exports, "Header", {
     return _Header.default;
   }
 });
+Object.defineProperty(exports, "List", {
+  enumerable: true,
+  get: function get() {
+    return _list.default;
+  }
+});
+Object.defineProperty(exports, "ListItem", {
+  enumerable: true,
+  get: function get() {
+    return _listItem.default;
+  }
+});
+Object.defineProperty(exports, "Pagination", {
+  enumerable: true,
+  get: function get() {
+    return _pagination.default;
+  }
+});
 Object.defineProperty(exports, "Paragraph", {
   enumerable: true,
   get: function get() {
@@ -87,6 +111,18 @@ Object.defineProperty(exports, "RadioGroup", {
   enumerable: true,
   get: function get() {
     return _radioGroup.default;
+  }
+});
+Object.defineProperty(exports, "SegmentedButton", {
+  enumerable: true,
+  get: function get() {
+    return _segmentedButton.default;
+  }
+});
+Object.defineProperty(exports, "Switch", {
+  enumerable: true,
+  get: function get() {
+    return _switch.default;
   }
 });
 Object.defineProperty(exports, "TabContent", {
@@ -116,6 +152,8 @@ Object.defineProperty(exports, "Textbox", {
 
 var _accordion = _interopRequireDefault(require("./components/accordion/accordion"));
 
+var _accordionContent = _interopRequireDefault(require("./components/accordion/accordionContent"));
+
 var _accordionItem = _interopRequireDefault(require("./components/accordion/accordionItem"));
 
 var _alert = _interopRequireWildcard(require("./components/alert/alert"));
@@ -134,11 +172,21 @@ var _CircularProgress = _interopRequireDefault(require("./components/circularPro
 
 var _Header = _interopRequireDefault(require("./components/header/Header"));
 
+var _list = _interopRequireDefault(require("./components/list/list"));
+
+var _listItem = _interopRequireDefault(require("./components/list/listItem"));
+
+var _pagination = _interopRequireDefault(require("./components/pagination/pagination"));
+
 var _paragraph = _interopRequireDefault(require("./components/paragraph/paragraph"));
 
 var _radio = _interopRequireDefault(require("./components/radio/radio"));
 
 var _radioGroup = _interopRequireDefault(require("./components/radio/radioGroup"));
+
+var _segmentedButton = _interopRequireDefault(require("./components/segmented/segmentedButton"));
+
+var _switch = _interopRequireDefault(require("./components/switch/switch"));
 
 var _tabContent = _interopRequireDefault(require("./components/tabs/tabContent"));
 
@@ -148,8 +196,8 @@ var _tabs = _interopRequireDefault(require("./components/tabs/tabs"));
 
 var _textbox = _interopRequireDefault(require("./components/text/textbox"));
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

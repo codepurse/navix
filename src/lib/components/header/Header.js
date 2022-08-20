@@ -20,12 +20,17 @@ export default function Header(props) {
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
     textDecoration: props.underline ? "underline" : "",
+    ...props.style,
   };
 
   return (
     <Fragment>
       <div className="nvxDivHeader">
-        <h1 id={textType(props.type)} style={propsStyle}>
+        <h1
+          id={textType(props.type)}
+          style={propsStyle}
+          className={props.className}
+        >
           {props.children}
         </h1>
       </div>
