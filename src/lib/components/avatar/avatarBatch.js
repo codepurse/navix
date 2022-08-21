@@ -15,9 +15,7 @@ export default function AvatarBatch(props) {
   useEffect(() => {
     if (isMounted) {
       setCount(props.children.length);
-      console.log(props.children);
       setMax(props.max);
-      console.log("Test");
     }
     if (props.max) {
       setMax(props.max);

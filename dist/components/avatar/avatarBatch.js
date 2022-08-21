@@ -35,9 +35,7 @@ function AvatarBatch(props) {
   (0, _react.useEffect)(() => {
     if (isMounted) {
       setCount(props.children.length);
-      console.log(props.children);
       setMax(props.max);
-      console.log("Test");
     }
 
     if (props.max) {

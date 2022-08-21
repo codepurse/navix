@@ -22,7 +22,12 @@ import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
+import useArray from "./hooks/useArray";
+import useConsole from "./hooks/useConsole";
+import useCookie from "./hooks/useCookie";
 import useDebounce from "./hooks/useDebounce";
+import useToggle from "./hooks/useToggle";
+import useUpdate from "./hooks/useUpdateEffect";
 export {
   Badge,
   Button,
@@ -50,4 +55,9 @@ export {
   SegmentedButton,
   Box,
   useDebounce,
+  useConsole,
+  useUpdate,
+  useArray,
+  useCookie,
+  useToggle,
 };

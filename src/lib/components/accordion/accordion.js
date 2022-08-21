@@ -6,7 +6,6 @@ export default function Accordion(props) {
 
   useEffect(
     (e) => {
-      console.log(props);
       if (props.children?.length) {
         setCount(props.children.length);
       }

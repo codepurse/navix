@@ -16,7 +16,8 @@ import {
   Switch,
   TabContent,
   Tabs,
-  useDebounce,
+  useArray,
+  useCookie,
 } from "./lib";
 import Avatar from "./lib/components/avatar/avatar";
 import AvatarBatch from "./lib/components/avatar/avatarBatch";
@@ -30,6 +31,7 @@ import TabHeader from "./lib/components/tabs/tabHeader";
 import Textbox from "./lib/components/text/textbox";
 function App() {
   const [num, setNum] = useState("3");
+  const [count, setCount] = useState(1);
   const notify = () => Alert.info("Sample Alert! Letss goo!");
   const segmentedArray = [
     {
@@ -42,17 +44,46 @@ function App() {
     },
   ];
 
+  const numArray = [1, 2, 3, 4, 5, 6, 7];
+
+  const testArray = useArray(numArray);
+
+  function getCookie(name) {
+    let cookie = {};
+    document.cookie.split(";").forEach(function (el) {
+      let [k, v] = el.split("=");
+      cookie[k.trim()] = v;
+    });
+    return cookie[name];
+  }
+
   return (
     <div>
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
       <AlertContainer />
       <Button
-        onClick={useDebounce((e) => {
-          console.log("Asd");
-        }, 4000)}
+        onClick={(e) => {
+          document.cookie = "username=John Doe";
+          testArray.push(8);
+        }}
       >
-        test
+        Set cookie
+      </Button>
+      <Button
+        onClick={(e) => {
+          console.log(testArray);
+          useCookie.clear("username");
+        }}
+      >
+        Delete
+      </Button>
+      <Button
+        onClick={(e) => {
+          console.log(getCookie("username"));
+        }}
+      >
+        Log
       </Button>
       <Textbox></Textbox>
       <RadioGroup defaultCheck="1">

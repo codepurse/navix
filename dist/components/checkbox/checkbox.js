@@ -44,9 +44,6 @@ function Checkbox(props) {
 
   var customStyle = _objectSpread(_objectSpread({}, propsStyle), customProps);
 
-  (0, _react.useEffect)(e => {
-    console.log(props.style);
-  });
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxCbx"
   }, /*#__PURE__*/_react.default.createElement("label", {

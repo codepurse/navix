@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 Checkbox.propTypes = {
   label: PropTypes.string,
@@ -24,11 +24,6 @@ export default function Checkbox(props) {
   };
 
   var customStyle = { ...propsStyle, ...customProps };
-
-  useEffect((e) => {
-    console.log(props.style);
-  });
-
   return (
     <div className="nvxCbx">
       <label className="checkbox bounce">

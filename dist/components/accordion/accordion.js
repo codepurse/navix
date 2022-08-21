@@ -24,8 +24,6 @@ function Accordion(props) {
   (0, _react.useEffect)(e => {
     var _props$children;
 
-    console.log(props);
-
     if ((_props$children = props.children) !== null && _props$children !== void 0 && _props$children.length) {
       setCount(props.children.length);
     }
