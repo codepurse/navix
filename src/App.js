@@ -7,6 +7,7 @@ import {
   AccordionItem,
   Alert,
   AlertContainer,
+  Box,
   List,
   ListItem,
   Pagination,
@@ -15,6 +16,7 @@ import {
   Switch,
   TabContent,
   Tabs,
+  useDebounce,
 } from "./lib";
 import Avatar from "./lib/components/avatar/avatar";
 import AvatarBatch from "./lib/components/avatar/avatarBatch";
@@ -45,9 +47,15 @@ function App() {
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
       <AlertContainer />
-      <Button onClick={notify}>test</Button>
+      <Button
+        onClick={useDebounce((e) => {
+          console.log("Asd");
+        }, 4000)}
+      >
+        test
+      </Button>
       <Textbox></Textbox>
-      <RadioGroup defaultCheck="1" onChange={(e) => {}}>
+      <RadioGroup defaultCheck="1">
         <Radio value="1" label="Asds" />
         <Radio value="2" label="Asds" />
       </RadioGroup>
@@ -114,6 +122,10 @@ function App() {
           console.log(e);
         }}
       />
+      <Box
+        style={{ height: "100px", width: "100px" }}
+        backgroundColor="tomato"
+      ></Box>
     </div>
   );
 }

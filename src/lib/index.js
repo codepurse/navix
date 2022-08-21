@@ -5,6 +5,7 @@ import { Alert, default as AlertContainer } from "./components/alert/alert";
 import Avatar from "./components/avatar/avatar";
 import AvatarBatch from "./components/avatar/avatarBatch";
 import Badge from "./components/badge/badge";
+import Box from "./components/box/box";
 import Button from "./components/button/Button";
 import Checkbox from "./components/checkbox/checkbox";
 import CircularLoader from "./components/circularProgress/CircularProgress";
@@ -21,6 +22,7 @@ import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
+import useDebounce from "./hooks/useDebounce";
 export {
   Badge,
   Button,
@@ -46,4 +48,6 @@ export {
   List,
   Pagination,
   SegmentedButton,
+  Box,
+  useDebounce,
 };
