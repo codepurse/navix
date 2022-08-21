@@ -12,10 +12,12 @@ import {
   ListItem,
   Pagination,
   Paragraph,
+  Pin,
   SegmentedButton,
   Switch,
   TabContent,
   Tabs,
+  Tooltip,
   useArray,
   useCookie,
 } from "./lib";
@@ -23,6 +25,7 @@ import Avatar from "./lib/components/avatar/avatar";
 import AvatarBatch from "./lib/components/avatar/avatarBatch";
 import Badge from "./lib/components/badge/badge";
 import Button from "./lib/components/button/Button";
+import ButtonIcon from "./lib/components/buttonIcon/ButtonIcon";
 import Header from "./lib/components/header/Header";
 import Radio from "./lib/components/radio/radio";
 import RadioGroup from "./lib/components/radio/radioGroup";
@@ -153,10 +156,26 @@ function App() {
           console.log(e);
         }}
       />
-      <Box
-        style={{ height: "100px", width: "100px" }}
-        backgroundColor="tomato"
-      ></Box>
+      <Tooltip content="Yee-haw!" direction="right">
+        <Box
+          style={{ height: "100px", width: "100px" }}
+          backgroundColor="tomato"
+        ></Box>
+      </Tooltip>
+      <Tooltip content="Yee-haw!" direction="right">
+        <div style={{ marginTop: "10px" }}>
+          <ButtonIcon variant="notes" size={"sm"} />
+        </div>
+      </Tooltip>
+      <div style={{ width: "300px", height: "155px" }}>
+        <Pin
+          spacing={30}
+          count={4}
+          onChange={(e) => {
+            console.log(e);
+          }}
+        ></Pin>
+      </div>
     </div>
   );
 }

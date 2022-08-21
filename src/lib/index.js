@@ -14,6 +14,7 @@ import List from "./components/list/list";
 import ListItem from "./components/list/listItem";
 import Pagination from "./components/pagination/pagination";
 import Paragraph from "./components/paragraph/paragraph";
+import Pin from "./components/pin/pin";
 import Radio from "./components/radio/radio";
 import RadioGroup from "./components/radio/radioGroup";
 import SegmentedButton from "./components/segmented/segmentedButton";
@@ -22,6 +23,7 @@ import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
+import Tooltip from "./components/tooltip/tooltip";
 import useArray from "./hooks/useArray";
 import useConsole from "./hooks/useConsole";
 import useCookie from "./hooks/useCookie";
@@ -60,4 +62,6 @@ export {
   useArray,
   useCookie,
   useToggle,
+  Tooltip,
+  Pin,
 };
