@@ -1,0 +1,13 @@
+.vertical-center {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.forceRounded {
+  border-radius: 5000px !important;
+}
+
+.not-allowed {
+  cursor: not-allowed !important;
+}
