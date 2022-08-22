@@ -90,9 +90,12 @@ function Tabs(props) {
             } else {
               try {
                 filteredComponent.props.onClick();
-              } catch (error) {}
+              } catch (error) {
+                console.log(error);
+              }
 
               setActiveKey(filteredComponent.props.id);
+              console.log(filteredComponent.props.id);
             }
           }
         }, filteredComponent);
