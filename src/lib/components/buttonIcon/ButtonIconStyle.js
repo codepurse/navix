@@ -1,3 +1,5 @@
+import React from "react";
+
 export const buttonType = (value) => {
   switch (value) {
     case "delete":
