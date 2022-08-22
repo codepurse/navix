@@ -1,0 +1,23 @@
+.nvxBtnIcon {
+  color: #424242;
+  font-size: 1.1rem;
+  box-shadow: 0 0 30px rgb(28 39 60 / 8%);
+  border: 1px solid rgba(28, 39, 60, 0.12);
+  border-radius: 5px;
+  padding: 2px 5px;
+  padding-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transform: all 0.1s;
+}
+
+.nvxBtnIconDelete {
+  color: #ff5252 !important;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff5252 !important;
+    color: whitesmoke !important;
+  }
+}

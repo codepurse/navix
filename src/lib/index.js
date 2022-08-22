@@ -7,6 +7,7 @@ import AvatarBatch from "./components/avatar/avatarBatch";
 import Badge from "./components/badge/badge";
 import Box from "./components/box/box";
 import Button from "./components/button/Button";
+import ButtonIcon from "./components/buttonIcon/ButtonIcon";
 import Checkbox from "./components/checkbox/checkbox";
 import CircularLoader from "./components/circularProgress/CircularProgress";
 import Header from "./components/header/Header";
@@ -37,6 +38,7 @@ export {
   AvatarBatch,
   Checkbox,
   CircularLoader,
+  ButtonIcon,
   Header,
   Paragraph,
   Textbox,

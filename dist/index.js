@@ -65,6 +65,12 @@ Object.defineProperty(exports, "Button", {
     return _Button.default;
   }
 });
+Object.defineProperty(exports, "ButtonIcon", {
+  enumerable: true,
+  get: function get() {
+    return _ButtonIcon.default;
+  }
+});
 Object.defineProperty(exports, "Checkbox", {
   enumerable: true,
   get: function get() {
@@ -105,6 +111,12 @@ Object.defineProperty(exports, "Paragraph", {
   enumerable: true,
   get: function get() {
     return _paragraph.default;
+  }
+});
+Object.defineProperty(exports, "Pin", {
+  enumerable: true,
+  get: function get() {
+    return _pin.default;
   }
 });
 Object.defineProperty(exports, "Radio", {
@@ -153,6 +165,12 @@ Object.defineProperty(exports, "Textbox", {
   enumerable: true,
   get: function get() {
     return _textbox.default;
+  }
+});
+Object.defineProperty(exports, "Tooltip", {
+  enumerable: true,
+  get: function get() {
+    return _tooltip.default;
   }
 });
 Object.defineProperty(exports, "useArray", {
@@ -210,6 +228,8 @@ var _box = _interopRequireDefault(require("./components/box/box"));
 
 var _Button = _interopRequireDefault(require("./components/button/Button"));
 
+var _ButtonIcon = _interopRequireDefault(require("./components/buttonIcon/ButtonIcon"));
+
 var _checkbox = _interopRequireDefault(require("./components/checkbox/checkbox"));
 
 var _CircularProgress = _interopRequireDefault(require("./components/circularProgress/CircularProgress"));
@@ -223,6 +243,8 @@ var _listItem = _interopRequireDefault(require("./components/list/listItem"));
 var _pagination = _interopRequireDefault(require("./components/pagination/pagination"));
 
 var _paragraph = _interopRequireDefault(require("./components/paragraph/paragraph"));
+
+var _pin = _interopRequireDefault(require("./components/pin/pin"));
 
 var _radio = _interopRequireDefault(require("./components/radio/radio"));
 
@@ -239,6 +261,8 @@ var _tabHeader = _interopRequireDefault(require("./components/tabs/tabHeader"));
 var _tabs = _interopRequireDefault(require("./components/tabs/tabs"));
 
 var _textbox = _interopRequireDefault(require("./components/text/textbox"));
+
+var _tooltip = _interopRequireDefault(require("./components/tooltip/tooltip"));
 
 var _useArray = _interopRequireDefault(require("./hooks/useArray"));
 
