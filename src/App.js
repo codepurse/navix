@@ -103,7 +103,7 @@ function App() {
         <Avatar src="https://www.pinkvilla.com/files/when-red-velvets-seulgi-opened-up-about-her-thoughts-on-debuting-sub-unit.jpg"></Avatar>
       </AvatarBatch>
       <Paragraph style={{ textAlign: "center" }}>adadasdsa</Paragraph>
-      <Tabs variant="borderline">
+      <Tabs defaultKey="3">
         <TabHeader label="Tab One" id="3"></TabHeader>
         <TabHeader label="Tab Two" id="4"></TabHeader>
         <TabContent id="3">Tab One</TabContent>

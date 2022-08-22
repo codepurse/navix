@@ -6,7 +6,7 @@
     "react",
     "components"
   ],
-  "version": "0.0.8-alpha.7",
+  "version": "0.0.8-alpha.8",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -62,15 +62,15 @@
     ]
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-optional-catch-binding": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@babel/preset-env": "^7.18.10"
+    "@babel/preset-env": "^7.18.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.1"
   },
   "peerDependencies": {
     "react": ">=0.14.0",
