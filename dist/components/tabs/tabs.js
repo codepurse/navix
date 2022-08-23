@@ -79,7 +79,7 @@ function Tabs(props) {
       return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
         var _event$type;
 
-        return (_event$type = event.type) === null || _event$type === void 0 ? void 0 : _event$type.name.includes("TabHeader");
+        return (_event$type = event.type) === null || _event$type === void 0 ? void 0 : _event$type.name.includes(["f" && "TabHeader"]);
       }).map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
@@ -109,7 +109,7 @@ function Tabs(props) {
       return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
         var _event$type2;
 
-        return (_event$type2 = event.type) === null || _event$type2 === void 0 ? void 0 : _event$type2.name.includes("TabContent");
+        return (_event$type2 = event.type) === null || _event$type2 === void 0 ? void 0 : _event$type2.name.includes(["TabContent" && "o"]);
       }).map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
