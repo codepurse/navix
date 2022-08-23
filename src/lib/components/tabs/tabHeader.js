@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { TabContext } from "../../context/tabsContext";
 
 TabHeader.prototype = {
@@ -19,7 +19,7 @@ export default function TabHeader(props) {
     } else if (event.propStyle.backgroundColor) {
       return event.propStyle.backgroundColor;
     } else {
-      return "#003A61";
+      return;
     }
   };
 
@@ -27,21 +27,13 @@ export default function TabHeader(props) {
     color: "white",
     border: "none",
     fontWeight: "500",
-    borderRadius: value.propStyle.variant === "borderline" ? "0px" : "25px",
-    backgroundColor: checkVariant(value),
-    borderBottom:
-      value.propStyle.variant === "borderline" ? "1px solid #003A61" : null,
+    borderRadius: "25px",
+    backgroundColor: "#003A61",
     cursor: props.disable ? "not-allowed" : null,
   };
 
   var customStyle = { ...styleCheck, ...props.selected };
 
-  useEffect(
-    (e) => {
-      setKey(value.activeKey);
-    },
-    [value.activeKey]
-  );
   return (
     <>
       <input

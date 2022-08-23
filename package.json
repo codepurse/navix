@@ -6,7 +6,7 @@
     "react",
     "components"
   ],
-  "version": "0.0.8-alpha.10",
+  "version": "0.0.8-alpha.11",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -26,7 +26,7 @@
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
-    "core-js": "^2.6.5",
+    "core-js": "^3.6.5",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
     "@testing-library/user-event": "^14.4.3",
