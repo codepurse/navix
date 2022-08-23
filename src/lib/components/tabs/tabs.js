@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
+import { TabContext } from "../../context/tabsContext";
 
 const TAB_VARIANT = ["borderline", "rounded"];
 
@@ -29,6 +30,7 @@ export default function Tabs(props) {
 
   useEffect(
     (e) => {
+      console.log(props.children);
       var filteredHeader = props.children.filter(function (element) {
         return element.type?.name.includes("TabHeader");
       }).length;
@@ -48,44 +50,46 @@ export default function Tabs(props) {
   return (
     <div id="tsum-tabs">
       <main style={props.centered ? centered : null}>
-        {(() => {
-          if (countHeader > 1) {
-            return (
-              <Fragment>
-                {props.children
-                  .filter((event) => event.type?.name.includes("TabHeader"))
-                  .map((filteredComponent, key) => (
-                    <Fragment key={key}>
-                      {(() => {
-                        return (
-                          <span
-                            onClick={(e) => {
-                              if (filteredComponent.props.disable) {
-                                e.preventDefault();
-                                return;
-                              } else {
-                                try {
-                                  filteredComponent.props.onClick();
-                                } catch (error) {
-                                  console.log(error);
+        <TabContext.Provider value={{ propStyle, activeKey, variant }}>
+          {(() => {
+            if (countHeader > 1) {
+              return (
+                <Fragment>
+                  {props.children
+                    .filter((event) => event.type?.name.includes("TabHeader"))
+                    .map((filteredComponent, key) => (
+                      <Fragment key={key}>
+                        {(() => {
+                          return (
+                            <span
+                              onClick={(e) => {
+                                if (filteredComponent.props.disable) {
+                                  e.preventDefault();
+                                  return;
+                                } else {
+                                  try {
+                                    filteredComponent.props.onClick();
+                                  } catch (error) {
+                                    console.log(error);
+                                  }
+                                  setActiveKey(filteredComponent.props.id);
+                                  console.log(filteredComponent.props.id);
                                 }
-                                setActiveKey(filteredComponent.props.id);
-                                console.log(filteredComponent.props.id);
-                              }
-                            }}
-                          >
-                            {filteredComponent}
-                          </span>
-                        );
-                      })()}
-                    </Fragment>
-                  ))}
-              </Fragment>
-            );
-          } else {
-            return <Fragment> {props.children}</Fragment>;
-          }
-        })()}
+                              }}
+                            >
+                              {filteredComponent}
+                            </span>
+                          );
+                        })()}
+                      </Fragment>
+                    ))}
+                </Fragment>
+              );
+            } else {
+              return <Fragment> {props.children}</Fragment>;
+            }
+          })()}
+        </TabContext.Provider>
       </main>
       <div>
         {(() => {

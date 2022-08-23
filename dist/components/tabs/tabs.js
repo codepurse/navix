@@ -45,6 +45,7 @@ function Tabs(props) {
     display: "flex"
   };
   (0, _react.useEffect)(e => {
+    console.log(props.children);
     var filteredHeader = props.children.filter(function (element) {
       var _element$type;
 
