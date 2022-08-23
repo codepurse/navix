@@ -26,7 +26,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 TabHeader.prototype = {
   label: _propTypes.PropTypes.string,
   selected: _propTypes.PropTypes.array,
-  disable: _propTypes.PropTypes.bool
+  disable: _propTypes.PropTypes.bool,
+  _TYPE: _propTypes.PropTypes.string
+};
+TabHeader.defaultProps = {
+  __TYPE: "TabHeader"
 };
 
 function TabHeader(props) {

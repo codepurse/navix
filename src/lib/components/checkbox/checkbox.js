@@ -34,7 +34,6 @@ export default function Checkbox(props) {
           disabled={props.disabled}
           onChange={(e) => {
             if (e.currentTarget.checked) {
-              console.log(e.currentTarget.checked);
               setCheck(true);
             } else {
               setCheck(false);

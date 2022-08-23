@@ -21,9 +21,8 @@ export default function Accordion(props) {
               return (
                 <Fragment>
                   {props.children
-                    .filter((event) =>
-                      event.type?.name.includes("AccordionItem")
-                    )
+                    .filter((event) => event.props.__TYPE === "AccordionItem")
+
                     .map((filteredComponent, key) => (
                       <Fragment key={key}>
                         {(() => {

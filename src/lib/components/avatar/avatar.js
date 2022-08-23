@@ -9,7 +9,13 @@ Avatar.propTypes = {
   src: PropTypes.string,
   label: PropTypes.string,
   size: PropTypes.oneOf(AVATAR_SIZE),
+  __TYPE: PropTypes.string,
 };
+
+Avatar.defaultProps = {
+  __TYPE: "Avatar",
+};
+
 export default function Avatar(props) {
   const value = useContext(AvatarContext);
   const [valid, setValid] = useState(false);

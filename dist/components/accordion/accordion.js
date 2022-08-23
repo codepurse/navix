@@ -7,10 +7,6 @@ exports.default = Accordion;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-require("core-js/modules/es.array.includes.js");
-
-require("core-js/modules/es.string.includes.js");
-
 var _react = _interopRequireWildcard(require("react"));
 
 var _accordionContext = require("../../context/accordionContext");
@@ -34,11 +30,7 @@ function Accordion(props) {
     value: props
   }, /*#__PURE__*/_react.default.createElement(_react.Fragment, null, (() => {
     if (count > 1) {
-      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
-        var _event$type;
-
-        return (_event$type = event.type) === null || _event$type === void 0 ? void 0 : _event$type.name.includes("AccordionItem");
-      }).map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => event.props.__TYPE === "AccordionItem").map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
         return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, filteredComponent);

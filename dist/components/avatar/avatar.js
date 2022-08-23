@@ -29,7 +29,11 @@ const AVATAR_SIZE = ["sm", "md", "lg"];
 Avatar.propTypes = {
   src: _propTypes.PropTypes.string,
   label: _propTypes.PropTypes.string,
-  size: _propTypes.PropTypes.oneOf(AVATAR_SIZE)
+  size: _propTypes.PropTypes.oneOf(AVATAR_SIZE),
+  __TYPE: _propTypes.PropTypes.string
+};
+Avatar.defaultProps = {
+  __TYPE: "Avatar"
 };
 
 function Avatar(props) {

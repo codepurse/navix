@@ -34,7 +34,7 @@ export default function AvatarBatch(props) {
               return (
                 <Fragment>
                   {props.children
-                    .filter((event) => event.type?.name.includes("Avatar"))
+                    .filter((event) => event.props.__TYPE === "Avatar")
                     .map(
                       (filteredComponent, key) =>
                         key < parseInt(max) && (

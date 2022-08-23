@@ -7,10 +7,6 @@ exports.default = Tabs;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-require("core-js/modules/es.array.includes.js");
-
-require("core-js/modules/es.string.includes.js");
-
 var _propTypes = require("prop-types");
 
 var _react = _interopRequireWildcard(require("react"));
@@ -45,16 +41,11 @@ function Tabs(props) {
     display: "flex"
   };
   (0, _react.useEffect)(e => {
-    console.log(props.children);
     var filteredHeader = props.children.filter(function (element) {
-      var _element$type;
-
-      return (_element$type = element.type) === null || _element$type === void 0 ? void 0 : _element$type.name.includes("TabHeader");
+      return element.props.__TYPE === "TabHeader";
     }).length;
     var filteredContent = props.children.filter(function (element) {
-      var _element$type2;
-
-      return (_element$type2 = element.type) === null || _element$type2 === void 0 ? void 0 : _element$type2.name.includes("TabContent");
+      return element.props.__TYPE === "TabContent";
     }).length;
     setCountContent(filteredContent);
     setCountHeader(filteredHeader);
@@ -76,11 +67,7 @@ function Tabs(props) {
     }
   }, (() => {
     if (countHeader > 1) {
-      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
-        var _event$type;
-
-        return (_event$type = event.type) === null || _event$type === void 0 ? void 0 : _event$type.name.includes(["f" && "TabHeader"]);
-      }).map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => event.props.__TYPE === "TabHeader").map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
         return /*#__PURE__*/_react.default.createElement("span", {
@@ -91,9 +78,7 @@ function Tabs(props) {
             } else {
               try {
                 filteredComponent.props.onClick();
-              } catch (error) {
-                console.log(error);
-              }
+              } catch (error) {}
 
               setActiveKey(filteredComponent.props.id);
               console.log(filteredComponent.props.id);
@@ -106,11 +91,7 @@ function Tabs(props) {
     }
   })())), /*#__PURE__*/_react.default.createElement("div", null, (() => {
     if (countContent > 0) {
-      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
-        var _event$type2;
-
-        return (_event$type2 = event.type) === null || _event$type2 === void 0 ? void 0 : _event$type2.name.includes(["TabContent" && "o"]);
-      }).map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => event.props.__TYPE === "TabContent").map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
         if (activeKey === filteredComponent.props.id) {

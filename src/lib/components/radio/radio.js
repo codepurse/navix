@@ -11,6 +11,11 @@ Radio.propTypes = {
   value: PropTypes.string,
   label: PropTypes.string,
   selected: PropTypes.bool,
+  _TYPE: PropTypes.string,
+};
+
+Radio.defaultProps = {
+  __TYPE: "Radio",
 };
 
 export default function Radio(props) {

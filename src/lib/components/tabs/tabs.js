@@ -30,12 +30,11 @@ export default function Tabs(props) {
 
   useEffect(
     (e) => {
-      console.log(props.children);
       var filteredHeader = props.children.filter(function (element) {
-        return element.type?.name.includes("TabHeader");
+        return element.props.__TYPE === "TabHeader";
       }).length;
       var filteredContent = props.children.filter(function (element) {
-        return element.type?.name.includes("TabContent");
+        return element.props.__TYPE === "TabContent";
       }).length;
       setCountContent(filteredContent);
       setCountHeader(filteredHeader);
@@ -56,9 +55,7 @@ export default function Tabs(props) {
               return (
                 <Fragment>
                   {props.children
-                    .filter((event) =>
-                      event.type?.name.includes(["f" && "TabHeader"])
-                    )
+                    .filter((event) => event.props.__TYPE === "TabHeader")
                     .map((filteredComponent, key) => (
                       <Fragment key={key}>
                         {(() => {
@@ -71,9 +68,7 @@ export default function Tabs(props) {
                                 } else {
                                   try {
                                     filteredComponent.props.onClick();
-                                  } catch (error) {
-                                    console.log(error);
-                                  }
+                                  } catch (error) {}
                                   setActiveKey(filteredComponent.props.id);
                                   console.log(filteredComponent.props.id);
                                 }
@@ -99,9 +94,7 @@ export default function Tabs(props) {
             return (
               <Fragment>
                 {props.children
-                  .filter((event) =>
-                    event.type?.name.includes(["TabContent" && "o"])
-                  )
+                  .filter((event) => event.props.__TYPE === "TabContent")
                   .map((filteredComponent, key) => (
                     <Fragment key={key}>
                       {(() => {

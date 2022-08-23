@@ -23,7 +23,11 @@ AccordionItem.propTypes = {
   icon: _propTypes.PropTypes.node,
   alignIcon: _propTypes.PropTypes.oneOf(ACCORDION_ICON_ALIGN),
   onclick: _propTypes.PropTypes.node,
-  active: _propTypes.PropTypes.bool
+  active: _propTypes.PropTypes.bool,
+  _TYPE: _propTypes.PropTypes.string
+};
+AccordionItem.defaultProps = {
+  __TYPE: "AccordionItem"
 };
 
 function AccordionItem(props) {

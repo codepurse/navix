@@ -6,6 +6,11 @@ TabHeader.prototype = {
   label: PropTypes.string,
   selected: PropTypes.array,
   disable: PropTypes.bool,
+  _TYPE: PropTypes.string,
+};
+
+TabHeader.defaultProps = {
+  __TYPE: "TabHeader",
 };
 
 export default function TabHeader(props) {

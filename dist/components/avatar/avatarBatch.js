@@ -7,10 +7,6 @@ exports.default = AvatarBatch;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-require("core-js/modules/es.array.includes.js");
-
-require("core-js/modules/es.string.includes.js");
-
 require("core-js/modules/es.parse-int.js");
 
 var _propTypes = require("prop-types");
@@ -54,11 +50,7 @@ function AvatarBatch(props) {
     value: props
   }, (() => {
     if (count > 1) {
-      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => {
-        var _event$type;
-
-        return (_event$type = event.type) === null || _event$type === void 0 ? void 0 : _event$type.name.includes("Avatar");
-      }).map((filteredComponent, key) => key < parseInt(max) && /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+      return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => event.props.__TYPE === "Avatar").map((filteredComponent, key) => key < parseInt(max) && /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, filteredComponent)));
     } else {

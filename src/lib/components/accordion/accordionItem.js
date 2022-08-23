@@ -16,6 +16,11 @@ AccordionItem.propTypes = {
   alignIcon: PropTypes.oneOf(ACCORDION_ICON_ALIGN),
   onclick: PropTypes.node,
   active: PropTypes.bool,
+  _TYPE: PropTypes.string,
+};
+
+AccordionItem.defaultProps = {
+  __TYPE: "AccordionItem",
 };
 
 export default function AccordionItem(props) {

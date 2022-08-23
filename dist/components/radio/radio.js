@@ -25,7 +25,11 @@ Radio.propTypes = {
   disabled: _propTypes.PropTypes.bool,
   value: _propTypes.PropTypes.string,
   label: _propTypes.PropTypes.string,
-  selected: _propTypes.PropTypes.bool
+  selected: _propTypes.PropTypes.bool,
+  _TYPE: _propTypes.PropTypes.string
+};
+Radio.defaultProps = {
+  __TYPE: "Radio"
 };
 
 function Radio(props) {

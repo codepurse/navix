@@ -25,7 +25,7 @@ export default function RadioGroup(props) {
             return (
               <Fragment>
                 {props.children
-                  .filter((event) => event.type?.name.includes("Radio"))
+                  .filter((event) => event.props.__TYPE === "Radio")
                   .map((filteredComponent, key) => (
                     <Fragment key={key}>
                       {(() => {

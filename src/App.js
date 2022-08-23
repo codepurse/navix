@@ -16,6 +16,7 @@ import {
   SegmentedButton,
   Switch,
   TabContent,
+  TabHeader,
   Tabs,
   Tooltip,
   useArray,
@@ -30,7 +31,6 @@ import Header from "./lib/components/header/Header";
 import Radio from "./lib/components/radio/radio";
 import RadioGroup from "./lib/components/radio/radioGroup";
 import "./lib/components/styles/main.scss";
-import TabHeader from "./lib/components/tabs/tabHeader";
 import Textbox from "./lib/components/text/textbox";
 function App() {
   const [num, setNum] = useState("3");
@@ -93,7 +93,7 @@ function App() {
         <Radio value="1" label="Asds" />
         <Radio value="2" label="Asds" />
       </RadioGroup>
-      <AvatarBatch>
+      <AvatarBatch max="2">
         <Avatar
           label="Seulgi labadan"
           src="https://i.pinimg.com/originals/7d/3b/9d/7d3b9da836ea9044474eeb5d5971bf85.jpg"
@@ -103,12 +103,6 @@ function App() {
         <Avatar src="https://www.pinkvilla.com/files/when-red-velvets-seulgi-opened-up-about-her-thoughts-on-debuting-sub-unit.jpg"></Avatar>
       </AvatarBatch>
       <Paragraph style={{ textAlign: "center" }}>adadasdsa</Paragraph>
-      <Tabs defaultKey="3">
-        <TabHeader label="Tab One" id="3"></TabHeader>
-        <TabHeader label="Tab Two" id="4"></TabHeader>
-        <TabContent id="3">Tab One</TabContent>
-        <TabContent id="4">Tab two</TabContent>
-      </Tabs>
       <Badge type="primary">Primary</Badge>
       <Badge type="danger">Error</Badge>
       <Accordion>
@@ -176,6 +170,16 @@ function App() {
           }}
         ></Pin>
       </div>
+      <Tabs defaultKey="3">
+        <TabHeader label="Tab One" id="3"></TabHeader>
+        <TabHeader label="Tab Two" id="4"></TabHeader>
+        <TabContent id="3">
+          <Paragraph style={{ marginLeft: "25px" }}>🤩</Paragraph>
+        </TabContent>
+        <TabContent id="4">
+          <Paragraph style={{ marginLeft: "25px" }}>😁</Paragraph>
+        </TabContent>
+      </Tabs>
     </div>
   );
 }
