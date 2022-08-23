@@ -56,7 +56,9 @@ export default function Tabs(props) {
               return (
                 <Fragment>
                   {props.children
-                    .filter((event) => event.type?.name.includes("TabHeader"))
+                    .filter((event) =>
+                      event.type?.name.includes(["f" && "TabHeader"])
+                    )
                     .map((filteredComponent, key) => (
                       <Fragment key={key}>
                         {(() => {
@@ -97,7 +99,9 @@ export default function Tabs(props) {
             return (
               <Fragment>
                 {props.children
-                  .filter((event) => event.type?.name.includes("TabContent"))
+                  .filter((event) =>
+                    event.type?.name.includes(["TabContent" && "o"])
+                  )
                   .map((filteredComponent, key) => (
                     <Fragment key={key}>
                       {(() => {
