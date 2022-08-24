@@ -1,0 +1,26 @@
+.nvxOverlay {
+  height: auto;
+  width: max-content;
+  display: inline-block;
+  position: relative;
+  .nvxOverlayInner {
+    position: absolute;
+    /*     left: 50%;
+    transform: translateX(-50%); */
+    line-height: 1;
+    z-index: 100;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+  .nvxOverlayHide {
+    display: none;
+  }
+  .nvxfadeOut {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .nvxfadeIn {
+    opacity: 1;
+    transition: opacity 0.2s 0.2s;
+  }
+}

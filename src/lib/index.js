@@ -13,6 +13,7 @@ import CircularLoader from "./components/circularProgress/CircularProgress";
 import Header from "./components/header/Header";
 import List from "./components/list/list";
 import ListItem from "./components/list/listItem";
+import Overlay from "./components/overlay/overlay";
 import { default as Pagination } from "./components/pagination/pagination";
 import Paragraph from "./components/paragraph/paragraph";
 import Pin from "./components/pin/pin";
@@ -66,4 +67,5 @@ export {
   useToggle,
   Tooltip,
   Pin,
+  Overlay,
 };

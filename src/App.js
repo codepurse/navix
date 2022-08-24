@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import "./App.css";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  Alert,
   AlertContainer,
   Box,
   List,
   ListItem,
+  Overlay,
   Pagination,
   Paragraph,
   Pin,
@@ -21,6 +20,7 @@ import {
   Tooltip,
   useArray,
   useCookie,
+  useToggle,
 } from "./lib";
 import Avatar from "./lib/components/avatar/avatar";
 import AvatarBatch from "./lib/components/avatar/avatarBatch";
@@ -33,9 +33,7 @@ import RadioGroup from "./lib/components/radio/radioGroup";
 import "./lib/components/styles/main.scss";
 import Textbox from "./lib/components/text/textbox";
 function App() {
-  const [num, setNum] = useState("3");
-  const [count, setCount] = useState(1);
-  const notify = () => Alert.info("Sample Alert! Letss goo!");
+  const [show, setShow] = useToggle(false);
   const segmentedArray = [
     {
       id: "one",
@@ -81,13 +79,22 @@ function App() {
       >
         Delete
       </Button>
-      <Button
-        onClick={(e) => {
-          console.log(getCookie("username"));
-        }}
+      <Overlay
+        show={show}
+        rendered={
+          <div className="test">
+            <p>test</p>
+          </div>
+        }
       >
-        Log
-      </Button>
+        <Button
+          onClick={(e) => {
+            setShow();
+          }}
+        >
+          Log
+        </Button>
+      </Overlay>
       <Textbox></Textbox>
       <RadioGroup defaultCheck="1">
         <Radio value="1" label="Asds" />
@@ -104,7 +111,11 @@ function App() {
       </AvatarBatch>
       <Paragraph style={{ textAlign: "center" }}>adadasdsa</Paragraph>
       <Badge type="primary">Primary</Badge>
-      <Badge type="danger">Error</Badge>
+      <Overlay>
+        <div>
+          <Badge type="danger">Error</Badge>
+        </div>
+      </Overlay>
       <Accordion>
         <AccordionItem title="Accordion One">
           <AccordionContent>
@@ -158,12 +169,12 @@ function App() {
           console.log(e);
         }}
       />
-      <Tooltip content="Yee-haw!" direction="right">
+      <Overlay>
         <Box
           style={{ height: "100px", width: "100px" }}
           backgroundColor="tomato"
         ></Box>
-      </Tooltip>
+      </Overlay>
       <Tooltip content="Yee-haw!" direction="right">
         <div style={{ marginTop: "10px" }}>
           <ButtonIcon variant="notes" size={"sm"} />

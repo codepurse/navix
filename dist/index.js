@@ -101,6 +101,12 @@ Object.defineProperty(exports, "ListItem", {
     return _listItem.default;
   }
 });
+Object.defineProperty(exports, "Overlay", {
+  enumerable: true,
+  get: function get() {
+    return _overlay.default;
+  }
+});
 Object.defineProperty(exports, "Pagination", {
   enumerable: true,
   get: function get() {
@@ -239,6 +245,8 @@ var _Header = _interopRequireDefault(require("./components/header/Header"));
 var _list = _interopRequireDefault(require("./components/list/list"));
 
 var _listItem = _interopRequireDefault(require("./components/list/listItem"));
+
+var _overlay = _interopRequireDefault(require("./components/overlay/overlay"));
 
 var _pagination = _interopRequireDefault(require("./components/pagination/pagination"));
 
