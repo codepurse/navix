@@ -1,28 +1,36 @@
 .nvxPagination {
-  width: max-content;
-  ul {
+  .nvxUlPagination {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
+    padding: 0px;
+    margin: 0px;
     li {
-      float: left;
+      display: inline-block;
+      padding: 3px;
+      button {
+        font-family: "Poppins", Tahoma, monospace;
+        background-color: white;
+        border: 1px solid #bababa;
+        text-align: center;
+        padding: 8px 11px;
+        border-radius: 3px;
+        min-height: 35px;
+        max-height: 35px;
+        min-width: 38px;
+        max-width: 38px;
+        i {
+          margin-top: -3px;
+        }
+      }
     }
-
-    .nvxLiBck {
-      transform: rotate(90deg) !important;
+    .nvxActive {
+      border-color: #005783;
+      font-weight: 500;
+      color: #005783;
+    }
+    .nvxActiveFilled {
+      background-color: #005783;
       color: white;
-    }
-    .nvxLiNxt {
-      transform: rotate(-90deg) !important;
-      color: white;
-    }
-    li a {
-      display: block;
-      text-align: center;
-      padding: 15px;
-      text-decoration: none;
+      border-color: transparent;
     }
   }
 }

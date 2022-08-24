@@ -142,7 +142,15 @@ function App() {
           <div>test</div>
         </ListItem>
       </List>
-      <Pagination />
+      <Pagination
+        totalRecords={100}
+        pageLimit={5}
+        initialPage={1}
+        pagesToShow={5}
+        onChangePage={(e) => {
+          console.log(e);
+        }}
+      ></Pagination>
       <SegmentedButton
         value={segmentedArray}
         selected={2}

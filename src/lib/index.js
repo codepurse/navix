@@ -13,7 +13,7 @@ import CircularLoader from "./components/circularProgress/CircularProgress";
 import Header from "./components/header/Header";
 import List from "./components/list/list";
 import ListItem from "./components/list/listItem";
-import Pagination from "./components/pagination/pagination";
+import { default as Pagination } from "./components/pagination/pagination";
 import Paragraph from "./components/paragraph/paragraph";
 import Pin from "./components/pin/pin";
 import Radio from "./components/radio/radio";
