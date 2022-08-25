@@ -161,10 +161,34 @@ Object.defineProperty(exports, "TabHeader", {
     return _tabHeader.default;
   }
 });
+Object.defineProperty(exports, "Table", {
+  enumerable: true,
+  get: function get() {
+    return _table.default;
+  }
+});
 Object.defineProperty(exports, "Tabs", {
   enumerable: true,
   get: function get() {
     return _tabs.default;
+  }
+});
+Object.defineProperty(exports, "TblData", {
+  enumerable: true,
+  get: function get() {
+    return _tableData.default;
+  }
+});
+Object.defineProperty(exports, "TblHeader", {
+  enumerable: true,
+  get: function get() {
+    return _tableHeader.default;
+  }
+});
+Object.defineProperty(exports, "TblRow", {
+  enumerable: true,
+  get: function get() {
+    return _tableRow.default;
   }
 });
 Object.defineProperty(exports, "Textbox", {
@@ -261,6 +285,14 @@ var _radioGroup = _interopRequireDefault(require("./components/radio/radioGroup"
 var _segmentedButton = _interopRequireDefault(require("./components/segmented/segmentedButton"));
 
 var _switch = _interopRequireDefault(require("./components/switch/switch"));
+
+var _table = _interopRequireDefault(require("./components/table/table"));
+
+var _tableData = _interopRequireDefault(require("./components/table/tableData"));
+
+var _tableHeader = _interopRequireDefault(require("./components/table/tableHeader"));
+
+var _tableRow = _interopRequireDefault(require("./components/table/tableRow"));
 
 var _tabContent = _interopRequireDefault(require("./components/tabs/tabContent"));
 
