@@ -16,7 +16,10 @@ import {
   Switch,
   TabContent,
   TabHeader,
+  Table,
   Tabs,
+  TblData,
+  TblHeader,
   Tooltip,
   useArray,
   useCookie,
@@ -199,6 +202,19 @@ function App() {
           <Paragraph style={{ marginLeft: "25px" }}>😁</Paragraph>
         </TabContent>
       </Tabs>
+      <div>
+        <Table>
+          <TblHeader>Name</TblHeader>
+          <TblHeader>Gender</TblHeader>
+          <TblHeader>Action</TblHeader>
+          <TblData>Meakdu</TblData>
+          <TblData>Female</TblData>
+          <TblData>
+            <ButtonIcon variant="delete" size={"sm"} />
+            <ButtonIcon variant="edit" size={"sm"} />
+          </TblData>
+        </Table>
+      </div>
     </div>
   );
 }

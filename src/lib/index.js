@@ -21,6 +21,10 @@ import Radio from "./components/radio/radio";
 import RadioGroup from "./components/radio/radioGroup";
 import SegmentedButton from "./components/segmented/segmentedButton";
 import Switch from "./components/switch/switch";
+import Table from "./components/table/table";
+import TblData from "./components/table/tableData";
+import TblHeader from "./components/table/tableHeader";
+import TblRow from "./components/table/tableRow";
 import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
@@ -68,4 +72,8 @@ export {
   Tooltip,
   Pin,
   Overlay,
+  Table,
+  TblData,
+  TblRow,
+  TblHeader,
 };
