@@ -143,6 +143,12 @@ Object.defineProperty(exports, "SegmentedButton", {
     return _segmentedButton.default;
   }
 });
+Object.defineProperty(exports, "Space", {
+  enumerable: true,
+  get: function get() {
+    return _space.default;
+  }
+});
 Object.defineProperty(exports, "Switch", {
   enumerable: true,
   get: function get() {
@@ -283,6 +289,8 @@ var _radio = _interopRequireDefault(require("./components/radio/radio"));
 var _radioGroup = _interopRequireDefault(require("./components/radio/radioGroup"));
 
 var _segmentedButton = _interopRequireDefault(require("./components/segmented/segmentedButton"));
+
+var _space = _interopRequireDefault(require("./components/space/space"));
 
 var _switch = _interopRequireDefault(require("./components/switch/switch"));
 
