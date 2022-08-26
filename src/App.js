@@ -13,6 +13,7 @@ import {
   Paragraph,
   Pin,
   SegmentedButton,
+  Space,
   Switch,
   TabContent,
   TabHeader,
@@ -167,6 +168,7 @@ function App() {
       ></Pagination>
       <SegmentedButton
         value={segmentedArray}
+        fill={false}
         selected={2}
         onSelect={(e) => {
           console.log(e);
@@ -215,6 +217,11 @@ function App() {
           </TblData>
         </Table>
       </div>
+      <Space direction="row" gap={10}>
+        <ButtonIcon variant="notes" size={"sm"} />
+        <ButtonIcon variant="notes" size={"sm"} />
+        <ButtonIcon variant="notes" size={"sm"} />
+      </Space>
     </div>
   );
 }

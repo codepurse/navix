@@ -1,18 +1,22 @@
 import { PropTypes } from "prop-types";
 import React, { Fragment, useState } from "react";
+import Style from "style-it";
 
 SegmentedButton.propTypes = {
   selected: PropTypes.number,
   onSelect: PropTypes.func,
   value: PropTypes.array,
+  fill: PropTypes.bool,
 };
 
 export default function SegmentedButton(props) {
   const randomName = Math.random();
   const [id, setId] = useState(props.value[0].id);
+
   const propsStyle = {
     cursor: "not-allowed",
   };
+
   const listItems = props.value?.map((event, i) => (
     <Fragment key={i}>
       <input
@@ -26,10 +30,24 @@ export default function SegmentedButton(props) {
           props.onSelect(event.id);
         }}
       />
-      <label htmlFor={event.id} style={event.disabled ? propsStyle : null}>
+      <label
+        datacustom="green"
+        htmlFor={event.id}
+        style={event.disabled ? propsStyle : null}
+      >
         {event.label}
       </label>
     </Fragment>
   ));
-  return <div className="segmented-controls">{listItems}</div>;
+  return Style.it(
+    `
+    .segmented-controls label:last-of-type::after  {
+      background-color: ${props.onActive?.backgroundColor};
+      }
+    .segmented-controls input:checked + label {
+        color:  ${props.onActive?.color};
+      }
+    `,
+    <div className="segmented-controls">{listItems}</div>
+  );
 }
