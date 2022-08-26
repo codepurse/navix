@@ -47,7 +47,9 @@ function Table(props) {
       if (data.props.__TYPE === "TblHeader" || data.props.__TYPE === "TblData") {
         return /*#__PURE__*/_react.default.createElement("tr", null, data);
       }
-    } catch (error) {}
+    } catch (error) {
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
+    }
   };
 
   return /*#__PURE__*/_react.default.createElement("table", {

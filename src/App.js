@@ -14,13 +14,14 @@ import {
   Pin,
   SegmentedButton,
   Space,
+  Steps,
+  StepsList,
   Switch,
   TabContent,
   TabHeader,
   Table,
   Tabs,
   TblData,
-  TblHeader,
   Tooltip,
   useArray,
   useCookie,
@@ -206,15 +207,7 @@ function App() {
       </Tabs>
       <div>
         <Table>
-          <TblHeader>Name</TblHeader>
-          <TblHeader>Gender</TblHeader>
-          <TblHeader>Action</TblHeader>
-          <TblData>Meakdu</TblData>
-          <TblData>Female</TblData>
-          <TblData>
-            <ButtonIcon variant="delete" size={"sm"} />
-            <ButtonIcon variant="edit" size={"sm"} />
-          </TblData>
+          <TblData>test</TblData>
         </Table>
       </div>
       <Space direction="row" gap={10}>
@@ -222,6 +215,11 @@ function App() {
         <ButtonIcon variant="notes" size={"sm"} />
         <ButtonIcon variant="notes" size={"sm"} />
       </Space>
+      <Steps withNum>
+        <StepsList />
+        <StepsList />
+        <StepsList />
+      </Steps>
     </div>
   );
 }

@@ -39,7 +39,9 @@ export default function Table(props) {
       ) {
         return <tr>{data}</tr>;
       }
-    } catch (error) {}
+    } catch (error) {
+      return <></>;
+    }
   };
   return (
     <table className="nvxTable" style={propStyle}>

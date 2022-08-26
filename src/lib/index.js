@@ -21,6 +21,8 @@ import Radio from "./components/radio/radio";
 import RadioGroup from "./components/radio/radioGroup";
 import SegmentedButton from "./components/segmented/segmentedButton";
 import Space from "./components/space/space";
+import Steps from "./components/steps/step";
+import StepsList from "./components/steps/stepsList";
 import Switch from "./components/switch/switch";
 import Table from "./components/table/table";
 import TblData from "./components/table/tableData";
@@ -78,4 +80,6 @@ export {
   TblRow,
   TblHeader,
   Space,
+  Steps,
+  StepsList,
 };
