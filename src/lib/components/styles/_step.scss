@@ -1,81 +1,57 @@
-:root {
-  --grey-dark: #e0e0e0;
-  --grey1: #f6f7fb;
-}
-
-.container {
-  height: 200px;
+.nvxStepsInner {
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-}
-.container .steps {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-.container .steps::before {
-  position: absolute;
-  content: "";
-  width: 95%;
-  height: 2px;
-  top: 50%;
-  background-color: var(--grey-dark);
-}
-.container .steps #progress {
-  position: absolute;
-  content: "";
-  width: 0%;
-  height: 2px;
-  top: 50%;
-  background-color: $primary;
-  transition: 0.5s;
-  max-width: 95%;
-}
-.container .steps .step {
-  z-index: 10;
-  height: 30px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid var(--grey-dark);
-  width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition-delay: 0s;
-  transition: 0s;
+  .steps {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 95%;
+      height: 2px;
+      top: 50%;
+      background-color: #e0e0e0;
+    }
+    #progress {
+      position: absolute;
+      content: "";
+      width: 0%;
+      height: 2px;
+      top: 50%;
+      background-color: $primary;
+      transition: 0.5s;
+      max-width: 95%;
+    }
+    .step {
+      z-index: 10;
+      height: 30px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #e0e0e0;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition-delay: 0s;
+      transition: 0s;
+    }
+    .step.active {
+      border: 2px solid $primary;
+      background-color: $primary;
+      transition: 0.2s;
+      color: white;
+      transition-delay: 0.5s;
+    }
+  }
 }
 #stepsPulse {
   animation: pulse 2s infinite;
-}
-.container .steps .step.active {
-  border: 2px solid $primary;
-  background-color: $primary;
-  transition: 0.2s;
-  color: white;
-  transition-delay: 0.5s;
-}
-.container .buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.container .buttons .btn {
-  color: white;
-  background: $primary;
-  border-radius: 5px;
-  padding: 10px 25px;
-  margin: 0 5px;
-  border: none;
-  outline: none;
-  font-size: 1em;
-}
-
-.container .buttons .btn:disabled {
-  background: var(--grey-dark);
 }
 
 @-webkit-keyframes pulse {

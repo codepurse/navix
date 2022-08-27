@@ -215,7 +215,7 @@ function App() {
         <ButtonIcon variant="notes" size={"sm"} />
         <ButtonIcon variant="notes" size={"sm"} />
       </Space>
-      <Steps withNum>
+      <Steps withNum selected={2}>
         <StepsList />
         <StepsList />
         <StepsList />

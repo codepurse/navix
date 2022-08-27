@@ -3,6 +3,11 @@ import React, { Fragment, useEffect, useState } from "react";
 
 Steps.propTypes = {
   withNum: PropTypes.bool,
+  selected: PropTypes.number,
+};
+
+Steps.defaultProps = {
+  selected: 1,
 };
 
 export default function Steps(props) {
@@ -25,8 +30,17 @@ export default function Steps(props) {
     },
     [step, count]
   );
+
+  useEffect(
+    (e) => {
+      if (props.selected) {
+        setStep(props.selected);
+      }
+    },
+    [props.selected]
+  );
   return (
-    <div className="container">
+    <div className="nvxStepsInner">
       <div className="steps">
         <div id="progress" />
 
@@ -62,26 +76,6 @@ export default function Steps(props) {
             return <Fragment>{props.children}</Fragment>;
           }
         })()}
-      </div>
-      <div className="buttons">
-        <button
-          className="btn"
-          id="prev"
-          onClick={(e) => {
-            setStep(step - 1);
-          }}
-        >
-          Prev
-        </button>
-        <button
-          className="btn"
-          id="next"
-          onClick={(e) => {
-            setStep(step + 1);
-          }}
-        >
-          Next
-        </button>
       </div>
     </div>
   );
