@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import "./App.css";
 import {
@@ -39,6 +40,7 @@ import "./lib/components/styles/main.scss";
 import Textbox from "./lib/components/text/textbox";
 function App() {
   const [show, setShow] = useToggle(false);
+  const [id, setId] = useState();
   const segmentedArray = [
     {
       id: "one",
@@ -47,6 +49,10 @@ function App() {
     {
       id: "two",
       label: "Button Two",
+    },
+    {
+      id: "three",
+      label: "Button Three",
     },
   ];
 
@@ -62,6 +68,13 @@ function App() {
     });
     return cookie[name];
   }
+
+  useEffect(
+    (e) => {
+      console.log(id);
+    },
+    [id]
+  );
 
   return (
     <div>
@@ -114,7 +127,17 @@ function App() {
         <Avatar src="http://pm1.narvii.com/6989/1aa8099ea958d8f9feead69ec561f43c0708c4f0r1-638-957v2_uhq.jpg"></Avatar>
         <Avatar src="https://www.pinkvilla.com/files/when-red-velvets-seulgi-opened-up-about-her-thoughts-on-debuting-sub-unit.jpg"></Avatar>
       </AvatarBatch>
-      <Paragraph style={{ textAlign: "center" }}>adadasdsa</Paragraph>
+      <div
+        style={{
+          maxWidth: "100px",
+          margin: "15px",
+        }}
+      >
+        <Paragraph style={{ textAlign: "center" }}>
+          adadasdsaasdsadsadasdasdsadasdas asd asd asd asd asdas das dsa dasd
+          asd asd
+        </Paragraph>
+      </div>
       <Badge type="primary">Primary</Badge>
       <Overlay>
         <div>
@@ -173,6 +196,7 @@ function App() {
         selected={2}
         onSelect={(e) => {
           console.log(e);
+          setId(e);
         }}
       />
       <Overlay>

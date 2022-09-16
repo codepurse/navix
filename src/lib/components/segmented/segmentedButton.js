@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Style from "style-it";
 
 SegmentedButton.propTypes = {
@@ -16,6 +16,15 @@ export default function SegmentedButton(props) {
   const propsStyle = {
     cursor: "not-allowed",
   };
+
+  useEffect(
+    (e) => {
+      if (props.selected) {
+        setId(props.value[props.selected - 1].id);
+      }
+    },
+    [props.selected]
+  );
 
   const listItems = props.value?.map((event, i) => (
     <Fragment key={i}>

@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 Paragraph.protoTypes = {
   color: PropTypes.string,
@@ -23,9 +23,17 @@ export default function Paragraph(props) {
     ...props.style,
   };
 
+  useEffect((e) => {
+    console.log("what", props);
+  });
+
   return React.createElement(
     props.renderAs ? props.renderAs : "p",
-    { style: propsStyle },
+    {
+      style: propsStyle,
+      "data-paragraph": props.showLineNo ? "nvxParagraph" : "",
+      className: props.className,
+    },
     [props.children]
   );
 }

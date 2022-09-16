@@ -1,6 +1,5 @@
-.nvxParagraph {
-  font-size: 14px;
+[data-paragraph="nvxParagraph"] {
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  overflow: hidden;
 }
