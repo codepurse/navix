@@ -34,6 +34,11 @@ function SegmentedButton(props) {
   const propsStyle = {
     cursor: "not-allowed"
   };
+  (0, _react.useEffect)(e => {
+    if (props.selected) {
+      setId(props.value[props.selected - 1].id);
+    }
+  }, [props.selected]);
   const listItems = (_props$value = props.value) === null || _props$value === void 0 ? void 0 : _props$value.map((event, i) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
     key: i
   }, /*#__PURE__*/_react.default.createElement("input", {
