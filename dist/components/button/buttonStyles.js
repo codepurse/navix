@@ -3,15 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.buttonType = exports.buttonSize = void 0;
+exports.buttonType = exports.buttonSize = exports.buttonCname = void 0;
 
-const buttonType = value => {
+const buttonType = (value, type) => {
   switch (value) {
-    case "primary":
-      return "#003A61";
+    case "outline":
+      if (type === "primary") return "btnNvxPrimOut";
 
-    case "danger":
-      return "#ff5f5f";
+    case "none":
+      if (type === "primary") return "btnNvxPrimNone";
+      if (type === "cancel") return "btnNvxCancelNone";
 
     case "warning":
       return "#ffbf00";
@@ -20,11 +21,32 @@ const buttonType = value => {
       return "#59ba69";
 
     default:
-      return "#a7a9ac";
+      return "#fff";
   }
 };
 
 exports.buttonType = buttonType;
+
+const buttonCname = value => {
+  switch (value) {
+    case "primary":
+      return "btnNvxPrimary";
+
+    case "cancel":
+      return "btnNvxCancel";
+
+    case "warning":
+      return "#ffbf00";
+
+    case "sucess":
+      return "#59ba69";
+
+    default:
+      return "#fff";
+  }
+};
+
+exports.buttonCname = buttonCname;
 
 const buttonSize = value => {
   switch (value) {

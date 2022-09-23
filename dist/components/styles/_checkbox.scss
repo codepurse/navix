@@ -1,10 +1,18 @@
 .nvxCbx {
+  --background: #fff;
+  --border: #d1d6ee;
+  --border-hover: #bbc1e1;
+  --border-active: #003a61;
+  --error: red;
+  --tick: #fff;
+  .nvxCbxDisable {
+    input {
+      box-shadow: none !important;
+    }
+  }
+  .nvxCbxError {
+  }
   .checkbox {
-    --background: #fff;
-    --border: #d1d6ee;
-    --border-hover: #bbc1e1;
-    --border-active: #003a61;
-    --tick: #fff;
     position: relative;
     padding: 0px;
     display: flex;

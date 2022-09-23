@@ -1,27 +1,11 @@
-/* 
- * SEGMENTED CONTROLS LAYOUT
- */
-
-/*
- * Container
- */
-
-/*
-   * Vissualy hidden radiobuttons
-   */
 .segmented-controls input {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  /*  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  /*   clip: rect(1px, 1px, 1px, 1px); */
-  white-space: nowrap; /* added line */
+  white-space: nowrap;
 }
 
-/* 
-   * Labels need to be the same size
-   */
 .segmented-controls label {
   grid-row: 1;
   display: flex;
@@ -35,17 +19,10 @@
   transition: inherit;
 }
 
-/* 
-   * Adjust z-index of last label since that contains 
-   * the paddle that needs to go beneath all other labels 
-   */
 .segmented-controls label:last-of-type {
   z-index: 1;
 }
 
-/*
-   * Paddle 
-   */
 .segmented-controls label:last-of-type::after {
   content: "";
   position: absolute;
@@ -58,9 +35,6 @@
   transition: inherit;
 }
 
-/*
-   * Move paddle depending on which option is selected
-   */
 @for $i from 1 through 9 {
   .segmented-controls
     input:nth-last-of-type(#{$i + 1}):checked
@@ -69,16 +43,11 @@
   }
 }
 
-/*
-   * IOS 13 Theme
-   * Special thanks to https://www.figma.com/community/file/768365747273056340
-   */
-
 .segmented-controls {
   border-radius: 0.5rem;
-  background: white;
-  height: 3rem;
-  padding: 5px;
+  background: #f2f3f7;
+  height: 3.2rem;
+  padding: 3px;
   display: flex;
   margin: 0 auto;
   position: relative;
@@ -88,20 +57,13 @@
   width: 100%;
 }
 
-/*
-   * Labels 
-   */
 .segmented-controls label {
-  font-size: 0.8125rem;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1;
   height: 100%;
 }
 
-/*
-   * Dividers
-   */
 .segmented-controls label:not(:first-of-type)::before {
   content: "";
   position: absolute;
@@ -114,34 +76,27 @@
   transition: inherit;
 }
 
-/*
-   * Selected option 
-   */
 .segmented-controls input:checked + label {
   font-weight: 500;
   color: white;
 }
 
-/*
-   * Hide dividers before and after the selected option
-   */
 .segmented-controls input:checked + label::before,
 .segmented-controls input:checked + label + input + label::before {
   opacity: 0;
 }
 
-/*
-   * Focus style for keyboard navigation
-   */
-/* .segmented-controls:focus-within {
-  box-shadow: 0 0 0 0.2rem rgba(0, 122, 255, 0.75);
-} */
-
-/*
-   * Paddle
-   */
 .segmented-controls label:last-of-type::after {
-  background: #003a61;
+  background: $primary;
   border-radius: 0.4275rem;
   border: 0.5px solid rgba(0, 0, 0, 0.04);
+}
+
+.segmented-controls {
+  span {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
 }

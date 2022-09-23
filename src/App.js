@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
 import "./App.css";
 import {
   Accordion,
@@ -7,6 +8,7 @@ import {
   AccordionItem,
   AlertContainer,
   Box,
+  Checkbox,
   List,
   ListItem,
   Overlay,
@@ -25,7 +27,6 @@ import {
   TblData,
   Tooltip,
   useArray,
-  useCookie,
   useToggle,
 } from "./lib";
 import Avatar from "./lib/components/avatar/avatar";
@@ -39,7 +40,7 @@ import RadioGroup from "./lib/components/radio/radioGroup";
 import "./lib/components/styles/main.scss";
 import Textbox from "./lib/components/text/textbox";
 function App() {
-  const [show, setShow] = useToggle(false);
+  const [show, setShow] = useToggle(true);
   const [id, setId] = useState();
   const segmentedArray = [
     {
@@ -52,7 +53,7 @@ function App() {
     },
     {
       id: "three",
-      label: "Button Three",
+      label: "Button Threeasd asd asd asd asdasdasdsadasdas asd ",
     },
   ];
 
@@ -81,39 +82,22 @@ function App() {
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
       <AlertContainer />
-      <Button
-        onClick={(e) => {
-          document.cookie = "username=John Doe";
-          testArray.push(8);
-        }}
-      >
-        Set cookie
-      </Button>
-      <Button
-        onClick={(e) => {
-          console.log(testArray);
-          useCookie.clear("username");
-        }}
-      >
+      <Button disabled>Set cookie</Button>
+      <Button type="primary" category="default">
         Delete
       </Button>
-      <Overlay
-        show={show}
-        rendered={
-          <div className="test">
-            <p>test</p>
-          </div>
-        }
+      <Button type="cancel" category="solid">
+        None
+      </Button>
+      <Button
+        type="cancel"
+        onClick={(e) => {
+          setShow();
+        }}
       >
-        <Button
-          onClick={(e) => {
-            setShow();
-          }}
-        >
-          Log
-        </Button>
-      </Overlay>
-      <Textbox></Textbox>
+        Log
+      </Button>
+      <Textbox iconLeft={<FiSearch />} iconRight={<FiSearch />} />
       <RadioGroup defaultCheck="1">
         <Radio value="1" label="Asds" />
         <Radio value="2" label="Asds" />
@@ -143,6 +127,23 @@ function App() {
         <div>
           <Badge type="danger">Error</Badge>
         </div>
+      </Overlay>
+      <Overlay
+        position="top"
+        rendered={
+          <div className="test">
+            <p>test</p>
+          </div>
+        }
+      >
+        <Button
+          type="cancel"
+          onClick={(e) => {
+            setShow();
+          }}
+        >
+          Log
+        </Button>
       </Overlay>
       <Accordion>
         <AccordionItem title="Accordion One">
@@ -192,7 +193,12 @@ function App() {
       ></Pagination>
       <SegmentedButton
         value={segmentedArray}
+        elipsis
         fill={false}
+        onClick={(e) => {
+          console.log("wew");
+        }}
+        onActive={{ backgroundColor: "tomato" }}
         selected={2}
         onSelect={(e) => {
           console.log(e);
@@ -219,7 +225,7 @@ function App() {
           }}
         ></Pin>
       </div>
-      <Tabs defaultKey="3">
+      <Tabs defaultKey="3" variant={"borderline"}>
         <TabHeader label="Tab One" id="3"></TabHeader>
         <TabHeader label="Tab Two" id="4"></TabHeader>
         <TabContent id="3">
@@ -244,6 +250,8 @@ function App() {
         <StepsList />
         <StepsList />
       </Steps>
+      <Checkbox label="Test Checbox" error />
+      <Checkbox label="Test Checbox" checked />
     </div>
   );
 }

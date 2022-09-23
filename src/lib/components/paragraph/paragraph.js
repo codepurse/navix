@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
 Paragraph.protoTypes = {
   color: PropTypes.string,
@@ -22,10 +22,6 @@ export default function Paragraph(props) {
     textDecoration: props.underline ? "underline" : "",
     ...props.style,
   };
-
-  useEffect((e) => {
-    console.log("what", props);
-  });
 
   return React.createElement(
     props.renderAs ? props.renderAs : "p",

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
 import React, { Fragment } from "react";
-import { buttonSize, buttonType } from "../button/buttonStyles";
+import { buttonCname, buttonSize, buttonType } from "../button/buttonStyles";
 const BUTTON_SIZES = ["lg", "sm", "md"];
 
 const BUTTON_TYPES = ["default", "primary", "success", "warning", "danger"];
@@ -9,6 +9,8 @@ const BUTTON_TYPES = ["default", "primary", "success", "warning", "danger"];
 const BUTTON_ALIGN_TEST = ["left", "center", "right"];
 
 const BUTTON_TARGET = ["_self", "_blank", "_parent", "_top", "string"];
+
+const BUTTON_CATEGORY = ["outline", "none", "default"];
 
 Button.propTypes = {
   title: PropTypes.string,
@@ -18,7 +20,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.node,
   onclick: PropTypes.func,
-  outline: PropTypes.bool,
+  variant: PropTypes.oneOf(BUTTON_CATEGORY),
   iconLeft: PropTypes.node,
   iconRight: PropTypes.node,
   fill: PropTypes.bool,
@@ -30,14 +32,20 @@ Button.propTypes = {
 };
 
 export default function Button(props) {
-  const buttonClassName = classNames("btnNvxDefault", props.className, {
-    "btn--loading btnLoad": props.isLoading === true,
-  });
+  const buttonClassName = classNames(
+    "btnNvxDefault",
+    props.className,
+    {
+      "btn--loading btnLoad": props.isLoading === true,
+    },
+    buttonCname(props.type),
+    buttonType(props.category, props.type)
+  );
 
   const propsStyle = {
-    backgroundColor: buttonType(props.type),
     textAlign: props.alignText ? props.alignText : "center",
     width: props.fill && "100%",
+    opacity: props.disabled ? "0.5" : "",
     fontSize: buttonSize(props.size),
     borderRadius: props.circular ? "500px" : null,
   };

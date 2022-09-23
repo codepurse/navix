@@ -39,7 +39,6 @@ function Table(props) {
     }
 
     setData(props.children);
-    console.log(props.children);
   }, [props.children]);
 
   const SingleReturn = () => {

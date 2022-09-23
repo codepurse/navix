@@ -46,8 +46,8 @@ export default function textbox(props) {
     borderColor: borderType(props.type),
     width: props.fill && "100%",
     textAlign: props.alignText ? props.alignText : "",
-    paddingLeft: props.iconLeft ? props.iconLeft : "30px",
-    paddingRight: props.iconRight ? props.iconRight : "30px",
+    paddingLeft: props.iconLeft ? "35px" : null,
+    paddingRight: props.iconRight ? "35px" : null,
   };
 
   const customStyle = { ...propsStyle, ...props.css?.text };

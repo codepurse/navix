@@ -26,7 +26,6 @@ export default function Table(props) {
         setCountData(filteredData);
       }
       setData(props.children);
-      console.log(props.children);
     },
     [props.children]
   );

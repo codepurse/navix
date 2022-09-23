@@ -67,12 +67,45 @@
 }
 
 .btnNvxDefault {
-  padding: 12px 14px;
+  padding: 11px 14px;
   font-size: 14px;
+  background-color: white;
   border-radius: 4px;
+  font-weight: 500;
   border: 0px;
-  box-shadow: 0 2px 12px -6px #424242 !important;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  color: #212121;
+}
+
+.btnNvxPrimary {
   color: white;
+  background-color: $primary;
+  box-shadow: none;
+  border: 1px solid $primary;
+}
+
+.btnNvxPrimOut {
+  color: $primary !important;
+  background-color: transparent !important;
+}
+
+.btnNvxPrimNone {
+  color: $primary !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.btnNvxCancelNone {
+  color: $error !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.btnNvxCancel {
+  background-color: white;
+  color: $error;
 }
 .iNvxIconLeft {
   margin-right: 10px;

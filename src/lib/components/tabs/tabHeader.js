@@ -29,7 +29,7 @@ export default function TabHeader(props) {
   };
 
   const styleCheck = {
-    color: "white",
+    color: value.propStyle.variant === "borderline" ? "#212121" : "white",
     border: "none",
     fontWeight: "500",
     borderRadius: value.propStyle.variant === "borderline" ? "0px" : "25px",

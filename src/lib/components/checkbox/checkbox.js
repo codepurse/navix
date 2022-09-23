@@ -1,12 +1,14 @@
+import classNames from "classnames";
 import { PropTypes } from "prop-types";
 import React, { useRef, useState } from "react";
 
 Checkbox.propTypes = {
   label: PropTypes.string,
   checked: PropTypes.bool,
-  disable: PropTypes.bool,
+  disabled: PropTypes.bool,
   backDrop: PropTypes.string,
   onChange: PropTypes.func,
+  error: PropTypes.bool,
 };
 
 export default function Checkbox(props) {
@@ -14,7 +16,7 @@ export default function Checkbox(props) {
   const ref = useRef("");
   var propsStyle = {
     backgroundColor: props.disabled && "lightgray",
-    border: props.invalid ? "2px solid #ff5f5f" : "1px solid #E0E0E0",
+    border: props.error ? "2px solid #ff5f5f" : "1px solid #E0E0E0",
   };
 
   const customProps = {
@@ -24,13 +26,24 @@ export default function Checkbox(props) {
   };
 
   var customStyle = { ...propsStyle, ...customProps };
+  const checkboxClassName = classNames(
+    "checkbox bounce",
+    props.className,
+    {
+      nvxCbxDisable: props.disabled === true,
+    },
+    {
+      nvxCbxError: props.error === true,
+    }
+  );
+
   return (
     <div className="nvxCbx">
-      <label className="checkbox bounce">
+      <label className={checkboxClassName}>
         <input
           type="checkbox"
           ref={ref}
-          checked={props.checked}
+          defaultChecked={props.checked}
           disabled={props.disabled}
           onChange={(e) => {
             if (e.currentTarget.checked) {

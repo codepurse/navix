@@ -1,15 +1,31 @@
-export const buttonType = (value) => {
+export const buttonType = (value, type) => {
   switch (value) {
-    case "primary":
-      return "#003A61";
-    case "danger":
-      return "#ff5f5f";
+    case "outline":
+      if (type === "primary") return "btnNvxPrimOut";
+    case "none":
+      if (type === "primary") return "btnNvxPrimNone";
+      if (type === "cancel") return "btnNvxCancelNone";
     case "warning":
       return "#ffbf00";
     case "sucess":
       return "#59ba69";
     default:
-      return "#a7a9ac";
+      return "#fff";
+  }
+};
+
+export const buttonCname = (value) => {
+  switch (value) {
+    case "primary":
+      return "btnNvxPrimary";
+    case "cancel":
+      return "btnNvxCancel";
+    case "warning":
+      return "#ffbf00";
+    case "sucess":
+      return "#59ba69";
+    default:
+      return "#fff";
   }
 };
 

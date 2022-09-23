@@ -1,7 +1,6 @@
 .txtNvxDefault {
-  padding: 12px 14px;
+  padding: 12px 10px;
   border-radius: 5px;
-  font-family: "Poppins";
   position: relative;
   font-size: 15px;
   font-weight: 500;
@@ -10,4 +9,20 @@
   border: 2px solid #eeeeee;
   box-shadow: none;
   outline: none;
+}
+.inputIconLeft {
+  position: absolute;
+  left: 10px;
+  font-size: 1.3rem;
+  top: calc(50% - 0.5em);
+}
+.inputIconRight {
+  position: absolute;
+  right: 10px;
+  font-size: 1.3rem;
+  top: calc(50% - 0.5em);
+}
+.input-wrapper {
+  position: relative;
+  width: max-content;
 }

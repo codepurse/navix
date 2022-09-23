@@ -31,6 +31,7 @@ const BUTTON_SIZES = ["lg", "sm", "md"];
 const BUTTON_TYPES = ["default", "primary", "success", "warning", "danger"];
 const BUTTON_ALIGN_TEST = ["left", "center", "right"];
 const BUTTON_TARGET = ["_self", "_blank", "_parent", "_top", "string"];
+const BUTTON_CATEGORY = ["outline", "none", "default"];
 Button.propTypes = {
   title: _propTypes.PropTypes.string,
   className: _propTypes.PropTypes.string,
@@ -39,7 +40,7 @@ Button.propTypes = {
   disabled: _propTypes.PropTypes.bool,
   children: _propTypes.PropTypes.node,
   onclick: _propTypes.PropTypes.func,
-  outline: _propTypes.PropTypes.bool,
+  variant: _propTypes.PropTypes.oneOf(BUTTON_CATEGORY),
   iconLeft: _propTypes.PropTypes.node,
   iconRight: _propTypes.PropTypes.node,
   fill: _propTypes.PropTypes.bool,
@@ -55,11 +56,11 @@ function Button(props) {
 
   const buttonClassName = (0, _classnames.default)("btnNvxDefault", props.className, {
     "btn--loading btnLoad": props.isLoading === true
-  });
+  }, (0, _buttonStyles.buttonCname)(props.type), (0, _buttonStyles.buttonType)(props.category, props.type));
   const propsStyle = {
-    backgroundColor: (0, _buttonStyles.buttonType)(props.type),
     textAlign: props.alignText ? props.alignText : "center",
     width: props.fill && "100%",
+    opacity: props.disabled ? "0.5" : "",
     fontSize: (0, _buttonStyles.buttonSize)(props.size),
     borderRadius: props.circular ? "500px" : null
   };

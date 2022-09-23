@@ -7,6 +7,8 @@ SegmentedButton.propTypes = {
   onSelect: PropTypes.func,
   value: PropTypes.array,
   fill: PropTypes.bool,
+  onActive: PropTypes.array,
+  elipsis: PropTypes.bool,
 };
 
 export default function SegmentedButton(props) {
@@ -34,6 +36,7 @@ export default function SegmentedButton(props) {
         type="radio"
         disabled={event.disabled ? true : false}
         checked={id === event.id}
+        onClick={props.onClick}
         onChange={(e) => {
           setId(event.id);
           props.onSelect(event.id);
@@ -44,7 +47,7 @@ export default function SegmentedButton(props) {
         htmlFor={event.id}
         style={event.disabled ? propsStyle : null}
       >
-        {event.label}
+        {props.elipsis ? <span>{event.label}</span> : event.label}
       </label>
     </Fragment>
   ));

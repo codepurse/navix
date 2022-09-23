@@ -23,7 +23,9 @@ SegmentedButton.propTypes = {
   selected: _propTypes.PropTypes.number,
   onSelect: _propTypes.PropTypes.func,
   value: _propTypes.PropTypes.array,
-  fill: _propTypes.PropTypes.bool
+  fill: _propTypes.PropTypes.bool,
+  onActive: _propTypes.PropTypes.array,
+  elipsis: _propTypes.PropTypes.bool
 };
 
 function SegmentedButton(props) {
@@ -47,6 +49,7 @@ function SegmentedButton(props) {
     type: "radio",
     disabled: event.disabled ? true : false,
     checked: id === event.id,
+    onClick: props.onClick,
     onChange: e => {
       setId(event.id);
       props.onSelect(event.id);
@@ -55,7 +58,7 @@ function SegmentedButton(props) {
     datacustom: "green",
     htmlFor: event.id,
     style: event.disabled ? propsStyle : null
-  }, event.label)));
+  }, props.elipsis ? /*#__PURE__*/_react.default.createElement("span", null, event.label) : event.label)));
   return _styleIt.default.it("\n    .segmented-controls label:last-of-type::after  {\n      background-color: ".concat((_props$onActive = props.onActive) === null || _props$onActive === void 0 ? void 0 : _props$onActive.backgroundColor, ";\n      }\n    .segmented-controls input:checked + label {\n        color:  ").concat((_props$onActive2 = props.onActive) === null || _props$onActive2 === void 0 ? void 0 : _props$onActive2.color, ";\n      }\n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "segmented-controls"
   }, listItems));
