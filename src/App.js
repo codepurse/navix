@@ -240,7 +240,7 @@ function App() {
           <TblData>test</TblData>
         </Table>
       </div>
-      <Space direction="row" gap={10}>
+      <Space direction="row" gap={10} align="evenly">
         <ButtonIcon variant="notes" size={"sm"} />
         <ButtonIcon variant="notes" size={"sm"} />
         <ButtonIcon variant="notes" size={"sm"} />

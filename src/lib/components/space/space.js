@@ -9,6 +9,7 @@ Space.propTypes = {
   direction: PropTypes.oneOf(SPACE_DIRECTION),
   gap: PropTypes.number,
   align: PropTypes.oneOf(SPACE_ALIGN),
+  fill: PropTypes.bool,
 };
 
 Space.defaultProps = {
@@ -20,6 +21,7 @@ export default function Space(props) {
     justifyContent: spaceAlign(props.align),
     display: "flex",
     gap: props.gap + "px",
+    width: props.fill ? "100%" : "",
   };
   return <div style={propsStyle}>{props.children}</div>;
 }

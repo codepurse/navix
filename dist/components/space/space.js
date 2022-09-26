@@ -18,7 +18,8 @@ const SPACE_ALIGN = ["end", "center", "start", "between", "evenly"];
 Space.propTypes = {
   direction: _propTypes.PropTypes.oneOf(SPACE_DIRECTION),
   gap: _propTypes.PropTypes.number,
-  align: _propTypes.PropTypes.oneOf(SPACE_ALIGN)
+  align: _propTypes.PropTypes.oneOf(SPACE_ALIGN),
+  fill: _propTypes.PropTypes.bool
 };
 Space.defaultProps = {
   direction: "row"
@@ -29,7 +30,8 @@ function Space(props) {
     flexDirection: props.direction,
     justifyContent: (0, _spaceFunction.spaceAlign)(props.align),
     display: "flex",
-    gap: props.gap + "px"
+    gap: props.gap + "px",
+    width: props.fill ? "100%" : ""
   };
   return /*#__PURE__*/_react.default.createElement("div", {
     style: propsStyle

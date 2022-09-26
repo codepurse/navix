@@ -12,15 +12,17 @@
 }
 .inputIconLeft {
   position: absolute;
-  left: 10px;
+  left: 20px;
   font-size: 1.3rem;
-  top: calc(50% - 0.5em);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .inputIconRight {
   position: absolute;
-  right: 10px;
+  right: 4px;
   font-size: 1.3rem;
-  top: calc(50% - 0.5em);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .input-wrapper {
   position: relative;
