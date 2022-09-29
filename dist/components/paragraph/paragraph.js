@@ -9,6 +9,8 @@ var _propTypes = require("prop-types");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _paragraphFunction = require("./paragraphFunction");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -23,25 +25,47 @@ Paragraph.protoTypes = {
   underline: _propTypes.PropTypes.bool,
   bold: _propTypes.PropTypes.bool,
   italic: _propTypes.PropTypes.bool,
+  disabled: _propTypes.PropTypes.bool,
   renderAs: _propTypes.PropTypes.string,
   underline: _propTypes.PropTypes.string,
-  showLineNo: _propTypes.PropTypes.number
+  strikeThrough: _propTypes.PropTypes.string,
+  className: _propTypes.PropTypes.string,
+  id: _propTypes.PropTypes.string,
+  showLineNo: _propTypes.PropTypes.number,
+  required: _propTypes.PropTypes.bool,
+  onClick: _propTypes.PropTypes.func,
+  onHover: _propTypes.PropTypes.func
+};
+Paragraph.defaulProps = {
+  required: false,
+  disabled: false,
+  onClick: () => {},
+  onHover: () => {}
 };
 
 function Paragraph(props) {
   const propsStyle = _objectSpread({
     color: props.color ? props.color : "",
-    fontSize: props.fontSize ? props.fontSize : "",
+    fontSize: props.fontSize ? (0, _paragraphFunction.fontSize)(props.fontSize) : null,
     WebkitLineClamp: props.showLineNo ? props.showLineNo : "",
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
     width: "100%",
-    textDecoration: props.underline ? "underline" : ""
+    opacity: props.disabled ? "0.4" : null,
+    cursor: props.disabled ? "not-allowed" : "",
+    textDecoration: props.underline ? "underline" : props.strikeThrough ? "line-through" : ""
   }, props.style);
 
   return /*#__PURE__*/_react.default.createElement(props.renderAs ? props.renderAs : "p", {
     style: propsStyle,
     "data-paragraph": props.showLineNo ? "nvxParagraph" : "",
-    className: props.className
-  }, [props.children]);
+    className: props === null || props === void 0 ? void 0 : props.className,
+    id: props === null || props === void 0 ? void 0 : props.id,
+    onClick: !props.disabled ? props.onClick : null
+  }, [props.children], [/*#__PURE__*/_react.default.createElement("sup", {
+    className: "nvxParagraphReq",
+    style: {
+      display: props.required ? "" : "none"
+    }
+  }, "*")]);
 }

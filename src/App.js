@@ -217,13 +217,7 @@ function App() {
         </div>
       </Tooltip>
       <div style={{ width: "300px", height: "155px" }}>
-        <Pin
-          spacing={30}
-          count={4}
-          onChange={(e) => {
-            console.log(e);
-          }}
-        ></Pin>
+        <Pin hidden inputType="number" animated={false}></Pin>
       </div>
       <Tabs defaultKey="3" variant={"borderline"}>
         <TabHeader label="Tab One" id="3"></TabHeader>
@@ -252,6 +246,20 @@ function App() {
       </Steps>
       <Checkbox label="Test Checbox" error />
       <Checkbox label="Test Checbox" checked />
+      <div style={{ marginTop: "20px" }}>
+        <Paragraph
+          disabled
+          fontSize="xxl"
+          underline
+          onClick={(e) => {
+            console.log("test");
+          }}
+          required
+          className="testP"
+        >
+          test
+        </Paragraph>
+      </div>
     </div>
   );
 }
