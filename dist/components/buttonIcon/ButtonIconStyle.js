@@ -152,10 +152,10 @@ exports.buttonType = buttonType;
 const buttonSize = value => {
   switch (value) {
     case "lg":
-      return "1.8rem";
+      return "2rem";
 
     case "md":
-      return "1.4rem";
+      return "1.5rem";
 
     case "sm":
       return "1.1rem";

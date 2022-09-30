@@ -7,8 +7,21 @@ SegmentedButton.propTypes = {
   onSelect: PropTypes.func,
   value: PropTypes.array,
   fill: PropTypes.bool,
+  className: PropTypes.className,
   onActive: PropTypes.array,
+  id: PropTypes.id,
+  onChange: PropTypes.func,
+  wrapperStyle: PropTypes.array,
+  backgroundColor: PropTypes.string,
   elipsis: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+SegmentedButton.defaultProps = {
+  onClick: () => {},
+  onChange: () => {},
+  onSelect: () => {},
+  elipsis: false,
 };
 
 export default function SegmentedButton(props) {
@@ -17,6 +30,7 @@ export default function SegmentedButton(props) {
 
   const propsStyle = {
     cursor: "not-allowed",
+    opacity: "0.5",
   };
 
   useEffect(
@@ -60,6 +74,12 @@ export default function SegmentedButton(props) {
         color:  ${props.onActive?.color};
       }
     `,
-    <div className="segmented-controls">{listItems}</div>
+    <div
+      className={"segmented-controls " + props?.className}
+      style={props?.wrapperStyle}
+      id={props?.id}
+    >
+      {listItems}
+    </div>
   );
 }

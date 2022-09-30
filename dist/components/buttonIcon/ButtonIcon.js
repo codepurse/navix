@@ -25,18 +25,50 @@ ButtonIcon.propTypes = {
   variant: _propTypes.PropTypes.string,
   disabled: _propTypes.PropTypes.bool,
   fontSize: _propTypes.PropTypes.string,
+  color: _propTypes.PropTypes.string,
   rounded: _propTypes.PropTypes.bool,
-  size: _propTypes.PropTypes.oneOf(BUTTON_ICON_SIZE)
+  size: _propTypes.PropTypes.oneOf(BUTTON_ICON_SIZE),
+  style: _propTypes.PropTypes.array,
+  onClick: _propTypes.PropTypes.func,
+  onMouseOver: _propTypes.PropTypes.func,
+  onMouseDown: _propTypes.PropTypes.func,
+  onMouseUp: _propTypes.PropTypes.func
+};
+ButtonIcon.defaultProps = {
+  disabled: false,
+  onClick: () => {},
+  onMouseOver: () => {},
+  onMouseUp: () => {},
+  onMouseDown: () => {}
 };
 
 function ButtonIcon(props) {
   const propsStyle = _objectSpread({
     borderRadius: props.rounded ? "5000px" : "",
-    fontSize: props.fontSize ? props.fontSize : (0, _ButtonIconStyle.buttonSize)(props.size)
+    fontSize: props.fontSize ? props.fontSize : (0, _ButtonIconStyle.buttonSize)(props.size),
+    cursor: props.disabled ? "not-allowed" : "",
+    opacity: props.disabled ? "0.5" : "1",
+    color: props.color ? props.color : "black"
   }, props.style);
 
   return /*#__PURE__*/_react.default.createElement("button", {
     style: propsStyle,
+    onClick: e => {
+      if (!props.disabled) {
+        props.onClick();
+      }
+    },
+    onMouseOver: e => {
+      if (!props.disabled) {
+        props.onMouseOver();
+      }
+    },
+    onMouseDown: e => {
+      props.onMouseDown();
+    },
+    onMouseUp: e => {
+      props.onMouseUp();
+    },
     className: props.variant === "delete" ? "nvxBtnIcon nvxBtnIconDelete" : "nvxBtnIcon"
   }, /*#__PURE__*/_react.default.createElement("i", null, props.iconRendered ? props.iconRendered : (0, _ButtonIconStyle.buttonType)(props.variant)));
 }

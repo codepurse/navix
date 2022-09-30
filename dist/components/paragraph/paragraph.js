@@ -36,7 +36,7 @@ Paragraph.protoTypes = {
   onClick: _propTypes.PropTypes.func,
   onHover: _propTypes.PropTypes.func
 };
-Paragraph.defaulProps = {
+Paragraph.defaultProps = {
   required: false,
   disabled: false,
   onClick: () => {},

@@ -46,6 +46,7 @@ function App() {
     {
       id: "one",
       label: "Button One",
+      disabled: true,
     },
     {
       id: "two",
@@ -192,7 +193,11 @@ function App() {
         }}
       ></Pagination>
       <SegmentedButton
+        wrapperStyle={{ backgroundColor: "#212121", color: "white" }}
+        className="test"
+        id="test"
         value={segmentedArray}
+        disabled
         elipsis
         fill={false}
         onClick={(e) => {
@@ -235,8 +240,16 @@ function App() {
         </Table>
       </div>
       <Space direction="row" gap={10} align="evenly">
-        <ButtonIcon variant="notes" size={"sm"} />
-        <ButtonIcon variant="notes" size={"sm"} />
+        <ButtonIcon
+          variant="notes"
+          size={"lg"}
+          rounded
+          disabled
+          onClick={(e) => {
+            console.log("ttest");
+          }}
+        />
+        <ButtonIcon variant="notes" size={"sm"} rounded />
         <ButtonIcon variant="notes" size={"sm"} />
       </Space>
       <Steps withNum selected={2}>
