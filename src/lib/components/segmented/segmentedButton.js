@@ -27,6 +27,9 @@ SegmentedButton.defaultProps = {
 export default function SegmentedButton(props) {
   const randomName = Math.random();
   const [id, setId] = useState(props.value[0].id);
+  const rndId = Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 
   const propsStyle = {
     cursor: "not-allowed",
@@ -45,26 +48,29 @@ export default function SegmentedButton(props) {
   const listItems = props.value?.map((event, i) => (
     <Fragment key={i}>
       <input
-        id={event.id}
+        id={rndId + event.id}
         name={randomName}
         type="radio"
         disabled={event.disabled ? true : false}
         checked={id === event.id}
+        data-at={event.id}
         onClick={props.onClick}
         onChange={(e) => {
+          console.log(event.id);
           setId(event.id);
           props.onSelect(event.id);
         }}
       />
       <label
         datacustom="green"
-        htmlFor={event.id}
+        htmlFor={rndId + event.id}
         style={event.disabled ? propsStyle : null}
       >
         {props.elipsis ? <span>{event.label}</span> : event.label}
       </label>
     </Fragment>
   ));
+
   return Style.it(
     `
     .segmented-controls label:last-of-type::after  {

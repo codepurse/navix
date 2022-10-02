@@ -7,6 +7,8 @@ exports.default = SegmentedButton;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
+require("core-js/modules/es.regexp.to-string.js");
+
 var _propTypes = require("prop-types");
 
 var _react = _interopRequireWildcard(require("react"));
@@ -45,6 +47,7 @@ function SegmentedButton(props) {
 
   const randomName = Math.random();
   const [id, setId] = (0, _react.useState)(props.value[0].id);
+  const rndId = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
   const propsStyle = {
     cursor: "not-allowed",
     opacity: "0.5"
@@ -57,19 +60,21 @@ function SegmentedButton(props) {
   const listItems = (_props$value = props.value) === null || _props$value === void 0 ? void 0 : _props$value.map((event, i) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
     key: i
   }, /*#__PURE__*/_react.default.createElement("input", {
-    id: event.id,
+    id: rndId + event.id,
     name: randomName,
     type: "radio",
     disabled: event.disabled ? true : false,
     checked: id === event.id,
+    "data-at": event.id,
     onClick: props.onClick,
     onChange: e => {
+      console.log(event.id);
       setId(event.id);
       props.onSelect(event.id);
     }
   }), /*#__PURE__*/_react.default.createElement("label", {
     datacustom: "green",
-    htmlFor: event.id,
+    htmlFor: rndId + event.id,
     style: event.disabled ? propsStyle : null
   }, props.elipsis ? /*#__PURE__*/_react.default.createElement("span", null, event.label) : event.label)));
   return _styleIt.default.it("\n    .segmented-controls label:last-of-type::after  {\n      background-color: ".concat((_props$onActive = props.onActive) === null || _props$onActive === void 0 ? void 0 : _props$onActive.backgroundColor, ";\n      }\n    .segmented-controls input:checked + label {\n        color:  ").concat((_props$onActive2 = props.onActive) === null || _props$onActive2 === void 0 ? void 0 : _props$onActive2.color, ";\n      }\n    "), /*#__PURE__*/_react.default.createElement("div", {

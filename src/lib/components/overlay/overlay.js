@@ -1,15 +1,31 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 const OVERLAY_POSITION = ["left", "right", "bottom", "top"];
 
 Overlay.propTypes = {
   position: PropTypes.oneOf(OVERLAY_POSITION),
   center: PropTypes.bool,
+  wrapperClassName: PropTypes.string,
+  id: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  onMouseleave: PropTypes.func,
+  isClickOutsie: PropTypes.bool,
+  rendered: PropTypes.node,
+  style: PropTypes.array,
 };
+
+Overlay.propTypes = {
+  onClick: () => {},
+  onMouseOver: () => {},
+  onMouseleave: () => {},
+};
+
 export default function Overlay(props) {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const overLayCname = (value) => {
     switch (value) {
@@ -22,6 +38,13 @@ export default function Overlay(props) {
     }
   };
 
+  useEffect(() => {
+    if (props?.isOpen === true || props?.isOpen === false) {
+      setToggle(props.isOpen);
+    } else {
+    }
+  }, [props.isOpen]);
+
   const overlayClassName = classNames("", overLayCname(props.position), {
     nvxOverlayCenter: props.center === true && props.position !== "right",
   });
@@ -30,21 +53,35 @@ export default function Overlay(props) {
     <section
       className="nvxOverlay"
       onBlur={(e) => {
-        if (props.show === undefined) {
+        if (props?.isOpen === true || props?.isOpen === false) {
+        } else {
           setToggle(false);
-          console.log(props.show);
         }
       }}
+      onMouseOver={(e) => {
+        props.onMouseOver();
+      }}
+      onMouseLeave={(e) => {
+        props.onMouseLeave();
+      }}
       onClick={(e) => {
-        setToggle((prev) => !prev);
+        if (props?.isOpen === true || props?.isOpen === false) {
+          setToggle(props.isOpen);
+        } else {
+          setToggle((prev) => !prev);
+        }
       }}
     >
       <Fragment>{props.children}</Fragment>
       <div
+        style={props?.style}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
         className={
           !toggle
             ? "nvxfadeOut nvxOverlayInner "
-            : "nvxOverlayInner nvxfadeIn" + overlayClassName
+            : "nvxOverlayInner nvxfadeIn " + overlayClassName
         }
       >
         {props.rendered}

@@ -6,13 +6,19 @@
 }
 .nvxOverlay {
   height: auto;
-  width: max-content;
+  width: auto;
   display: inline-block;
   position: relative;
   .nvxOverlayInner {
     position: absolute;
-
+    overflow: hidden;
     line-height: 1;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    background-color: white;
+    padding: 5px;
+    width: auto;
+    height: auto;
     z-index: 100;
     white-space: nowrap;
     margin-top: 5px;
@@ -30,7 +36,7 @@
     margin-top: 0px;
   }
   .nvxOverlayTop {
-    top: calc(-100% + var(--tooltip-margin) * -1);
+    top: calc(-100% + var(--tooltip-margin) * -3);
     margin-top: 0px;
   }
 
@@ -53,11 +59,4 @@
     opacity: 1;
     transition: opacity 0.2s 0.2s;
   }
-}
-
-// will delete this
-.test {
-  background-color: white;
-  border: 1px solid black;
-  padding: 8px;
 }

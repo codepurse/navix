@@ -22,11 +22,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const OVERLAY_POSITION = ["left", "right", "bottom", "top"];
 Overlay.propTypes = {
   position: _propTypes.PropTypes.oneOf(OVERLAY_POSITION),
-  center: _propTypes.PropTypes.bool
+  center: _propTypes.PropTypes.bool,
+  wrapperClassName: _propTypes.PropTypes.string,
+  id: _propTypes.PropTypes.string,
+  isOpen: _propTypes.PropTypes.bool,
+  onClick: _propTypes.PropTypes.func,
+  onMouseOver: _propTypes.PropTypes.func,
+  onMouseleave: _propTypes.PropTypes.func,
+  isClickOutsie: _propTypes.PropTypes.bool,
+  rendered: _propTypes.PropTypes.node,
+  style: _propTypes.PropTypes.array
+};
+Overlay.propTypes = {
+  onClick: () => {},
+  onMouseOver: () => {},
+  onMouseleave: () => {}
 };
 
 function Overlay(props) {
-  const [toggle, setToggle] = (0, _react.useState)(true);
+  const [toggle, setToggle] = (0, _react.useState)(false);
 
   const overLayCname = value => {
     switch (value) {
@@ -41,21 +55,39 @@ function Overlay(props) {
     }
   };
 
+  (0, _react.useEffect)(() => {
+    if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
+      setToggle(props.isOpen);
+    } else {}
+  }, [props.isOpen]);
   const overlayClassName = (0, _classnames.default)("", overLayCname(props.position), {
     nvxOverlayCenter: props.center === true && props.position !== "right"
   });
   return /*#__PURE__*/_react.default.createElement("section", {
     className: "nvxOverlay",
     onBlur: e => {
-      if (props.show === undefined) {
+      if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {} else {
         setToggle(false);
-        console.log(props.show);
       }
     },
+    onMouseOver: e => {
+      props.onMouseOver();
+    },
+    onMouseLeave: e => {
+      props.onMouseLeave();
+    },
     onClick: e => {
-      setToggle(prev => !prev);
+      if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
+        setToggle(props.isOpen);
+      } else {
+        setToggle(prev => !prev);
+      }
     }
   }, /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children), /*#__PURE__*/_react.default.createElement("div", {
-    className: !toggle ? "nvxfadeOut nvxOverlayInner " : "nvxOverlayInner nvxfadeIn" + overlayClassName
+    style: props === null || props === void 0 ? void 0 : props.style,
+    onClick: e => {
+      e.stopPropagation();
+    },
+    className: !toggle ? "nvxfadeOut nvxOverlayInner " : "nvxOverlayInner nvxfadeIn " + overlayClassName
   }, props.rendered));
 }
