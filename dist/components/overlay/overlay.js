@@ -33,10 +33,10 @@ Overlay.propTypes = {
   rendered: _propTypes.PropTypes.node,
   style: _propTypes.PropTypes.array
 };
-Overlay.propTypes = {
+Overlay.defaultProps = {
   onClick: () => {},
   onMouseOver: () => {},
-  onMouseleave: () => {}
+  onMouseLeave: () => {}
 };
 
 function Overlay(props) {
