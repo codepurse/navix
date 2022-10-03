@@ -14,13 +14,19 @@ AccordionItem.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.node,
   alignIcon: PropTypes.oneOf(ACCORDION_ICON_ALIGN),
-  onclick: PropTypes.node,
+  onClick: PropTypes.node,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  isOpen: PropTypes.bool,
   active: PropTypes.bool,
   _TYPE: PropTypes.string,
 };
 
 AccordionItem.defaultProps = {
   __TYPE: "AccordionItem",
+  onClick: () => {},
+  onChange: () => {},
+  disabled: false,
 };
 
 export default function AccordionItem(props) {
@@ -50,6 +56,26 @@ export default function AccordionItem(props) {
     [open]
   );
 
+  useEffect(
+    (e) => {
+      if (props?.isOpen === true || props?.isOpen === false) {
+        setOpen(props.isOpen);
+      } else {
+      }
+    },
+    [props.isOpen]
+  );
+
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      props.onChange(open);
+    }
+  }, [open]);
+
   return (
     <div
       className={
@@ -59,10 +85,17 @@ export default function AccordionItem(props) {
       }
       ref={itemsRef}
       onClick={(e) => {
-        setOpen((value) => !value);
+        if (!props.disabled) {
+          if (props?.isOpen === true || props?.isOpen === false) {
+            setOpen(props.isOpen);
+          } else {
+            setOpen((value) => !value);
+          }
+          props.onClick();
+        }
       }}
     >
-      <div className="flex-container">
+      <div className="flex-container" style={props?.style}>
         <div
           className="flex-items"
           style={{ order: props.alignIcon === "left" ? 1 : 0 }}

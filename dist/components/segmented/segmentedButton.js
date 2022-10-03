@@ -68,7 +68,6 @@ function SegmentedButton(props) {
     "data-at": event.id,
     onClick: props.onClick,
     onChange: e => {
-      console.log(event.id);
       setId(event.id);
       props.onSelect(event.id);
     }

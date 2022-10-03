@@ -22,12 +22,18 @@ AccordionItem.propTypes = {
   title: _propTypes.PropTypes.string,
   icon: _propTypes.PropTypes.node,
   alignIcon: _propTypes.PropTypes.oneOf(ACCORDION_ICON_ALIGN),
-  onclick: _propTypes.PropTypes.node,
+  onClick: _propTypes.PropTypes.node,
+  disabled: _propTypes.PropTypes.bool,
+  onChange: _propTypes.PropTypes.func,
+  isOpen: _propTypes.PropTypes.bool,
   active: _propTypes.PropTypes.bool,
   _TYPE: _propTypes.PropTypes.string
 };
 AccordionItem.defaultProps = {
-  __TYPE: "AccordionItem"
+  __TYPE: "AccordionItem",
+  onClick: () => {},
+  onChange: () => {},
+  disabled: false
 };
 
 function AccordionItem(props) {
@@ -49,14 +55,36 @@ function AccordionItem(props) {
       itemsRef.current.style.height = itemsRef.current.scrollHeight + "px";
     }
   }, [open]);
+  (0, _react.useEffect)(e => {
+    if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
+      setOpen(props.isOpen);
+    } else {}
+  }, [props.isOpen]);
+  const firstRender = (0, _react.useRef)(true);
+  (0, _react.useEffect)(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      props.onChange(open);
+    }
+  }, [open]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: spaces === "separeted" ? "nvxAccordionItem nvxAccordionSeparated" : "nvxAccordionItem ",
     ref: itemsRef,
     onClick: e => {
-      setOpen(value => !value);
+      if (!props.disabled) {
+        if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
+          setOpen(props.isOpen);
+        } else {
+          setOpen(value => !value);
+        }
+
+        props.onClick();
+      }
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "flex-container"
+    className: "flex-container",
+    style: props === null || props === void 0 ? void 0 : props.style
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "flex-items",
     style: {

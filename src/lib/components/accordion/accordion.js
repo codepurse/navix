@@ -1,5 +1,17 @@
+import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import { AccordionContext } from "../../context/accordionContext";
+
+Accordion.propTypes = {
+  onChange: PropTypes.func,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
+Accordion.defaultProps = {
+  onClick: () => {},
+  onChange: () => {},
+};
 
 export default function Accordion(props) {
   const [count, setCount] = useState(0);

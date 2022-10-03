@@ -41,6 +41,7 @@ import "./lib/components/styles/main.scss";
 import Textbox from "./lib/components/text/textbox";
 function App() {
   const [show, setShow] = useToggle(true);
+  const [check, setCheck] = useState(false);
   const [id, setId] = useState();
   const segmentedArray = [
     {
@@ -147,20 +148,47 @@ function App() {
         </Button>
       </Overlay>
       <Accordion>
-        <AccordionItem title="Accordion One">
+        <AccordionItem
+          isOpen={true}
+          title="Accordion One"
+          disabled
+          style={{ backgroundColor: "#212121", color: "white" }}
+          onChange={(e) => {
+            console.log(e);
+          }}
+        >
           <AccordionContent>
             <p>Test One</p>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem title="Accordion Two">
+        <AccordionItem
+          title="Accordion Two"
+          onChange={(e) => {
+            console.log(e);
+          }}
+        >
           <AccordionContent>
             <p>Test Two</p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <div>
-        <span>asdsa</span>
-        <Switch />
+      <div style={{ marginTop: "20px" }}>
+        <button
+          onClick={(e) => {
+            setCheck((prev) => !prev);
+          }}
+        >
+          casdad
+        </button>
+        <Switch
+          checked={check}
+          backgroundColor={"green"}
+          checkedBgColor="black"
+          leftLabel="test"
+          rightLabel="test"
+          topLabel="test"
+          bottomLabel="test"
+        />
       </div>
       <List>
         <ListItem

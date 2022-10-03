@@ -13,9 +13,9 @@
     background-color: #fafafa;
     border: 1px solid lightgray;
     transition: all 0.2s;
-    padding: 15px;
     .flex-container {
       display: flex;
+      padding: 15px;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: normal;
