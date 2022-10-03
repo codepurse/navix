@@ -40,6 +40,12 @@ html {
     min-width: 400px;
     background: var(--grey1);
   }
+
+
+  .divSampleAcc {
+    padding: 15px;
+    color: white;
+  }
   
 
 

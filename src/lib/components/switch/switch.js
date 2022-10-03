@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Style from "style-it";
 
 Switch.propTypes = {
@@ -44,19 +44,21 @@ export default function Switch(props) {
     },
     [props.checked]
   );
+  const firstRender = useRef(true);
 
-  useEffect(
-    (e) => {
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
       props.onChange(check);
-    },
-    [check]
-  );
+    }
+  }, [check]);
 
   return Style.it(
     `
     input:checked + .slider:before {
       transform: translateX(27px);
-      background: ${check ? props?.checkedCaretColor : ""};
+      background: ${check ? props?.checkedCaretColor : "white"};
     }
     `,
     <div className="nvxWrapperParentChk">
@@ -74,7 +76,6 @@ export default function Switch(props) {
               props?.onClick();
             }}
             onChange={(e) => {
-              props?.onChange(e.currentTarget.checked);
               if (props?.checked === true || props?.checked === false) {
               } else {
                 setCheck(e.currentTarget.checked);

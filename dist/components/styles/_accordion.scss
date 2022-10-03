@@ -9,7 +9,7 @@
     margin-top: 20px;
   }
   .nvxAccordionItem {
-    width: 100%;
+    max-width: 100%;
     background-color: #fafafa;
     border: 1px solid lightgray;
     transition: all 0.2s;
@@ -19,7 +19,6 @@
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: normal;
-      align-items: stretch;
       align-content: normal;
       .nvxAccordionArrow {
         cursor: pointer;

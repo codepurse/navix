@@ -60,10 +60,15 @@ function Switch(props) {
       setCheck(props.checked);
     } else {}
   }, [props.checked]);
-  (0, _react.useEffect)(e => {
-    props.onChange(check);
+  const firstRender = (0, _react.useRef)(true);
+  (0, _react.useEffect)(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      props.onChange(check);
+    }
   }, [check]);
-  return _styleIt.default.it("\n    input:checked + .slider:before {\n      transform: translateX(27px);\n      background: ".concat(check ? props === null || props === void 0 ? void 0 : props.checkedCaretColor : "", ";\n    }\n    "), /*#__PURE__*/_react.default.createElement("div", {
+  return _styleIt.default.it("\n    input:checked + .slider:before {\n      transform: translateX(27px);\n      background: ".concat(check ? props === null || props === void 0 ? void 0 : props.checkedCaretColor : "white", ";\n    }\n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxWrapperParentChk"
   }, props !== null && props !== void 0 && props.topLabel ? /*#__PURE__*/_react.default.createElement("label", {
     className: "nvxCheckTop"
@@ -81,8 +86,6 @@ function Switch(props) {
       props === null || props === void 0 ? void 0 : props.onClick();
     },
     onChange: e => {
-      props === null || props === void 0 ? void 0 : props.onChange(e.currentTarget.checked);
-
       if ((props === null || props === void 0 ? void 0 : props.checked) === true || (props === null || props === void 0 ? void 0 : props.checked) === false) {} else {
         setCheck(e.currentTarget.checked);
       }

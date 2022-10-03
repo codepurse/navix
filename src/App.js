@@ -147,28 +147,77 @@ function App() {
           Log
         </Button>
       </Overlay>
-      <Accordion>
+      <Accordion space="separeted">
         <AccordionItem
-          isOpen={true}
+          wrapperStyle={{ backgroundColor: "#212121", borderRadius: "25px" }}
+          style={{ color: "white" }}
           title="Accordion One"
-          disabled
-          style={{ backgroundColor: "#212121", color: "white" }}
-          onChange={(e) => {
-            console.log(e);
-          }}
         >
           <AccordionContent>
-            <p>Test One</p>
+            <div className="divSampleAcc">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud
+              </p>
+            </div>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem
+          wrapperStyle={{ backgroundColor: "#212121", borderRadius: "25px" }}
+          style={{ color: "white" }}
           title="Accordion Two"
-          onChange={(e) => {
-            console.log(e);
+        >
+          <AccordionContent>
+            <div className="divSampleAcc">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <Accordion space="separeted">
+        <AccordionItem
+          title="Accordion One"
+          alignIcon={"left"}
+          wrapperStyle={{
+            backgroundColor: "#fff6ee",
+            borderRadius: "5px",
+            borderLeft: "5px solid #ffc48b",
           }}
         >
           <AccordionContent>
-            <p>Test Two</p>
+            <div className="divSampleAcc">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud
+              </p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem
+          alignIcon={"left"}
+          title="Accordion Two"
+          wrapperStyle={{
+            backgroundColor: "#fafaff",
+            borderRadius: "5px",
+            borderLeft: "5px solid #84b3ff",
+          }}
+        >
+          <AccordionContent>
+            <div className="divSampleAcc">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -181,12 +230,15 @@ function App() {
           casdad
         </button>
         <Switch
-          checked={check}
           backgroundColor={"green"}
+          checkedCaretColor="tomato"
           checkedBgColor="black"
           leftLabel="test"
           rightLabel="test"
           topLabel="test"
+          onChange={(e) => {
+            console.log(e);
+          }}
           bottomLabel="test"
         />
       </div>

@@ -84,6 +84,7 @@ export default function AccordionItem(props) {
           : "nvxAccordionItem "
       }
       ref={itemsRef}
+      style={props?.wrapperStyle}
       onClick={(e) => {
         if (!props.disabled) {
           if (props?.isOpen === true || props?.isOpen === false) {

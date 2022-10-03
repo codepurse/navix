@@ -52,7 +52,6 @@
 
     input:checked + .slider:before {
       transform: translateX(27px);
-      background: white;
     }
     .nvxCheckLeft {
       font-family: inherit;

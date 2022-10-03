@@ -71,6 +71,7 @@ function AccordionItem(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: spaces === "separeted" ? "nvxAccordionItem nvxAccordionSeparated" : "nvxAccordionItem ",
     ref: itemsRef,
+    style: props === null || props === void 0 ? void 0 : props.wrapperStyle,
     onClick: e => {
       if (!props.disabled) {
         if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
