@@ -6,8 +6,10 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
+  Alert,
   AlertContainer,
   Box,
+  Button,
   Checkbox,
   List,
   ListItem,
@@ -32,7 +34,6 @@ import {
 import Avatar from "./lib/components/avatar/avatar";
 import AvatarBatch from "./lib/components/avatar/avatarBatch";
 import Badge from "./lib/components/badge/badge";
-import Button from "./lib/components/button/Button";
 import ButtonIcon from "./lib/components/buttonIcon/ButtonIcon";
 import Header from "./lib/components/header/Header";
 import Radio from "./lib/components/radio/radio";
@@ -42,6 +43,7 @@ import Textbox from "./lib/components/text/textbox";
 function App() {
   const [show, setShow] = useToggle(true);
   const [check, setCheck] = useState(false);
+  const notify = () => Alert.success("Sample Alert! Letss goo!");
   const [id, setId] = useState();
   const segmentedArray = [
     {
@@ -79,12 +81,21 @@ function App() {
     [id]
   );
 
+  const FancyButton = React.forwardRef((props, ref) => (
+    <Button
+      type="primary"
+      ref={ref}
+      className="FancyButton"
+      onClick={e}
+    ></Button>
+  ));
+
   return (
     <div>
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
-      <AlertContainer />
-      <Button disabled>Set cookie</Button>
+      <AlertContainer stackable duration={7000} autoClose={false} />
+      <Button onClick={(e) => notify()}>Set cookie</Button>
       <Button type="primary" category="default">
         Delete
       </Button>

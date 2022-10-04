@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types";
 import React, {
   createRef,
   forwardRef,
@@ -7,11 +8,29 @@ import React, {
 } from "react";
 import { AlertIcon, AlertType } from "./alertIcon";
 
+AlertContainer.propTypes = {
+  stackable: PropTypes.bool,
+  position: PropTypes.string,
+  reverse: PropTypes.bool,
+  duration: PropTypes.number,
+  autoClose: PropTypes.bool,
+  rendered: PropTypes.node,
+};
+
+AlertContainer.defaultProps = {
+  stackable: true,
+  position: "top-center",
+  reverse: false,
+  duration: 3000,
+  autoClose: true,
+};
+
 const AlertComponent = forwardRef(
   (
     {
       type,
       message,
+      children,
       toastData: {
         index,
         removeToast,
@@ -22,19 +41,25 @@ const AlertComponent = forwardRef(
   ) => {
     const progressDuration = autoClose ? closeDuration : false;
     return (
-      <div className={AlertType(type)} ref={ref} type={type}>
-        {/* {progressDuration && (
+      <Fragment>
+        {children ? (
+          <div ref={ref}>{children}</div>
+        ) : (
+          <div className={AlertType(type)} ref={ref} type={type}>
+            {/* {progressDuration && (
           <div
             className="toastBar"
             style={{ "--duration": progressDuration + "ms" }}
           />
         )} */}
-        <div className="toastIcon">{AlertIcon(type)}</div>
-        <div className="toastMessage">{message}</div>
-        <div className="toastClose" onClick={() => removeToast(index)}>
-          {AlertIcon("close")}
-        </div>
-      </div>
+            <div className="toastIcon">{AlertIcon(type)}</div>
+            <div className="toastMessage">{message}</div>
+            <div className="toastClose" onClick={() => removeToast(index)}>
+              {AlertIcon("close")}
+            </div>
+          </div>
+        )}
+      </Fragment>
     );
   }
 );
@@ -49,21 +74,24 @@ const availablePostions = [
   "top-center",
   "bottom-center",
 ];
-const initialOptions = {
-  reverse: false,
-  position: "top-center",
-};
-const AlertContainer = ({ options = initialOptions }) => {
+
+export default function AlertContainer({
+  position,
+  reverse,
+  stackable,
+  duration,
+  rendered,
+}) {
   const [toasts, setToasts] = React.useState([]);
   const [removedToasts, setRemovedToasts] = useState([]);
-  const toastPosition = availablePostions.includes(options.position)
-    ? options.position
-    : initialOptions.position;
+  const toastPosition = availablePostions.includes(position)
+    ? position
+    : position;
 
   const addToast = (
     type,
     message,
-    toastOptions = { autoClose: true, closeDuration: 3000 }
+    toastOptions = { autoClose: true, closeDuration: duration }
   ) => {
     const ref = createRef();
     const toastData = {
@@ -77,10 +105,19 @@ const AlertContainer = ({ options = initialOptions }) => {
         message={message}
         toastData={toastData}
         ref={ref}
+        children={rendered}
       />
     );
-    setToasts([...toasts, toast]);
-    refs.push(ref);
+
+    if (!stackable) {
+      if (toasts.length < 1) {
+        setToasts([...toasts, toast]);
+        refs.push(ref);
+      }
+    } else {
+      setToasts([...toasts, toast]);
+      refs.push(ref);
+    }
     queueMicrotask(() => showToast(Math.max(refs.length - 1, 0)));
     if (toastOptions.closeDuration) {
       setTimeout(
@@ -99,9 +136,13 @@ const AlertContainer = ({ options = initialOptions }) => {
   const removeToast = (index) => {
     const ref = refs[index];
     setRemovedToasts([...removedToasts, index]);
+    // pag  hindi stackable
+    if (!stackable) {
+      setToasts([]);
+      refs.length = 0;
+    }
     if (ref) {
-      ref.current.classList.add("hide");
-      refs[index] = null;
+      ref.current.style.display = "none";
     }
   };
 
@@ -111,23 +152,21 @@ const AlertContainer = ({ options = initialOptions }) => {
 
   return (
     <div
-      className={`toastArea${
-        options.reverse ? " reverse" : ""
-      } area-${toastPosition}`}
+      className={`toastArea${reverse ? " reverse" : ""} area-${toastPosition}`}
     >
       {toasts.map((toast, index) => {
         return <Fragment key={index}>{toast}</Fragment>;
       })}
     </div>
   );
-};
+}
 
 export const Alert = {
   add: null,
   info: (message, options) => Alert.add("info", message, options),
-  success: (message, options) => Alert.add("success", message, options),
+  success: (message, options) => {
+    Alert.add("success", message, options);
+  },
   warning: (message, options) => Alert.add("warning", message, options),
   error: (message, options) => Alert.add("error", message, options),
 };
-
-export default AlertContainer;
