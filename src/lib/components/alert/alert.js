@@ -142,7 +142,9 @@ export default function AlertContainer({
       refs.length = 0;
     }
     if (ref) {
-      ref.current.style.display = "none";
+      try {
+        ref.current.style.display = "none";
+      } catch (error) {}
     }
   };
 

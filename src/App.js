@@ -81,20 +81,16 @@ function App() {
     [id]
   );
 
-  const FancyButton = React.forwardRef((props, ref) => (
-    <Button
-      type="primary"
-      ref={ref}
-      className="FancyButton"
-      onClick={e}
-    ></Button>
-  ));
-
   return (
     <div>
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
-      <AlertContainer stackable duration={7000} autoClose={false} />
+      <AlertContainer
+        stackable
+        duration={7000}
+        autoClose={false}
+        rendered={<p>asdasd</p>}
+      />
       <Button onClick={(e) => notify()}>Set cookie</Button>
       <Button type="primary" category="default">
         Delete
@@ -111,8 +107,20 @@ function App() {
         Log
       </Button>
       <Textbox iconLeft={<FiSearch />} iconRight={<FiSearch />} />
-      <RadioGroup defaultCheck="1">
-        <Radio value="1" label="Asds" />
+      <RadioGroup
+        defaultCheck="1"
+        onChange={(e) => {
+          console.log(e);
+        }}
+      >
+        <Radio
+          value="1"
+          label="Asds"
+          color="tomato"
+          onChange={(e) => {
+            console.log(e);
+          }}
+        />
         <Radio value="2" label="Asds" />
       </RadioGroup>
       <AvatarBatch max="2">

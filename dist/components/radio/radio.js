@@ -11,7 +11,11 @@ var _propTypes = require("prop-types");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _styleIt = _interopRequireDefault(require("style-it"));
+
 var _radioContext = require("../../context/radioContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -23,13 +27,17 @@ Radio.propTypes = {
   size: _propTypes.PropTypes.oneOf(RADIO_SIZES),
   invalid: _propTypes.PropTypes.bool,
   disabled: _propTypes.PropTypes.bool,
+  onChange: _propTypes.PropTypes.func,
+  onClick: _propTypes.PropTypes.func,
   value: _propTypes.PropTypes.string,
   label: _propTypes.PropTypes.string,
   selected: _propTypes.PropTypes.bool,
   _TYPE: _propTypes.PropTypes.string
 };
 Radio.defaultProps = {
-  __TYPE: "Radio"
+  __TYPE: "Radio",
+  onClick: () => {},
+  onChange: () => {}
 };
 
 function Radio(props) {
@@ -50,10 +58,24 @@ function Radio(props) {
       document.getElementById(active).checked = true;
     } catch (error) {}
   }, [active]);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+
+  const radioSize = value => {
+    switch (value) {
+      case "md":
+        return "nvxRadioMd";
+
+      case "lg":
+        return "nvxRadioLg";
+
+      default:
+        return "";
+    }
+  };
+
+  return _styleIt.default.it("\n    .nvxRadio + .nvxRadioLabel::before  {\n      border: 1px solid ".concat(props !== null && props !== void 0 && props.color ? props === null || props === void 0 ? void 0 : props.color : "#00679d", ";\n      }\n    .nvxRadio + .nvxRadioLabel::after {\n      border: 1px solid ").concat(props === null || props === void 0 ? void 0 : props.color, ";\n      background: ").concat(props !== null && props !== void 0 && props.color ? props.color : "#00679d", ";\n      }\n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxRadioDiv"
   }, /*#__PURE__*/_react.default.createElement("input", {
-    className: "nvxRadio",
+    className: "nvxRadio " + radioSize(props.size),
     type: "radio",
     id: props.value,
     name: value.name,
@@ -63,6 +85,7 @@ function Radio(props) {
     disabled: props.disabled ? true : false,
     onChange: e => {
       setActive(props.value);
+      props.onChange(e.currentTarget.checked);
     }
   }), /*#__PURE__*/_react.default.createElement("label", {
     className: props.invalid ? "nvxRadioLabel nvxRadioLblInvalid" : "nvxRadioLabel",

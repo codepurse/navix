@@ -17,7 +17,6 @@
     display: inline-block;
     width: 20px;
     aspect-ratio: 1;
-    border: 1px solid #686de0;
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -31,7 +30,27 @@
     border: 1px solid red !important;
   }
 
+  .nvxRadioMd + .nvxRadioLabel::before {
+    width: 25px;
+  }
+
+  .nvxRadioMd + .nvxRadioLabel::after {
+    left: 8px !important;
+  }
+
+  .nvxRadioLg + .nvxRadioLabel::before {
+    width: 30px;
+  }
+
+  .nvxRadioLg + .nvxRadioLabel::after {
+    left: 10px !important;
+  }
+  .nvxRadio + #nvxRadioLblInvalid::before {
+    border: 1px solid gray !important;
+  }
+
   .nvxRadio + #nvxRadioLblInvalid::after {
+    border: 1px solid gray !important;
     background: gray !important;
   }
   .nvxRadio + .nvxRadioLabel::after {
@@ -39,8 +58,7 @@
     display: inline-block;
     width: 10px;
     aspect-ratio: 1;
-    border: 1px solid #686de0;
-    background: #686de0;
+    border: 1px solid $primary;
     border-radius: 50%;
     position: absolute;
     left: 5px;
