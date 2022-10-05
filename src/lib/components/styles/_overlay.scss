@@ -1,7 +1,7 @@
 :root {
   --tooltip-text-color: white;
   --tooltip-background-color: black;
-  --tooltip-margin: 10px;
+  --tooltip-margin-overlay: 10px;
   --tooltip-arrow-size: 6px;
 }
 .nvxOverlay {
@@ -24,19 +24,19 @@
     margin-top: 5px;
   }
   .nvxOverlayRight {
-    right: calc(100% + var(--tooltip-margin));
+    right: calc(100% + var(--tooltip-margin-overlay));
     top: 50%;
     transform: translateX(0) translateY(-50%) !important;
     margin-top: 0px;
   }
   .nvxOverlayLeft {
-    left: calc(100% + var(--tooltip-margin));
+    left: calc(100% + var(--tooltip-margin-overlay));
     top: 50%;
     transform: translateX(0) translateY(-50%);
     margin-top: 0px;
   }
   .nvxOverlayTop {
-    top: calc(-100% + var(--tooltip-margin) * -3);
+    top: calc(-100% + var(--tooltip-margin-overlay) * -3);
     margin-top: 0px;
   }
 

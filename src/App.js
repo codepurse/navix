@@ -315,7 +315,18 @@ function App() {
           backgroundColor="tomato"
         ></Box>
       </Overlay>
-      <Tooltip content="Yee-haw!" direction="right">
+      <Tooltip
+        content={
+          <div>
+            <Button type="primary">Sample</Button>
+          </div>
+        }
+        backgroundColor="tomato"
+        arrowColor="tomato"
+        arrow={true}
+        direction={"bottom"}
+        space={50}
+      >
         <div style={{ marginTop: "10px" }}>
           <ButtonIcon variant="notes" size={"sm"} />
         </div>

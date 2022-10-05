@@ -1,13 +1,24 @@
 :root {
   --tooltip-text-color: white;
   --tooltip-background-color: black;
-  --tooltip-margin: 30px;
+  --tooltip-margin: 50px;
   --tooltip-arrow-size: 6px;
 }
 
 .Tooltip-Wrapper {
   display: table;
   position: relative;
+  .nvxfadeOut {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.2s;
+  }
+  .nvxfadeIn {
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.2s 0.2s;
+  }
 }
 
 .Tooltip-Tip {
@@ -43,7 +54,6 @@
 
 .Tooltip-Tip.top::before {
   top: 100%;
-  border-top-color: var(--tooltip-background-color);
 }
 
 .Tooltip-Tip.right {
@@ -56,7 +66,6 @@
   left: calc(var(--tooltip-arrow-size) * -1);
   top: 50%;
   transform: translateX(0) translateY(-50%);
-  border-right-color: var(--tooltip-background-color);
 }
 
 .Tooltip-Tip.bottom {
@@ -65,7 +74,6 @@
 
 .Tooltip-Tip.bottom::before {
   bottom: 100%;
-  border-bottom-color: var(--tooltip-background-color);
 }
 
 .Tooltip-Tip.left {
@@ -77,8 +85,7 @@
 
 .Tooltip-Tip.left::before {
   left: auto;
-  right: calc(var(--tooltip-arrow-size) * -2);
+  right: calc(var(--tooltip-arrow-size) * -1);
   top: 50%;
   transform: translateX(0) translateY(-50%);
-  border-left-color: var(--tooltip-background-color);
 }
