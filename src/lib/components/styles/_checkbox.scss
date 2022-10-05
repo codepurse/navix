@@ -5,12 +5,12 @@
   --border-active: #003a61;
   --error: red;
   --tick: #fff;
+  align-items: center;
+  display: flex;
   .nvxCbxDisable {
     input {
       box-shadow: none !important;
     }
-  }
-  .nvxCbxError {
   }
   .checkbox {
     position: relative;
@@ -30,7 +30,6 @@
       -moz-appearance: none;
       position: relative;
       outline: none;
-      background: var(--background);
       border: none;
       margin: 0;
       padding: 0;
@@ -104,4 +103,26 @@
       transform: scale(1);
     }
   }
+}
+
+.nvxCbxMd .checkbox input,
+.nvxCbx .checkbox svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.nvxCbxLg .checkbox input,
+.nvxCbx .checkbox svg {
+  width: 27px !important;
+  height: 27px !important;
+}
+
+.nvxCbxMd .checkbox svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.nvxCbxLg .checkbox svg {
+  width: 27px !important;
+  height: 27px !important;
 }

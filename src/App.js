@@ -356,8 +356,29 @@ function App() {
         <StepsList />
         <StepsList />
       </Steps>
-      <Checkbox label="Test Checbox" error />
-      <Checkbox label="Test Checbox" checked />
+      <button
+        onClick={(e) => {
+          setCheck((prev) => !prev);
+        }}
+      >
+        asdsa
+      </button>
+      <Checkbox
+        label="Test Checbox"
+        checkedCaretColor="tomato"
+        checkedBgColor="green"
+        size="md"
+      />
+      <Checkbox
+        label="Test Checkbox"
+        size="md"
+        positionLabel={"left"}
+        labelStyle={{ color: "tomato" }}
+        checkedCaretColor="yellow"
+        onChange={(e) => {
+          console.log(e);
+        }}
+      />
       <div style={{ marginTop: "20px" }}>
         <Paragraph
           disabled

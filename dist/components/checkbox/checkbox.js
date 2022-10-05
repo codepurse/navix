@@ -13,6 +13,8 @@ var _propTypes = require("prop-types");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _styleIt = _interopRequireDefault(require("style-it"));
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -31,11 +33,25 @@ Checkbox.propTypes = {
   disabled: _propTypes.PropTypes.bool,
   backDrop: _propTypes.PropTypes.string,
   onChange: _propTypes.PropTypes.func,
-  error: _propTypes.PropTypes.bool
+  error: _propTypes.PropTypes.bool,
+  color: _propTypes.PropTypes.string,
+  checkedBgColor: _propTypes.PropTypes.string,
+  labelStyle: _propTypes.PropTypes.string,
+  background: _propTypes.PropTypes.string,
+  checkedCaretColor: _propTypes.PropTypes.string,
+  size: _propTypes.PropTypes.string,
+  positionLabel: _propTypes.PropTypes.string
+};
+Checkbox.defaultProps = {
+  size: "sm",
+  onChange: () => {},
+  disabled: false,
+  error: false,
+  positionLabel: "right"
 };
 
 function Checkbox(props) {
-  var _props$css;
+  var _props$background, _props$checkedBgColor, _props$checkedCaretCo;
 
   const [check, setCheck] = (0, _react.useState)(false);
   const ref = (0, _react.useRef)("");
@@ -54,24 +70,46 @@ function Checkbox(props) {
   }, {
     nvxCbxError: props.error === true
   });
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "nvxCbx"
-  }, /*#__PURE__*/_react.default.createElement("label", {
+
+  const checkboxSize = value => {
+    switch (value) {
+      case "md":
+        return "nvxCbxMd";
+
+      case "lg":
+        return "nvxCbxLg";
+
+      default:
+        return "";
+    }
+  };
+
+  (0, _react.useEffect)(e => {
+    if ((props === null || props === void 0 ? void 0 : props.checked) === true || (props === null || props === void 0 ? void 0 : props.checked) === false) {
+      setCheck(props.checked);
+    } else {}
+  }, [props.checked]);
+  return _styleIt.default.it("\n    .nvxCbx .checkbox input  {\n      background: ".concat((_props$background = props === null || props === void 0 ? void 0 : props.background) !== null && _props$background !== void 0 ? _props$background : "white", ";\n      }\n      .nvxCbx .checkbox input:checked {\n        --a: ").concat((_props$checkedBgColor = props === null || props === void 0 ? void 0 : props.checkedBgColor) !== null && _props$checkedBgColor !== void 0 ? _props$checkedBgColor : "#003a61", ";\n     }\n     .nvxCbx .checkbox.bounce {\n      --stroke: ").concat((_props$checkedCaretCo = props === null || props === void 0 ? void 0 : props.checkedCaretColor) !== null && _props$checkedCaretCo !== void 0 ? _props$checkedCaretCo : "white", ";\n   }\n   \n    "), /*#__PURE__*/_react.default.createElement("div", {
+    className: "nvxCbx " + checkboxSize(props === null || props === void 0 ? void 0 : props.size)
+  }, props.positionLabel === "left" ? /*#__PURE__*/_react.default.createElement("span", {
+    style: (props !== null && props !== void 0 && props.labelStyle, {
+      marginRight: "10px",
+      marginLeft: "0px"
+    })
+  }, props.label) : null, /*#__PURE__*/_react.default.createElement("label", {
     className: checkboxClassName
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     ref: ref,
-    defaultChecked: props.checked,
+    checked: check,
     disabled: props.disabled,
     onChange: e => {
-      if (e.currentTarget.checked) {
-        setCheck(true);
-      } else {
-        setCheck(false);
+      if ((props === null || props === void 0 ? void 0 : props.checked) === true || (props === null || props === void 0 ? void 0 : props.checked) === false) {} else {
+        setCheck(e.currentTarget.checked);
       }
 
       try {
-        props.onChange(e);
+        props.onChange(e.currentTarget.checked);
       } catch (error) {}
     },
     style: check ? customStyle : propsStyle
@@ -79,7 +117,9 @@ function Checkbox(props) {
     viewBox: "0 0 21 21"
   }, /*#__PURE__*/_react.default.createElement("polyline", {
     points: "5 10.75 8.5 14.25 16 6"
-  })), /*#__PURE__*/_react.default.createElement("span", {
-    style: (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.checkbox.label
-  }, props.label)));
+  }))), props.positionLabel === "right" ? /*#__PURE__*/_react.default.createElement("span", {
+    style: (props !== null && props !== void 0 && props.labelStyle, {
+      marginLeft: "10px"
+    })
+  }, props.label) : null));
 }

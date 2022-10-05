@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Style from "style-it";
 
 Checkbox.propTypes = {
   label: PropTypes.string,
@@ -9,6 +10,21 @@ Checkbox.propTypes = {
   backDrop: PropTypes.string,
   onChange: PropTypes.func,
   error: PropTypes.bool,
+  color: PropTypes.string,
+  checkedBgColor: PropTypes.string,
+  labelStyle: PropTypes.string,
+  background: PropTypes.string,
+  checkedCaretColor: PropTypes.string,
+  size: PropTypes.string,
+  positionLabel: PropTypes.string,
+};
+
+Checkbox.defaultProps = {
+  size: "sm",
+  onChange: () => {},
+  disabled: false,
+  error: false,
+  positionLabel: "right",
 };
 
 export default function Checkbox(props) {
@@ -37,22 +53,63 @@ export default function Checkbox(props) {
     }
   );
 
-  return (
-    <div className="nvxCbx">
+  const checkboxSize = (value) => {
+    switch (value) {
+      case "md":
+        return "nvxCbxMd";
+      case "lg":
+        return "nvxCbxLg";
+      default:
+        return "";
+    }
+  };
+
+  useEffect(
+    (e) => {
+      if (props?.checked === true || props?.checked === false) {
+        setCheck(props.checked);
+      } else {
+      }
+    },
+    [props.checked]
+  );
+
+  return Style.it(
+    `
+    .nvxCbx .checkbox input  {
+      background: ${props?.background ?? "white"};
+      }
+      .nvxCbx .checkbox input:checked {
+        --a: ${props?.checkedBgColor ?? "#003a61"};
+     }
+     .nvxCbx .checkbox.bounce {
+      --stroke: ${props?.checkedCaretColor ?? "white"};
+   }
+   
+    `,
+    <div className={"nvxCbx " + checkboxSize(props?.size)}>
+      {props.positionLabel === "left" ? (
+        <span
+          style={
+            (props?.labelStyle, { marginRight: "10px", marginLeft: "0px" })
+          }
+        >
+          {props.label}
+        </span>
+      ) : null}
       <label className={checkboxClassName}>
         <input
           type="checkbox"
           ref={ref}
-          defaultChecked={props.checked}
+          checked={check}
           disabled={props.disabled}
           onChange={(e) => {
-            if (e.currentTarget.checked) {
-              setCheck(true);
+            if (props?.checked === true || props?.checked === false) {
             } else {
-              setCheck(false);
+              setCheck(e.currentTarget.checked);
             }
             try {
-              props.onChange(e);
+              props.onChange(e.currentTarget.checked);
             } catch (error) {}
           }}
           style={check ? customStyle : propsStyle}
@@ -60,8 +117,12 @@ export default function Checkbox(props) {
         <svg viewBox="0 0 21 21">
           <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
         </svg>
-        <span style={props.css?.checkbox.label}>{props.label}</span>
       </label>
+      {props.positionLabel === "right" ? (
+        <span style={(props?.labelStyle, { marginLeft: "10px" })}>
+          {props.label}
+        </span>
+      ) : null}
     </div>
   );
 }
