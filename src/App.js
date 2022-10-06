@@ -284,10 +284,11 @@ function App() {
       </List>
       <Pagination
         totalRecords={100}
-        pageLimit={5}
-        initialPage={1}
-        pagesToShow={5}
-        onChangePage={(e) => {
+        selectedStyle={{ backgroundColor: "tomato", color: "white" }}
+        pageLimit={1}
+        initialPage={2}
+        pageToShow={2}
+        onPageChange={(e) => {
           console.log(e);
         }}
       ></Pagination>

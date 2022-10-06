@@ -11,21 +11,18 @@
         background-color: white;
         border: 1px solid #bababa;
         text-align: center;
-        padding: 8px 11px;
         border-radius: 3px;
-        min-height: 35px;
-        max-height: 35px;
+        min-height: 38px;
+        max-height: 38px;
         min-width: 38px;
         max-width: 38px;
-        i {
-          margin-top: -3px;
-        }
       }
     }
     .nvxActive {
-      border-color: #005783;
+      background-color: #005783;
+      color: white;
+      border-color: transparent;
       font-weight: 500;
-      color: #005783;
     }
     .nvxActiveFilled {
       background-color: #005783;
@@ -33,4 +30,8 @@
       border-color: transparent;
     }
   }
+}
+
+.testClassName {
+  text-align: center;
 }

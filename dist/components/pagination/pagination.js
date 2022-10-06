@@ -21,19 +21,40 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const PAGINATION_SHAPE = ["rounded", "box"];
 PaginationHooks.propTypes = {
   totalRecords: _propTypes.default.number.isRequired,
   pageLimit: _propTypes.default.number,
   initialPage: _propTypes.default.number,
   pagesToShow: _propTypes.default.number,
-  onChangePage: _propTypes.default.func,
-  type: _propTypes.default.string
+  onPageChange: _propTypes.default.func,
+  type: _propTypes.default.string,
+  shape: _propTypes.default.oneOf(PAGINATION_SHAPE),
+  borderless: _propTypes.default.bool,
+  style: _propTypes.default.array,
+  selectedStyle: _propTypes.default.array,
+  withArrow: _propTypes.default.bool,
+  wrapperClassName: _propTypes.default.string,
+  disabled: _propTypes.default.bool
 };
 PaginationHooks.defaultProps = {
-  initialPage: 1
+  onPageChange: () => {},
+  initialPage: 1,
+  shape: "box",
+  borderless: false,
+  withArrow: true,
+  disabled: false
 };
 
 function PaginationHooks(props) {
+  var _props$borderless;
+
   const [totalRecords, setTotalRecords] = (0, _react.useState)("");
   const [pageLimit, setPageLimit] = (0, _react.useState)("");
   const [totalPages, setTotalPages] = (0, _react.useState)("");
@@ -41,7 +62,7 @@ function PaginationHooks(props) {
   const [pagesToShow, setPagetoShow] = (0, _react.useState)("");
   (0, _react.useEffect)(e => {
     setTotalRecords(props.totalRecords);
-    setPageLimit(props.pageLimit || 10);
+    setPageLimit(props.pageLimit || 1);
     setTotalPages(Math.ceil(props.totalRecords / props.pageLimit));
     setPagetoShow(props.pageToShow || 5);
     setCurrentPage(props.initialPage || 1);
@@ -61,7 +82,7 @@ function PaginationHooks(props) {
     var endIndex = Math.min(startIndex + pageLimit - 1, totalRecords - 1);
 
     try {
-      props.onChangePage({
+      props.onPageChange({
         pageLimit,
         totalPages,
         page,
@@ -114,6 +135,11 @@ function PaginationHooks(props) {
     }
   }
 
+  const propsStyle = _objectSpread({
+    border: (_props$borderless = props.borderless) !== null && _props$borderless !== void 0 ? _props$borderless : "0px",
+    borderRadius: props.shape === "rounded" ? "50px" : ""
+  }, props.style);
+
   return /*#__PURE__*/_react.default.createElement("div", null, (() => {
     if (!totalRecords || totalPages === 1) {
       return null;
@@ -121,46 +147,40 @@ function PaginationHooks(props) {
       var _getPager$pages;
 
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: "nvxPagination"
+        className: "nvxPagination " + (props === null || props === void 0 ? void 0 : props.wrapperClassName)
       }, /*#__PURE__*/_react.default.createElement("ul", {
         className: "nvxUlPagination"
-      }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
-        style: {
-          borderRadius: props.shape === "rounded" ? "50px" : ""
-        },
+      }, props.withArrow ? /*#__PURE__*/_react.default.createElement(_react.Fragment, null, " ", /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
+        className: "vertical-align",
+        style: propsStyle,
         disabled: getPager().currentpage === 1 ? true : false,
         onClick: () => {
           setPage(1);
         }
       }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io.IoMdSkipBackward, null)))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
-        style: {
-          borderRadius: props.shape === "rounded" ? "50px" : ""
-        },
+        className: "vertical-align",
+        style: propsStyle,
         disabled: getPager().currentPage === 1 ? true : false,
         onClick: () => setPage(getPager().currentpage - 1)
-      }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io2.IoCaretBackOutline, null)))), (_getPager$pages = getPager().pages) === null || _getPager$pages === void 0 ? void 0 : _getPager$pages.map((page, index) => /*#__PURE__*/_react.default.createElement("li", {
+      }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io2.IoCaretBackOutline, null))))) : null, (_getPager$pages = getPager().pages) === null || _getPager$pages === void 0 ? void 0 : _getPager$pages.map((page, index) => /*#__PURE__*/_react.default.createElement("li", {
         key: index
       }, /*#__PURE__*/_react.default.createElement("button", {
-        style: {
-          borderRadius: props.shape === "rounded" ? "50px" : ""
-        },
+        style: (propsStyle, getPager().currentpage === page ? props === null || props === void 0 ? void 0 : props.selectedStyle : null),
         className: getPager().currentpage === page ? setClassName(props.type) : "",
         onClick: () => {
           setPage(page);
         }
-      }, page))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
-        style: {
-          borderRadius: props.shape === "rounded" ? "50px" : ""
-        },
+      }, page))), props.withArrow ? /*#__PURE__*/_react.default.createElement(_react.Fragment, null, " ", /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
+        style: propsStyle,
+        className: "vertical-align",
         disabled: currentPage === totalPages ? true : false,
         onClick: () => setPage(currentPage + 1)
       }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io2.IoCaretForward, null)))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("button", {
-        style: {
-          borderRadius: props.shape === "rounded" ? "50px" : ""
-        },
+        style: propsStyle,
+        className: "vertical-align",
         disabled: currentPage === totalPages ? true : false,
         onClick: () => setPage(totalPages)
-      }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io.IoMdSkipForward, null))))));
+      }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement(_io.IoMdSkipForward, null))))) : null));
     }
   })());
 }

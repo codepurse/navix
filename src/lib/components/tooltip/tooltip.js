@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import { useState } from "react";
+import React, { useState } from "react";
 import Style from "style-it";
 
 const TOOLTIP_DIRECTION = ["top", "left", "right", "bottom"];
