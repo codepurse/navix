@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  box-sizing: inherit; }
+  box-sizing:  border-box; }
 
 html {
   box-sizing: border-box;
@@ -47,5 +47,7 @@ html {
     color: white;
   }
   
-
-
+  * {
+    box-sizing: border-box;
+  }
+  

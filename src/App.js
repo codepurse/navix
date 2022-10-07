@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import "./App.css";
@@ -83,6 +83,51 @@ function App() {
 
   return (
     <div>
+      <Box margin={10} columnCount={3} columnGap="1em">
+        {Array.from({ length: 4 }, (_, i) => (
+          <Fragment>
+            <Box
+              className="h1"
+              h={100}
+              bgColor="#1D2939"
+              p={10}
+              mb={15}
+              display="inline-block"
+            />
+            <Box
+              className="h2"
+              h={200}
+              bgColor="#1CAF9A"
+              p={10}
+              mb={15}
+              display="inline-block"
+            />
+            <Box
+              className="h3"
+              h={300}
+              bgColor="tomato"
+              p={10}
+              mb={15}
+              display="inline-block"
+            />
+          </Fragment>
+        ))}
+      </Box>
+      <Box margin={10} columnCount={2} columnGap="1em" mt={20}>
+        <Box bgColor="#212121" h={150} br={10} p={18}>
+          <Space gap={10}>
+            <Paragraph color="#BDBDBD">TECHNOLOGY</Paragraph>
+            <Paragraph color="#BDBDBD" alignText="right" fontSize="sm">
+              Dashboard
+            </Paragraph>
+          </Space>
+          <Box fontWeight="bold" color="white" fontSize="2rem" mt={20}>
+            Google
+          </Box>
+        </Box>
+        <Box bgColor="#212121" h={150} br={10}></Box>
+      </Box>
+      {/*       <Box h={500} w={500} bgColor="#1D2939"></Box> */}
       <Header style={{ textAlign: "center" }}>asdasd</Header>
       <p>test</p>
       <AlertContainer

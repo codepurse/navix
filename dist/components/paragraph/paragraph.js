@@ -29,6 +29,7 @@ Paragraph.protoTypes = {
   renderAs: _propTypes.PropTypes.string,
   underline: _propTypes.PropTypes.string,
   strikeThrough: _propTypes.PropTypes.string,
+  alignText: _propTypes.PropTypes.string,
   className: _propTypes.PropTypes.string,
   id: _propTypes.PropTypes.string,
   showLineNo: _propTypes.PropTypes.number,
@@ -44,12 +45,15 @@ Paragraph.defaultProps = {
 };
 
 function Paragraph(props) {
+  var _props$alignText;
+
   const propsStyle = _objectSpread({
     color: props.color ? props.color : "",
     fontSize: props.fontSize ? (0, _paragraphFunction.fontSize)(props.fontSize) : null,
     WebkitLineClamp: props.showLineNo ? props.showLineNo : "",
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
+    textAlign: (_props$alignText = props === null || props === void 0 ? void 0 : props.alignText) !== null && _props$alignText !== void 0 ? _props$alignText : "left",
     width: "100%",
     opacity: props.disabled ? "0.4" : null,
     cursor: props.disabled ? "not-allowed" : "",
