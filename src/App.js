@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { BiAlarm } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import "./App.css";
 import {
@@ -380,14 +381,20 @@ function App() {
       <div style={{ width: "300px", height: "155px" }}>
         <Pin hidden inputType="number" animated={false}></Pin>
       </div>
-      <Tabs defaultKey="3" variant={"borderline"}>
+      <Tabs
+        defaultKey="3"
+        variant="rounded"
+        onChange={(e) => {
+          console.log(e);
+        }}
+      >
         <TabHeader label="Tab One" id="3"></TabHeader>
-        <TabHeader label="Tab Two" id="4"></TabHeader>
+        <TabHeader label="Tab Two" id="4" leftIcon={<BiAlarm />}></TabHeader>
         <TabContent id="3">
-          <Paragraph style={{ marginLeft: "25px" }}>🤩</Paragraph>
+          <Paragraph>🤩</Paragraph>
         </TabContent>
         <TabContent id="4">
-          <Paragraph style={{ marginLeft: "25px" }}>😁</Paragraph>
+          <Paragraph>Test</Paragraph>
         </TabContent>
       </Tabs>
       <div>

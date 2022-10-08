@@ -4,12 +4,12 @@
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   margin-bottom: 25px !important;
   border-radius: 10px;
+  background-color: white;
   width: 100%;
-  main {
+  #tsum-tabs-main {
     min-width: 320px;
     padding: 15px;
     margin: 0 auto;
-    background: white;
     border-radius: 10px;
   }
 
@@ -24,20 +24,19 @@
     display: none;
   }
 
-  label {
+  .divLabel {
     margin-left: 5px;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
-    padding: 8px 13px;
+    padding: 10px 14px !important;
     font-weight: 500;
     text-align: center;
     color: #424242;
 
-    i {
+    .nvxTabIconLeft {
       margin-right: 10px;
-      font-size: 13px !important;
-      margin-top: 40px !important;
+      font-size: 15px;
     }
 
     span {
@@ -48,5 +47,8 @@
       font-weight: normal;
       margin-right: 10px;
     }
+  }
+  .nvxTabContent {
+    padding: 0px 35px 15px 35px;
   }
 }

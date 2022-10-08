@@ -26,11 +26,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 TabHeader.prototype = {
   label: _propTypes.PropTypes.string,
   selected: _propTypes.PropTypes.array,
-  disable: _propTypes.PropTypes.bool,
-  _TYPE: _propTypes.PropTypes.string
+  disabled: _propTypes.PropTypes.bool,
+  _TYPE: _propTypes.PropTypes.string,
+  leftIcon: _propTypes.PropTypes.node,
+  rightIcon: _propTypes.PropTypes.node
 };
 TabHeader.defaultProps = {
-  __TYPE: "TabHeader"
+  __TYPE: "TabHeader",
+  disabled: false
 };
 
 function TabHeader(props) {
@@ -54,8 +57,11 @@ function TabHeader(props) {
     fontWeight: "500",
     borderRadius: value.propStyle.variant === "borderline" ? "0px" : "25px",
     backgroundColor: checkVariant(value),
-    borderBottom: value.propStyle.variant === "borderline" ? "1px solid #003A61" : null,
-    cursor: props.disable ? "not-allowed" : null
+    borderBottom: value.propStyle.variant === "borderline" ? "2px solid #003A61" : null
+  };
+  const propStyle = {
+    cursor: props.disabled ? "not-allowed" : null,
+    opacity: props.disabled ? "0.5" : null
   };
 
   var customStyle = _objectSpread(_objectSpread({}, styleCheck), props.selected);
@@ -71,12 +77,15 @@ function TabHeader(props) {
     ref: ref,
     onChange: e => {},
     onClick: e => {
-      try {
-        props.onClick();
-      } catch (error) {}
+      if (!props.disabled) {
+        try {
+          props.onClick();
+        } catch (error) {}
+      }
     }
-  }), /*#__PURE__*/_react.default.createElement("label", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "divLabel vertical-align",
     htmlFor: props.id,
-    style: key === props.id ? customStyle : null
+    style: _objectSpread(_objectSpread({}, key === props.id ? customStyle : null), propStyle)
   }, /*#__PURE__*/_react.default.createElement("span", null, props.label)));
 }

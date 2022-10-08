@@ -5,12 +5,15 @@ import { TabContext } from "../../context/tabsContext";
 TabHeader.prototype = {
   label: PropTypes.string,
   selected: PropTypes.array,
-  disable: PropTypes.bool,
+  disabled: PropTypes.bool,
   _TYPE: PropTypes.string,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
 };
 
 TabHeader.defaultProps = {
   __TYPE: "TabHeader",
+  disabled: false,
 };
 
 export default function TabHeader(props) {
@@ -35,8 +38,12 @@ export default function TabHeader(props) {
     borderRadius: value.propStyle.variant === "borderline" ? "0px" : "25px",
     backgroundColor: checkVariant(value),
     borderBottom:
-      value.propStyle.variant === "borderline" ? "1px solid #003A61" : null,
-    cursor: props.disable ? "not-allowed" : null,
+      value.propStyle.variant === "borderline" ? "2px solid #003A61" : null,
+  };
+
+  const propStyle = {
+    cursor: props.disabled ? "not-allowed" : null,
+    opacity: props.disabled ? "0.5" : null,
   };
 
   var customStyle = { ...styleCheck, ...props.selected };
@@ -47,6 +54,7 @@ export default function TabHeader(props) {
     },
     [value.activeKey]
   );
+
   return (
     <>
       <input
@@ -57,14 +65,20 @@ export default function TabHeader(props) {
         ref={ref}
         onChange={(e) => {}}
         onClick={(e) => {
-          try {
-            props.onClick();
-          } catch (error) {}
+          if (!props.disabled) {
+            try {
+              props.onClick();
+            } catch (error) {}
+          }
         }}
       />
-      <label htmlFor={props.id} style={key === props.id ? customStyle : null}>
+      <div
+        className="divLabel vertical-align"
+        htmlFor={props.id}
+        style={{ ...(key === props.id ? customStyle : null), ...propStyle }}
+      >
         <span>{props.label}</span>
-      </label>
+      </div>
     </>
   );
 }

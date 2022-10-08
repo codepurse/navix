@@ -1,8 +1,8 @@
 import { PropTypes } from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 const TabContent = (props) => {
-  return <div className="nvxTabContent">{props.children}</div>;
+  return <Fragment />;
 };
 
 TabContent.propTypes = {

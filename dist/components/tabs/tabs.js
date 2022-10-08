@@ -1,5 +1,7 @@
 "use strict";
 
+require("core-js/modules/es.object.assign.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -13,18 +15,32 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _tabsContext = require("../../context/tabsContext");
 
+var _box = _interopRequireDefault(require("../box/box"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 const TAB_VARIANT = ["borderline", "rounded"];
+const TAB_ALIGN = ["evenly, center, start, end"];
 Tabs.propTypes = {
   tabs: _propTypes.PropTypes.array,
   variant: _propTypes.PropTypes.oneOf(TAB_VARIANT),
-  onclick: _propTypes.PropTypes.func,
+  onClick: _propTypes.PropTypes.func,
   backDrop: _propTypes.PropTypes.string,
   centered: _propTypes.PropTypes.bool,
-  defaultKey: _propTypes.PropTypes.string
+  defaultKey: _propTypes.PropTypes.string,
+  align: _propTypes.PropTypes.oneOf(TAB_ALIGN),
+  onChange: _propTypes.PropTypes.func
+};
+Tabs.defaultProps = {
+  align: "start",
+  onChange: () => {},
+  onClick: () => {}
 };
 
 function Tabs(props) {
@@ -36,8 +52,8 @@ function Tabs(props) {
     backgroundColor: props.backDrop,
     variant: props.variant
   };
-  const centered = {
-    justifyContent: "center",
+  const style = {
+    justifyContent: props.align,
     display: "flex"
   };
   (0, _react.useEffect)(e => {
@@ -55,10 +71,14 @@ function Tabs(props) {
       setActiveKey(props.defaultKey);
     }
   }, [props.children]);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  (0, _react.useEffect)(e => {
+    props.onChange(activeKey);
+  }, [activeKey]);
+  return /*#__PURE__*/_react.default.createElement(_box.default, _extends({
     id: "tsum-tabs"
-  }, /*#__PURE__*/_react.default.createElement("main", {
-    style: props.centered ? centered : null
+  }, props), /*#__PURE__*/_react.default.createElement(_box.default, {
+    id: "tsum-tabs-main",
+    style: style
   }, /*#__PURE__*/_react.default.createElement(_tabsContext.TabContext.Provider, {
     value: {
       propStyle,
@@ -77,11 +97,14 @@ function Tabs(props) {
               return;
             } else {
               try {
-                filteredComponent.props.onClick();
+                if (!filteredComponent.props.disabled) {
+                  filteredComponent.props.onClick();
+                }
               } catch (error) {}
 
-              setActiveKey(filteredComponent.props.id);
-              console.log(filteredComponent.props.id);
+              if (!filteredComponent.props.disabled) {
+                setActiveKey(filteredComponent.props.id);
+              }
             }
           }
         }, filteredComponent);
@@ -89,15 +112,17 @@ function Tabs(props) {
     } else {
       return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, " ", props.children);
     }
-  })())), /*#__PURE__*/_react.default.createElement("div", null, (() => {
+  })())), (() => {
     if (countContent > 0) {
       return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, props.children.filter(event => event.props.__TYPE === "TabContent").map((filteredComponent, key) => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
         key: key
       }, (() => {
         if (activeKey === filteredComponent.props.id) {
-          return /*#__PURE__*/_react.default.createElement("div", null, filteredComponent.props.children);
+          return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+            className: "nvxTabContent"
+          }, filteredComponent.props.children));
         }
       })())));
     }
-  })()));
+  })());
 }

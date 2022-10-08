@@ -1,16 +1,27 @@
 import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import { TabContext } from "../../context/tabsContext";
+import Box from "../box/box";
 
 const TAB_VARIANT = ["borderline", "rounded"];
+
+const TAB_ALIGN = ["evenly, center, start, end"];
 
 Tabs.propTypes = {
   tabs: PropTypes.array,
   variant: PropTypes.oneOf(TAB_VARIANT),
-  onclick: PropTypes.func,
+  onClick: PropTypes.func,
   backDrop: PropTypes.string,
   centered: PropTypes.bool,
   defaultKey: PropTypes.string,
+  align: PropTypes.oneOf(TAB_ALIGN),
+  onChange: PropTypes.func,
+};
+
+Tabs.defaultProps = {
+  align: "start",
+  onChange: () => {},
+  onClick: () => {},
 };
 
 export default function Tabs(props) {
@@ -23,8 +34,8 @@ export default function Tabs(props) {
     variant: props.variant,
   };
 
-  const centered = {
-    justifyContent: "center",
+  const style = {
+    justifyContent: props.align,
     display: "flex",
   };
 
@@ -46,9 +57,16 @@ export default function Tabs(props) {
     [props.children]
   );
 
+  useEffect(
+    (e) => {
+      props.onChange(activeKey);
+    },
+    [activeKey]
+  );
+
   return (
-    <div id="tsum-tabs">
-      <main style={props.centered ? centered : null}>
+    <Box id="tsum-tabs" {...props}>
+      <Box id="tsum-tabs-main" style={style}>
         <TabContext.Provider value={{ propStyle, activeKey, variant }}>
           {(() => {
             if (countHeader > 1) {
@@ -67,10 +85,14 @@ export default function Tabs(props) {
                                   return;
                                 } else {
                                   try {
-                                    filteredComponent.props.onClick();
+                                    if (!filteredComponent.props.disabled) {
+                                      filteredComponent.props.onClick();
+                                    }
                                   } catch (error) {}
-                                  setActiveKey(filteredComponent.props.id);
-                                  console.log(filteredComponent.props.id);
+
+                                  if (!filteredComponent.props.disabled) {
+                                    setActiveKey(filteredComponent.props.id);
+                                  }
                                 }
                               }}
                             >
@@ -87,28 +109,32 @@ export default function Tabs(props) {
             }
           })()}
         </TabContext.Provider>
-      </main>
-      <div>
-        {(() => {
-          if (countContent > 0) {
-            return (
-              <Fragment>
-                {props.children
-                  .filter((event) => event.props.__TYPE === "TabContent")
-                  .map((filteredComponent, key) => (
-                    <Fragment key={key}>
-                      {(() => {
-                        if (activeKey === filteredComponent.props.id) {
-                          return <div>{filteredComponent.props.children}</div>;
-                        }
-                      })()}
-                    </Fragment>
-                  ))}
-              </Fragment>
-            );
-          }
-        })()}
-      </div>
-    </div>
+      </Box>
+      {(() => {
+        if (countContent > 0) {
+          return (
+            <Fragment>
+              {props.children
+                .filter((event) => event.props.__TYPE === "TabContent")
+                .map((filteredComponent, key) => (
+                  <Fragment key={key}>
+                    {(() => {
+                      if (activeKey === filteredComponent.props.id) {
+                        return (
+                          <Fragment>
+                            <div className="nvxTabContent">
+                              {filteredComponent.props.children}
+                            </div>
+                          </Fragment>
+                        );
+                      }
+                    })()}
+                  </Fragment>
+                ))}
+            </Fragment>
+          );
+        }
+      })()}
+    </Box>
   );
 }

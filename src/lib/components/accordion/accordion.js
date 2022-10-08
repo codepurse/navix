@@ -2,15 +2,18 @@ import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import { AccordionContext } from "../../context/accordionContext";
 
+const ACCORDION_VARIANT = ["borderline", "rounded"];
+
 Accordion.propTypes = {
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(ACCORDION_VARIANT),
 };
 
 Accordion.defaultProps = {
   onClick: () => {},
   onChange: () => {},
+  variant: "rounded",
 };
 
 export default function Accordion(props) {
