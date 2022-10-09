@@ -10,6 +10,7 @@ Space.propTypes = {
   gap: PropTypes.number,
   align: PropTypes.oneOf(SPACE_ALIGN),
   fill: PropTypes.bool,
+  alignItems: PropTypes.string,
 };
 
 Space.defaultProps = {
@@ -22,6 +23,7 @@ export default function Space(props) {
     display: "flex",
     gap: props.gap + "px",
     width: props.fill ? "100%" : "",
+    alignItems: "center",
   };
   return <div style={propsStyle}>{props.children}</div>;
 }

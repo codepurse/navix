@@ -1,462 +1,162 @@
-import { Fragment, useEffect, useState } from "react";
-import { AiFillCheckCircle } from "react-icons/ai";
-import { BiAlarm } from "react-icons/bi";
-import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
 import "./App.css";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  Alert,
-  AlertContainer,
-  Box,
-  Button,
-  Checkbox,
-  List,
-  ListItem,
-  Overlay,
-  Pagination,
-  Paragraph,
-  Pin,
-  SegmentedButton,
-  Space,
-  Steps,
-  StepsList,
-  Switch,
-  TabContent,
-  TabHeader,
-  Table,
-  Tabs,
-  TblData,
-  Tooltip,
-  useArray,
-  useToggle,
-} from "./lib";
 import Avatar from "./lib/components/avatar/avatar";
-import AvatarBatch from "./lib/components/avatar/avatarBatch";
-import Badge from "./lib/components/badge/badge";
 import ButtonIcon from "./lib/components/buttonIcon/ButtonIcon";
-import Header from "./lib/components/header/Header";
-import Radio from "./lib/components/radio/radio";
-import RadioGroup from "./lib/components/radio/radioGroup";
+import Space from "./lib/components/space/space";
 import "./lib/components/styles/main.scss";
-import Textbox from "./lib/components/text/textbox";
+import TableNvx from "./lib/components/table/table";
 function App() {
-  const [show, setShow] = useToggle(true);
-  const [check, setCheck] = useState(false);
-  const notify = () => Alert.success("Sample Alert! Letss goo!");
-  const [id, setId] = useState();
-  const segmentedArray = [
+  const [bank, setBank] = useState("");
+
+  const handleDel = () => {
+    console.log(bank);
+  };
+
+  const [data, setData] = useState([
     {
-      id: "one",
-      label: "Button One",
-      disabled: true,
+      bank: (text) => (
+        <Space gap={20}>
+          <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ27EZ3l_Icj1cn6eOFiSs6prbY-ZFRsCfUdA&usqp=CAU" />
+          <div>
+            <p style={{ marginBottom: "5px" }}>Gandalf</p>
+            <label>White wizard</label>
+          </div>
+        </Space>
+      ),
+      suitability: "Mair",
+      customer: "White Staff",
+      volume: "Undying Lands",
+      action: (text) => (
+        <Space gap={5}>
+          <ButtonIcon variant={"delete"} />
+          <ButtonIcon variant="edit" />
+        </Space>
+      ),
     },
     {
-      id: "two",
-      label: "Button Two",
+      bank: (text) => (
+        <Space gap={20}>
+          <Avatar src="https://i0.wp.com/www.tor.com/wp-content/uploads/2019/04/glorfindel.jpg?fit=721%2C+9999&crop=0%2C0%2C100%2C1108px&ssl=1&w=640" />
+          <div>
+            <p style={{ marginBottom: "5px" }}>Glorifindel</p>
+            <label>Spiritual Warrior</label>
+          </div>
+        </Space>
+      ),
+      suitability: "Elves",
+      customer: "Sword or Dirk",
+      volume: "House of Golden Flower",
+      action: (text) => (
+        <Space gap={5}>
+          <ButtonIcon variant={"delete"} />
+          <ButtonIcon variant="edit" />
+        </Space>
+      ),
     },
     {
-      id: "three",
-      label: "Button Threeasd asd asd asd asdasdasdsadasdas asd ",
+      bank: (text) => (
+        <Space gap={20}>
+          <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwnnswetwI68MneXDMmYe9U3RjSEZWywKD7A&usqp=CAU" />
+          <div>
+            <p style={{ marginBottom: "5px" }}>Aragorn</p>
+            <label>King of Gondor</label>
+          </div>
+        </Space>
+      ),
+      suitability: "Man",
+      customer: "Anduril",
+      volume: "Middle Earth",
+      action: (text) => (
+        <Space gap={5}>
+          <ButtonIcon variant={"delete"} />
+          <ButtonIcon variant="edit" />
+        </Space>
+      ),
+    },
+
+    {
+      bank: (text) => (
+        <Space gap={20}>
+          <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTOBnH7quMdA5sKg21ISDBdHIS_wwrIwNKg&usqp=CAU" />
+          <div>
+            <p style={{ marginBottom: "5px" }}>Galadriel </p>
+            <label>Queen of Elves</label>
+          </div>
+        </Space>
+      ),
+      name: "Galadriel",
+      suitability: "Elves",
+      customer: "Ring of Nenya",
+      volume: "Riverdell",
+      action: (text) => (
+        <Space gap={5}>
+          <ButtonIcon
+            variant={"delete"}
+            onClick={(e) => {
+              alert("Are you sure you want to delete " + text.data.name);
+            }}
+          />
+          <ButtonIcon variant="edit" />
+        </Space>
+      ),
+    },
+  ]);
+  const columns = [
+    {
+      key: "bank",
+      headerName: "Bank",
+    },
+    {
+      key: "suitability",
+      headerName: "Suitability",
+    },
+    {
+      key: "customer",
+      headerName: "Customer",
+    },
+    {
+      key: "volume",
+      headerName: "Credit Volume",
+    },
+    {
+      key: "action",
+      headerName: "",
     },
   ];
 
-  const numArray = [1, 2, 3, 4, 5, 6, 7];
+  const handleRemove = (id) => {
+    const newPeople = data.filter((person) => person.bank !== id);
 
-  const testArray = useArray(numArray);
+    setData(newPeople);
+  };
 
-  function getCookie(name) {
-    let cookie = {};
-    document.cookie.split(";").forEach(function (el) {
-      let [k, v] = el.split("=");
-      cookie[k.trim()] = v;
-    });
-    return cookie[name];
-  }
-
-  useEffect(
-    (e) => {
-      console.log(id);
-    },
-    [id]
-  );
+  const styleComponents = `
+    th {
+      padding: 15px 10px !important;
+      padding-bottom: 20px !important;
+    }
+    tr {
+      transition: all 0.2s;
+    }
+  
+    tr:hover {
+      background: #F5F5F5 !important;
+    }`;
 
   return (
-    <div>
-      <Box margin={10} columnCount={3} columnGap="1em">
-        {Array.from({ length: 4 }, (_, i) => (
-          <Fragment>
-            <Box
-              className="h1"
-              h={100}
-              bgColor="#1D2939"
-              p={10}
-              mb={15}
-              display="inline-block"
-            />
-            <Box
-              className="h2"
-              h={200}
-              bgColor="#1CAF9A"
-              p={10}
-              mb={15}
-              display="inline-block"
-            />
-            <Box
-              className="h3"
-              h={300}
-              bgColor="tomato"
-              p={10}
-              mb={15}
-              display="inline-block"
-            />
-          </Fragment>
-        ))}
-      </Box>
-      <Box margin={10} columnCount={2} columnGap="1em" mt={20}>
-        <Box bgColor="#212121" h={150} br={10} p={18}>
-          <Space gap={10}>
-            <Paragraph color="#BDBDBD">TECHNOLOGY</Paragraph>
-            <Paragraph color="#BDBDBD" alignText="right" fontSize="sm">
-              Dashboard
-            </Paragraph>
-          </Space>
-          <Box fontWeight="bold" color="white" fontSize="2rem" mt={20}>
-            Google
-          </Box>
-        </Box>
-        <Box bgColor="#212121" h={150} br={10}></Box>
-      </Box>
-      {/*       <Box h={500} w={500} bgColor="#1D2939"></Box> */}
-      <Header style={{ textAlign: "center" }}>asdasd</Header>
-      <p>test</p>
-      <AlertContainer
-        stackable
-        duration={7000}
-        autoClose={false}
-        rendered={<p>asdasd</p>}
-      />
-      <Button onClick={(e) => notify()}>Set cookie</Button>
-      <Button type="primary" category="default">
-        Delete
-      </Button>
-      <Button type="cancel" category="solid">
-        None
-      </Button>
-      <Button
-        type="cancel"
-        onClick={(e) => {
-          setShow();
-        }}
-      >
-        Log
-      </Button>
-      <Textbox iconLeft={<FiSearch />} iconRight={<FiSearch />} />
-      <RadioGroup
-        defaultCheck="1"
-        onChange={(e) => {
-          console.log(e);
-        }}
-      >
-        <Radio
-          value="1"
-          label="Asds"
-          color="tomato"
-          onChange={(e) => {
-            console.log(e);
-          }}
-        />
-        <Radio value="2" label="Asds" />
-      </RadioGroup>
-      <AvatarBatch max="2">
-        <Avatar
-          label="Seulgi labadan"
-          src="https://i.pinimg.com/originals/7d/3b/9d/7d3b9da836ea9044474eeb5d5971bf85.jpg"
-        ></Avatar>
-        <Avatar src="https://www.pinkvilla.com/files/when-red-velvets-seulgi-opened-up-about-her-thoughts-on-debuting-sub-unit.jpg"></Avatar>
-        <Avatar src="http://pm1.narvii.com/6989/1aa8099ea958d8f9feead69ec561f43c0708c4f0r1-638-957v2_uhq.jpg"></Avatar>
-        <Avatar src="https://www.pinkvilla.com/files/when-red-velvets-seulgi-opened-up-about-her-thoughts-on-debuting-sub-unit.jpg"></Avatar>
-      </AvatarBatch>
-      <div
-        style={{
-          maxWidth: "100px",
-          margin: "15px",
-        }}
-      >
-        <Paragraph style={{ textAlign: "center" }}>
-          adadasdsaasdsadsadasdasdsadasdas asd asd asd asd asdas das dsa dasd
-          asd asd
-        </Paragraph>
-      </div>
-      <Badge type="primary">Primary</Badge>
-      <Overlay>
-        <div>
-          <Badge type="danger">Error</Badge>
-        </div>
-      </Overlay>
-      <Overlay
-        position="top"
-        rendered={
-          <div className="test">
-            <p>test</p>
-          </div>
-        }
-      >
-        <Button
-          type="cancel"
-          onClick={(e) => {
-            setShow();
-          }}
-        >
-          Log
-        </Button>
-      </Overlay>
-      <Accordion space="separeted">
-        <AccordionItem
-          wrapperStyle={{ backgroundColor: "#212121", borderRadius: "25px" }}
-          style={{ color: "white" }}
-          title="Accordion One"
-        >
-          <AccordionContent>
-            <div className="divSampleAcc">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud
-              </p>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem
-          wrapperStyle={{ backgroundColor: "#212121", borderRadius: "25px" }}
-          style={{ color: "white" }}
-          title="Accordion Two"
-        >
-          <AccordionContent>
-            <div className="divSampleAcc">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      <Accordion space="separeted">
-        <AccordionItem
-          title="Accordion One"
-          alignIcon={"left"}
-          wrapperStyle={{
-            backgroundColor: "#fff6ee",
-            borderRadius: "5px",
-            borderLeft: "5px solid #ffc48b",
-          }}
-        >
-          <AccordionContent>
-            <div className="divSampleAcc">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud
-              </p>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem
-          alignIcon={"left"}
-          title="Accordion Two"
-          wrapperStyle={{
-            backgroundColor: "#fafaff",
-            borderRadius: "5px",
-            borderLeft: "5px solid #84b3ff",
-          }}
-        >
-          <AccordionContent>
-            <div className="divSampleAcc">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      <div style={{ marginTop: "20px" }}>
-        <button
-          onClick={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        >
-          casdad
-        </button>
-        <Switch
-          backgroundColor={"green"}
-          checkedCaretColor="tomato"
-          checkedBgColor="black"
-          leftLabel="test"
-          rightLabel="test"
-          topLabel="test"
-          onChange={(e) => {
-            console.log(e);
-          }}
-          bottomLabel="test"
-        />
-      </div>
-      <List>
-        <ListItem
-          label="Landing page design"
-          subLabel="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-          renderIcon={<AiFillCheckCircle />}
-        >
-          <p>test</p>
-        </ListItem>
-        <ListItem
-          label="Brand guidelines"
-          subLabel="Ut enim ad minim veniam, quis nostrud exercitation ullamc asdas das das
-           das 
-           asd as
-           d asd 
-           asdsadasdasd asd 
-           asd aso"
-        ></ListItem>
-        <ListItem>
-          <div>test</div>
-        </ListItem>
-      </List>
-      <Pagination
-        totalRecords={100}
-        selectedStyle={{ backgroundColor: "tomato", color: "white" }}
-        pageLimit={1}
-        initialPage={2}
-        pageToShow={2}
-        onPageChange={(e) => {
-          console.log(e);
-        }}
-      ></Pagination>
-      <SegmentedButton
-        wrapperStyle={{ backgroundColor: "#212121", color: "white" }}
-        className="test"
-        id="test"
-        value={segmentedArray}
-        disabled
-        elipsis
-        fill={false}
-        onClick={(e) => {
-          console.log("wew");
-        }}
-        onActive={{ backgroundColor: "tomato" }}
-        selected={2}
-        onSelect={(e) => {
-          console.log(e);
-          setId(e);
+    <div style={{ width: "800px" }}>
+      <TableNvx
+        columns={columns}
+        className="testTable"
+        emptyText
+        styleComponents={styleComponents}
+        data={data}
+        _onHoverRowStyle
+        /*  style={{ borderColor: "tomato" }} */
+        rowClick={(e) => {
+          /*   console.log(e); */
         }}
       />
-      <Overlay>
-        <Box
-          style={{ height: "100px", width: "100px" }}
-          backgroundColor="tomato"
-        ></Box>
-      </Overlay>
-      <Tooltip
-        content={
-          <div>
-            <Button type="primary">Sample</Button>
-          </div>
-        }
-        backgroundColor="tomato"
-        arrowColor="tomato"
-        arrow={true}
-        direction={"bottom"}
-        space={50}
-      >
-        <div style={{ marginTop: "10px" }}>
-          <ButtonIcon variant="notes" size={"sm"} />
-        </div>
-      </Tooltip>
-      <div style={{ width: "300px", height: "155px" }}>
-        <Pin hidden inputType="number" animated={false}></Pin>
-      </div>
-      <Tabs
-        defaultKey="3"
-        variant="rounded"
-        onChange={(e) => {
-          console.log(e);
-        }}
-      >
-        <TabHeader label="Tab One" id="3"></TabHeader>
-        <TabHeader label="Tab Two" id="4" leftIcon={<BiAlarm />}></TabHeader>
-        <TabContent id="3">
-          <Paragraph>🤩</Paragraph>
-        </TabContent>
-        <TabContent id="4">
-          <Paragraph>Test</Paragraph>
-        </TabContent>
-      </Tabs>
-      <div>
-        <Table>
-          <TblData>test</TblData>
-        </Table>
-      </div>
-      <Space direction="row" gap={10} align="evenly">
-        <ButtonIcon
-          variant="notes"
-          size={"lg"}
-          rounded
-          disabled
-          onClick={(e) => {
-            console.log("ttest");
-          }}
-        />
-        <ButtonIcon variant="notes" size={"sm"} rounded />
-        <ButtonIcon variant="notes" size={"sm"} />
-      </Space>
-      <Steps withNum selected={2}>
-        <StepsList />
-        <StepsList />
-        <StepsList />
-      </Steps>
-      <button
-        onClick={(e) => {
-          setCheck((prev) => !prev);
-        }}
-      >
-        asdsa
-      </button>
-      <Checkbox
-        label="Test Checbox"
-        checkedCaretColor="tomato"
-        checkedBgColor="green"
-        size="md"
-      />
-      <Checkbox
-        label="Test Checkbox"
-        size="md"
-        positionLabel={"left"}
-        labelStyle={{ color: "tomato" }}
-        checkedCaretColor="yellow"
-        onChange={(e) => {
-          console.log(e);
-        }}
-      />
-      <div style={{ marginTop: "20px" }}>
-        <Paragraph
-          disabled
-          fontSize="xxl"
-          underline
-          onClick={(e) => {
-            console.log("test");
-          }}
-          required
-          className="testP"
-        >
-          test
-        </Paragraph>
-      </div>
     </div>
   );
 }
