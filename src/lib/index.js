@@ -24,6 +24,7 @@ import Space from "./components/space/space";
 import Steps from "./components/steps/step";
 import StepsList from "./components/steps/stepsList";
 import Switch from "./components/switch/switch";
+import Table from "./components/table/table";
 import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
@@ -74,4 +75,5 @@ export {
   Space,
   Steps,
   StepsList,
+  Table,
 };

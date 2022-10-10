@@ -4,7 +4,7 @@ import Avatar from "./lib/components/avatar/avatar";
 import ButtonIcon from "./lib/components/buttonIcon/ButtonIcon";
 import Space from "./lib/components/space/space";
 import "./lib/components/styles/main.scss";
-import TableNvx from "./lib/components/table/table";
+import Table from "./lib/components/table/table";
 function App() {
   const [bank, setBank] = useState("");
 
@@ -145,13 +145,12 @@ function App() {
 
   return (
     <div style={{ width: "800px" }}>
-      <TableNvx
+      <Table
         columns={columns}
         className="testTable"
         emptyText
         styleComponents={styleComponents}
         data={data}
-        _onHoverRowStyle
         /*  style={{ borderColor: "tomato" }} */
         rowClick={(e) => {
           /*   console.log(e); */

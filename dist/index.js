@@ -179,6 +179,12 @@ Object.defineProperty(exports, "TabHeader", {
     return _tabHeader.default;
   }
 });
+Object.defineProperty(exports, "Table", {
+  enumerable: true,
+  get: function get() {
+    return _table.default;
+  }
+});
 Object.defineProperty(exports, "Tabs", {
   enumerable: true,
   get: function get() {
@@ -285,6 +291,8 @@ var _step = _interopRequireDefault(require("./components/steps/step"));
 var _stepsList = _interopRequireDefault(require("./components/steps/stepsList"));
 
 var _switch = _interopRequireDefault(require("./components/switch/switch"));
+
+var _table = _interopRequireDefault(require("./components/table/table"));
 
 var _tabContent = _interopRequireDefault(require("./components/tabs/tabContent"));
 

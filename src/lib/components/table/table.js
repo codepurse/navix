@@ -10,7 +10,7 @@ import Style from "style-it";
 const TABLE_VARIANT = ["striped", "basic"];
 const TABLE_LAYOUT = ["auto", "fixed"];
 
-TableNvx.propTypes = {
+Table.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
   variant: PropTypes.oneOf(TABLE_VARIANT),
@@ -25,7 +25,7 @@ TableNvx.propTypes = {
   styleComponents: PropTypes.array,
 };
 
-TableNvx.defaultProps = {
+Table.defaultProps = {
   data: [],
   columns: [],
   variant: "basic",
@@ -39,7 +39,7 @@ TableNvx.defaultProps = {
   styleComponents: [],
 };
 
-export default function TableNvx(props) {
+export default function Table(props) {
   const [sortBy, setSortBy] = useState("");
   const [orderBy, setOrderBy] = useState("");
   const [dataTable, setData] = useState([]);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = TableNvx;
+exports.default = Table;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -31,7 +31,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const TABLE_VARIANT = ["striped", "basic"];
 const TABLE_LAYOUT = ["auto", "fixed"];
-TableNvx.propTypes = {
+Table.propTypes = {
   data: _propTypes.PropTypes.array,
   columns: _propTypes.PropTypes.array,
   variant: _propTypes.PropTypes.oneOf(TABLE_VARIANT),
@@ -45,7 +45,7 @@ TableNvx.propTypes = {
   style: _propTypes.PropTypes.array,
   styleComponents: _propTypes.PropTypes.array
 };
-TableNvx.defaultProps = {
+Table.defaultProps = {
   data: [],
   columns: [],
   variant: "basic",
@@ -59,7 +59,7 @@ TableNvx.defaultProps = {
   styleComponents: []
 };
 
-function TableNvx(props) {
+function Table(props) {
   var _props$stripedColor;
 
   const [sortBy, setSortBy] = (0, _react.useState)("");
