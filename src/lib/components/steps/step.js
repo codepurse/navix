@@ -1,13 +1,18 @@
 import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
+import Style from "style-it";
+import StepsList from "./stepsList";
 
 Steps.propTypes = {
   withNum: PropTypes.bool,
   selected: PropTypes.number,
+  lineColor: PropTypes.string,
+  withAnimation: PropTypes.bool,
 };
 
 Steps.defaultProps = {
   selected: 1,
+  withAnimation: true,
 };
 
 export default function Steps(props) {
@@ -39,7 +44,20 @@ export default function Steps(props) {
     },
     [props.selected]
   );
-  return (
+  return Style.it(
+    `
+    .nvxStepsInner .steps .step.active {
+      border: 2px solid ${props?.bgColorActive ?? "#00679d"};
+      background-color: ${props?.bgColorActive ?? "#00679d"};
+      color: ${props?.color ?? "white"};
+    }
+    .nvxStepsInner .steps #progress {
+      background-color: ${props?.borderColorActive ?? "#424242"}
+    }
+    #stepsPulse {
+      animation: pulse ${props?.withAnimation ? "2s" : "0s"} infinite;
+    }
+    `,
     <div className="nvxStepsInner">
       <div className="steps">
         <div id="progress" />
@@ -54,18 +72,13 @@ export default function Steps(props) {
                     <Fragment key={key}>
                       {(() => {
                         return (
-                          <span
+                          <StepsList
+                            withNum={props?.withNum}
+                            num={key + 1}
                             id={step - 1 === key ? "stepsPulse" : ""}
                             className={step > key ? "step active " : "step"}
-                          >
-                            {props.withNum ? (
-                              key + 1
-                            ) : filteredComponent.props.icon ? (
-                              <filteredComponent.props.icon />
-                            ) : (
-                              ""
-                            )}
-                          </span>
+                            {...filteredComponent.props}
+                          ></StepsList>
                         );
                       })()}
                     </Fragment>

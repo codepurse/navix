@@ -3,6 +3,7 @@ import React from "react";
 
 StepsList.propTypes = {
   __TYPE: PropTypes.string,
+  withNum: PropTypes.bool,
 };
 
 StepsList.defaultProps = {
@@ -10,5 +11,5 @@ StepsList.defaultProps = {
 };
 
 export default function StepsList(props) {
-  return <span>{props.children}</span>;
+  return <span {...props}>{props?.withNum ? props.num : ""}</span>;
 }
