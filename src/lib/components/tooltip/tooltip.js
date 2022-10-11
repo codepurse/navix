@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "style-it";
 
 const TOOLTIP_DIRECTION = ["top", "left", "right", "bottom"];
@@ -15,6 +15,7 @@ Tooltip.propTypes = {
   arrow: PropTypes.boolean,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   delayHide: PropTypes.number,
+  alwaysOpen: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
@@ -24,6 +25,7 @@ Tooltip.defaultProps = {
   space: 30,
   arrow: true,
   delayHide: 30,
+  alwaysOpen: false,
 };
 export default function Tooltip(props) {
   let timeout;
@@ -48,6 +50,12 @@ export default function Tooltip(props) {
     background: props?.backgroundColor ?? "#212121",
     marginTop: props.direction === "bottom" ? props.space + "px" : "0px",
   };
+
+  useEffect(() => {
+    if (props.alwaysOpen) {
+      setActive(true);
+    }
+  }, [props.alwaysOpen]);
 
   return Style.it(
     `
@@ -82,7 +90,12 @@ export default function Tooltip(props) {
     <div
       className="Tooltip-Wrapper"
       onMouseEnter={showTip}
-      onMouseLeave={hideTip}
+      onMouseLeave={(e) => {
+        if (props.alwaysOpen) {
+        } else {
+          hideTip();
+        }
+      }}
     >
       {props.children}
       <div className={active ? "nvxfadeIn" : "nvxfadeOut"}>

@@ -85,7 +85,7 @@
 
 .Tooltip-Tip.left::before {
   left: auto;
-  right: calc(var(--tooltip-arrow-size) * -1);
+  right: calc(var(--tooltip-arrow-size) * -2);
   top: 50%;
   transform: translateX(0) translateY(-50%);
 }
