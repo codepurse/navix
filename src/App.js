@@ -1,13 +1,10 @@
 import "./App.css";
+import Box from "./lib/components/box/box";
 import "./lib/components/styles/main.scss";
-import Tooltip from "./lib/components/tooltip/tooltip";
 function App() {
   return (
     <div style={{ width: "800px" }}>
-      <Tooltip content="Testasdasdasdsad" direction="left" alwaysOpen>
-        <p>Sample tooltiasdasdasdasdasdasdsap</p>
-        <p>Sample tooltiasdasdasdasdasdasdsap</p>
-      </Tooltip>
+      <Box w="400px" h="400px" background="green" mt="100px"></Box>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 Box.propTypes = {
   bgColor: PropTypes.string,
@@ -10,10 +10,10 @@ Box.propTypes = {
   pr: PropTypes.string, // paddingRight
   pt: PropTypes.any, // paddingTop
   pb: PropTypes.any, //paddingBottom
-  w: PropTypes.number, // width
-  h: PropTypes.number, // height
-  minH: PropTypes.number, // minHeight
-  maxH: PropTypes.number, // maxHeight
+  w: PropTypes.any, // width
+  h: PropTypes.any, // height
+  minH: PropTypes.any, // minHeight
+  maxH: PropTypes.any, // maxHeight
   m: PropTypes.string, // margin
   ml: PropTypes.any, // marginLeft
   mr: PropTypes.any, // marginRight
@@ -56,63 +56,76 @@ Box.propTypes = {
 };
 
 export default function Box(props) {
+  const [filterStyle, setFilterStyle] = useState([]);
   var { style, ...other } = props;
   const propsStyle = {
-    width: props?.w + "px",
-    height: props?.h + "px",
-    padding: props?.p + "px",
-    paddingLeft: props?.pl + "px",
-    paddingRight: props?.pr + "px",
-    paddingTop: props?.pt + "px",
-    paddingBottom: props?.pb + "px",
-    minHeight: props?.minH + "px",
-    maxHeight: props?.maxH + "px",
-    margin: props?.margin + "px",
-    marginTop: props?.mt + "px",
-    background: props?.background ?? null,
-    backgroundColor: props?.bgColor ?? null,
-    marginBottom: props?.mb + "px" ?? null,
-    overflow: props?.overflow ?? null,
-    overflowX: props?.overflowX ?? null,
-    overflowY: props?.overflowY ?? null,
-    dp: props?.display ?? null,
-    backgroundImage: props?.bgGradient ?? null,
-    borderRadius: props?.br + "px" ?? null,
-    border: props?.border ?? null,
-    borderWidth: props?.borderWidth + "px" ?? null,
-    borderColor: props?.borderColor ?? null,
-    borderTop: props?.borderTop + "px" ?? null,
-    borderBottom: props?.borderBottom + "px" ?? null,
-    borderLeft: props?.borderLeft + "px" ?? null,
-    borderRight: props?.borderRight + "px" ?? null,
-    verticalAlign: props?.vAlign ?? null,
-    flex: props?.flex ?? null,
-    gap: props?.gap + "px" ?? null,
-    rowGap: props?.rowGap + "px" ?? null,
-    flexDirection: props?.flexDirection ?? null,
-    flexGrow: props?.flexGrow ?? null,
-    flexWrap: props?.flexWrap ?? null,
-    order: props?.order ?? null,
-    flexShrink: props?.flexShrink ?? null,
-    pointerEvents: props?.pointerEvents ?? null,
-    visibility: props?.visibility ?? null,
-    wordBreak: props?.wordBreak ?? null,
-    cursor: props?.cursor ?? null,
-    float: props?.float ?? null,
-    boxSize: props?.boxSize ?? null,
-    boxShadow: props?.boxShadow ?? null,
-    backdropFilter: props?.backdropFilter ?? null,
-    columnCount: props?.columnCount ?? null,
-    columnGap: props?.columnGap ?? null,
-    fontSize: props?.fontSize ?? null,
-    textAlign: props?.alignText ?? null,
-    fontWeight: props?.fontWeight ?? null,
-    color: props?.color ?? null,
+    width: props?.w,
+    height: props?.h,
+    padding: props?.p,
+    paddingLeft: props?.pl,
+    paddingRight: props?.pr,
+    paddingTop: props?.pt,
+    paddingBottom: props?.pb,
+    minHeight: props?.minH,
+    maxHeight: props?.maxH,
+    margin: props?.margin,
+    marginTop: props?.mt,
+    background: props?.background,
+    backgroundColor: props?.bgColor,
+    marginBottom: props?.mb,
+    overflow: props?.overflow,
+    overflowX: props?.overflowX,
+    overflowY: props?.overflowY,
+    dp: props?.display,
+    backgroundImage: props?.bgGradient,
+    borderRadius: props?.br,
+    border: props?.border,
+    borderWidth: props?.borderWidth,
+    borderColor: props?.borderColor,
+    borderTop: props?.borderTop,
+    borderBottom: props?.borderBottom,
+    borderLeft: props?.borderLeft,
+    borderRight: props?.borderRight,
+    verticalAlign: props?.vAlign,
+    flex: props?.flex,
+    gap: props?.gap,
+    rowGap: props?.rowGap,
+    flexDirection: props?.flexDirection,
+    flexGrow: props?.flexGrow,
+    flexWrap: props?.flexWrap,
+    order: props?.order,
+    flexShrink: props?.flexShrink,
+    pointerEvents: props?.pointerEvents,
+    visibility: props?.visibility,
+    wordBreak: props?.wordBreak,
+    cursor: props?.cursor,
+    float: props?.float,
+    boxSize: props?.boxSize,
+    boxShadow: props?.boxShadow,
+    backdropFilter: props?.backdropFilter,
+    columnCount: props?.columnCount,
+    columnGap: props?.columnGap,
+    fontSize: props?.fontSize,
+    textAlign: props?.alignText,
+    fontWeight: props?.fontWeight,
+    color: props?.color,
     ...style,
   };
 
+  useEffect(
+    (e) => {
+      Object.keys(propsStyle).forEach((key) => {
+        if (propsStyle[key] === undefined) {
+          delete propsStyle[key];
+        }
+      });
+      setFilterStyle(propsStyle);
+    },
+    [props]
+  );
+
   return (
-    <div className={props.className} style={propsStyle} {...other}>
+    <div className={props.className} style={filterStyle} {...other}>
       {props.children}
     </div>
   );
