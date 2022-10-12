@@ -34,7 +34,7 @@ export default function Paragraph(props) {
     WebkitLineClamp: props.showLineNo ? props.showLineNo : "",
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
-    textAlign: props?.alignText ?? "left",
+    textAlign: props?.alignText ?? "",
     width: "100%",
     opacity: props.disabled ? "0.4" : null,
     cursor: props.disabled ? "not-allowed" : "",
