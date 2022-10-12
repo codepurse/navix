@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Style from "style-it";
 import { RadioContext } from "../../context/radioContext";
 const RADIO_SIZES = ["lg", "sm", "md"];
@@ -31,7 +31,7 @@ export default function Radio(props) {
     cursor: props.disabled ? "not-allowed" : "",
     color: props.disabled ? "gray" : "",
   };
-
+  /* 
   useEffect(
     (e) => {
       if (active !== value.default) {
@@ -40,9 +40,9 @@ export default function Radio(props) {
       }
     },
     [value.default]
-  );
+  ); */
 
-  useEffect(
+  /*  useEffect(
     (e) => {
       try {
         document.getElementById(active).checked = true;
@@ -50,7 +50,7 @@ export default function Radio(props) {
     },
     [active]
   );
-
+ */
   const radioSize = (value) => {
     switch (value) {
       case "md":
@@ -77,6 +77,7 @@ export default function Radio(props) {
         className={"nvxRadio " + radioSize(props.size)}
         type="radio"
         id={props.value}
+        defaultChecked={value.default === props.value ? true : false}
         name={value.name}
         onClick={(e) => {
           setActive(props.value);

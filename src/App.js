@@ -22,9 +22,24 @@ function App() {
   return (
     <div style={{ width: "800px" }}>
       <Space gap={10} direction="column">
-        <RadioGroup>
-          <Radio value="1"></Radio>
-          <Radio value="2"></Radio>
+        <RadioGroup
+          defaultCheck="2"
+          onChange={(e) => {
+            console.log(e);
+          }}
+        >
+          <Radio
+            value="1"
+            onChange={(e) => {
+              console.log(e);
+            }}
+          ></Radio>
+          <Radio
+            value="2"
+            onChange={(e) => {
+              console.log(e);
+            }}
+          ></Radio>
         </RadioGroup>
       </Space>
     </div>
