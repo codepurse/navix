@@ -1,4 +1,5 @@
 import "./App.css";
+import Button from "./lib/components/button/Button";
 import "./lib/components/styles/main.scss";
 import Table from "./lib/components/table/table";
 function App() {
@@ -49,6 +50,9 @@ function App() {
   return (
     <div style={{ width: "800px" }}>
       <Table columns={columns} data={data} isLoading />
+      <Button type={"cancel"} style={{ fontSize: "2rem" }}>
+        Sample
+      </Button>
     </div>
   );
 }

@@ -48,9 +48,10 @@ export default function Button(props) {
     opacity: props.disabled ? "0.5" : "",
     fontSize: buttonSize(props.size),
     borderRadius: props.circular ? "500px" : null,
+    borderColor: props.variant === "cancel",
   };
 
-  const customStyle = { ...propsStyle, ...props.css?.button };
+  const customStyle = { ...propsStyle, ...props.css?.button, ...props.style };
   return (
     <button
       style={customStyle}
