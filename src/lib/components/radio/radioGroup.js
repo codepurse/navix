@@ -1,5 +1,14 @@
+import { PropTypes } from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import { RadioContext } from "../../context/radioContext";
+
+RadioGroup.propTypes = {
+  onChange: PropTypes.func,
+};
+
+RadioGroup.defaultProps = {
+  onChange: () => {},
+};
 
 export default function RadioGroup(props) {
   const [count, setCount] = useState();
