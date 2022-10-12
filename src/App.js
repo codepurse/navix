@@ -41,6 +41,25 @@ function App() {
             }}
           ></Radio>
         </RadioGroup>
+        <RadioGroup
+          defaultCheck="2"
+          onChange={(e) => {
+            console.log(e);
+          }}
+        >
+          <Radio
+            value="1"
+            onChange={(e) => {
+              console.log(e);
+            }}
+          ></Radio>
+          <Radio
+            value="2"
+            onChange={(e) => {
+              console.log(e);
+            }}
+          ></Radio>
+        </RadioGroup>
       </Space>
     </div>
   );

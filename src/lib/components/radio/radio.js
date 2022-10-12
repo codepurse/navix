@@ -24,6 +24,7 @@ Radio.defaultProps = {
 };
 
 export default function Radio(props) {
+  const randomName = Math.random();
   const value = useContext(RadioContext);
   const [active, setActive] = useState("1");
   const propsStyle = {
@@ -76,7 +77,8 @@ export default function Radio(props) {
       <input
         className={"nvxRadio " + radioSize(props.size)}
         type="radio"
-        id={props.value}
+        value={props.value}
+        id={props.value + randomName}
         defaultChecked={value.default === props.value ? true : false}
         name={value.name}
         onClick={(e) => {
@@ -94,7 +96,7 @@ export default function Radio(props) {
         }
         id={props.disabled ? "nvxRadioLblInvalid" : ""}
         style={propsStyle}
-        htmlFor={props.value}
+        htmlFor={props.value + randomName}
       >
         {props.label}
       </label>

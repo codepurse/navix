@@ -21,9 +21,6 @@ export default function RadioGroup(props) {
     [props]
   );
 
-  useEffect((e) => {
-    console.log("render");
-  });
   return (
     <RadioContext.Provider
       value={{ default: props.defaultCheck, name: Math.random() }}
