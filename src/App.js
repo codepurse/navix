@@ -1,68 +1,54 @@
 import "./App.css";
-import Radio from "./lib/components/radio/radio";
-import RadioGroup from "./lib/components/radio/radioGroup";
-import Space from "./lib/components/space/space";
 import "./lib/components/styles/main.scss";
+import Table from "./lib/components/table/table";
 function App() {
-  const segmentedArray = [
+  const columns = [
     {
-      id: "one",
-      label: "Button One",
+      key: "bank",
+      headerName: "Bank",
     },
     {
-      id: "two",
-      label: "Button Two",
+      key: "suitability",
+      headerName: "Suitability",
     },
     {
-      id: "three",
-      label: "Button Three",
+      key: "customer",
+      headerName: "Customer",
+    },
+    {
+      key: "volume",
+      headerName: "Credit Volume",
+    },
+    {
+      key: "action",
+      headerName: "",
+    },
+  ];
+
+  const data = [
+    {
+      bank: "Anz Banking",
+      suitability: "Pairing",
+      customer: "Michael Polansky",
+      volume: "$300,000.00",
+    },
+    {
+      bank: "Axis Bank",
+      suitability: "Fragmentary",
+      customer: "David Hoffman",
+      volume: "$500,000.00",
+    },
+    {
+      bank: "ING Group",
+      suitability: "Pairing",
+      customer: "Helen Howard",
+      volume: "$100,000.00",
     },
   ];
 
   return (
     <div style={{ width: "800px" }}>
-      <Space gap={10} direction="column">
-        <RadioGroup
-          defaultCheck="2"
-          onChange={(e) => {
-            console.log(e);
-          }}
-        >
-          <Radio
-            value="1"
-            className="testClass"
-            size="lg"
-            onChange={(e) => {
-              console.log(e);
-            }}
-          ></Radio>
-          <Radio
-            value="2"
-            onChange={(e) => {
-              console.log(e);
-            }}
-          ></Radio>
-        </RadioGroup>
-        <RadioGroup
-          defaultCheck="2"
-          onChange={(e) => {
-            console.log(e);
-          }}
-        >
-          <Radio
-            value="1"
-            onChange={(e) => {
-              console.log(e);
-            }}
-          ></Radio>
-          <Radio
-            value="2"
-            onChange={(e) => {
-              console.log(e);
-            }}
-          ></Radio>
-        </RadioGroup>
-      </Space>
+      <Table columns={columns} data={data} isLoading />
     </div>
   );
 }

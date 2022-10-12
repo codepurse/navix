@@ -6,6 +6,7 @@ import {
   TiArrowUnsorted,
 } from "react-icons/ti";
 import Style from "style-it";
+import LoadingTable from "./loadingTable";
 
 const TABLE_VARIANT = ["striped", "basic"];
 const TABLE_LAYOUT = ["auto", "fixed"];
@@ -22,7 +23,9 @@ Table.propTypes = {
   _styleHeader: PropTypes.array,
   rowClick: PropTypes.func,
   style: PropTypes.array,
+  isLoading: PropTypes.bool,
   styleComponents: PropTypes.array,
+  loadingCount: PropTypes.number,
 };
 
 Table.defaultProps = {
@@ -37,6 +40,7 @@ Table.defaultProps = {
   rowClick: () => {},
   style: [],
   styleComponents: [],
+  isLoading: false,
 };
 
 export default function Table(props) {
@@ -165,6 +169,9 @@ export default function Table(props) {
           ) : (
             ""
           )}
+          {props.isLoading ? (
+            <LoadingTable count={props.loadingCount ?? props.columns.length} />
+          ) : null}
         </tbody>
       </table>
     </div>
