@@ -30,6 +30,8 @@ function App() {
         >
           <Radio
             value="1"
+            className="testClass"
+            size="lg"
             onChange={(e) => {
               console.log(e);
             }}

@@ -15,12 +15,14 @@ Radio.propTypes = {
   label: PropTypes.string,
   selected: PropTypes.bool,
   _TYPE: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Radio.defaultProps = {
   __TYPE: "Radio",
   onClick: () => {},
   onChange: () => {},
+  className: "",
 };
 
 export default function Radio(props) {
@@ -75,7 +77,7 @@ export default function Radio(props) {
     `,
     <div className="nvxRadioDiv">
       <input
-        className={"nvxRadio " + radioSize(props.size)}
+        className={"nvxRadio " + radioSize(props.size) + ` ${props.className}`}
         type="radio"
         value={props.value}
         id={props.value + randomName}

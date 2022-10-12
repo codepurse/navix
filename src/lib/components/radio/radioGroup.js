@@ -5,10 +5,12 @@ import { RadioContext } from "../../context/radioContext";
 RadioGroup.propTypes = {
   onChange: PropTypes.func,
   defaultValue: PropTypes.string,
+  className: PropTypes.string,
 };
 
 RadioGroup.defaultProps = {
   onChange: () => {},
+  className: "",
 };
 
 export default function RadioGroup(props) {
@@ -26,7 +28,7 @@ export default function RadioGroup(props) {
       value={{ default: props.defaultCheck, name: Math.random() }}
     >
       <form
-        className="nvxRadioGroup"
+        className={"nvxRadioGroup " + props.className}
         onChange={(e) => {
           props.onChange(e.target, e.target.id);
         }}
