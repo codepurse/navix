@@ -35,14 +35,11 @@
       padding: 0;
       cursor: pointer;
       border-radius: 4px;
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.2s;
       box-shadow: inset 0 0 0 var(--s, 1px) var(--a, var(--border));
       &:hover {
         --s: 2px;
         --a: var(--border-hover);
-      }
-      &:checked {
-        --a: var(--border-active);
       }
     }
     svg {
@@ -63,7 +60,7 @@
       input {
         &:checked {
           --s: 2px;
-          transition-delay: 0.4s;
+          transition-delay: 0.2s;
           & + svg {
             --a: 16.1 86.12;
             --o: 102.22;
@@ -82,7 +79,7 @@
         &:checked {
           --s: 11px;
           & + svg {
-            animation: bounce 0.4s linear forwards 0.2s;
+            animation: bounce_ani 0.4s linear forwards 0.2s;
           }
         }
       }
@@ -92,7 +89,7 @@
     }
   }
 
-  @keyframes bounce {
+  @keyframes bounce_ani {
     50% {
       transform: scale(1.2);
     }
@@ -105,14 +102,12 @@
   }
 }
 
-.nvxCbxMd .checkbox input,
-.nvxCbx .checkbox svg {
+.nvxCbxMd .checkbox input {
   width: 22px !important;
   height: 22px !important;
 }
 
-.nvxCbxLg .checkbox input,
-.nvxCbx .checkbox svg {
+.nvxCbxLg .checkbox input {
   width: 27px !important;
   height: 27px !important;
 }

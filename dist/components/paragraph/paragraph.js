@@ -53,7 +53,7 @@ function Paragraph(props) {
     WebkitLineClamp: props.showLineNo ? props.showLineNo : "",
     fontWeight: props.bold ? "bold" : "",
     fontStyle: props.italic ? "italic" : "",
-    textAlign: (_props$alignText = props === null || props === void 0 ? void 0 : props.alignText) !== null && _props$alignText !== void 0 ? _props$alignText : "left",
+    textAlign: (_props$alignText = props === null || props === void 0 ? void 0 : props.alignText) !== null && _props$alignText !== void 0 ? _props$alignText : "",
     width: "100%",
     opacity: props.disabled ? "0.4" : null,
     cursor: props.disabled ? "not-allowed" : "",

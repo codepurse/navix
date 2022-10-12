@@ -62,10 +62,11 @@ function Button(props) {
     width: props.fill && "100%",
     opacity: props.disabled ? "0.5" : "",
     fontSize: (0, _buttonStyles.buttonSize)(props.size),
-    borderRadius: props.circular ? "500px" : null
+    borderRadius: props.circular ? "500px" : null,
+    borderColor: props.variant === "cancel"
   };
 
-  const customStyle = _objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.button);
+  const customStyle = _objectSpread(_objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.button), props.style);
 
   return /*#__PURE__*/_react.default.createElement("button", {
     style: customStyle,

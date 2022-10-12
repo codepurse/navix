@@ -7,13 +7,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Box;
 
+require("core-js/modules/web.dom-collections.iterator.js");
+
 var _propTypes = require("prop-types");
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 const _excluded = ["style"];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -41,13 +45,13 @@ Box.propTypes = {
   // paddingTop
   pb: _propTypes.PropTypes.any,
   //paddingBottom
-  w: _propTypes.PropTypes.number,
+  w: _propTypes.PropTypes.any,
   // width
-  h: _propTypes.PropTypes.number,
+  h: _propTypes.PropTypes.any,
   // height
-  minH: _propTypes.PropTypes.number,
+  minH: _propTypes.PropTypes.any,
   // minHeight
-  maxH: _propTypes.PropTypes.number,
+  maxH: _propTypes.PropTypes.any,
   // maxHeight
   m: _propTypes.PropTypes.string,
   // margin
@@ -96,7 +100,7 @@ Box.propTypes = {
 };
 
 function Box(props) {
-  var _props$background, _props$bgColor, _ref, _props$overflow, _props$overflowX, _props$overflowY, _props$display, _props$bgGradient, _ref2, _props$border, _ref3, _props$borderColor, _ref4, _ref5, _ref6, _ref7, _props$vAlign, _props$flex, _ref8, _ref9, _props$flexDirection, _props$flexGrow, _props$flexWrap, _props$order, _props$flexShrink, _props$pointerEvents, _props$visibility, _props$wordBreak, _props$cursor, _props$float, _props$boxSize, _props$boxShadow, _props$backdropFilter, _props$columnCount, _props$columnGap, _props$fontSize, _props$alignText, _props$fontWeight, _props$color;
+  const [filterStyle, setFilterStyle] = (0, _react.useState)([]);
 
   var {
     style
@@ -104,60 +108,68 @@ function Box(props) {
       other = _objectWithoutProperties(props, _excluded);
 
   const propsStyle = _objectSpread({
-    width: (props === null || props === void 0 ? void 0 : props.w) + "px",
-    height: (props === null || props === void 0 ? void 0 : props.h) + "px",
-    padding: (props === null || props === void 0 ? void 0 : props.p) + "px",
-    paddingLeft: (props === null || props === void 0 ? void 0 : props.pl) + "px",
-    paddingRight: (props === null || props === void 0 ? void 0 : props.pr) + "px",
-    paddingTop: (props === null || props === void 0 ? void 0 : props.pt) + "px",
-    paddingBottom: (props === null || props === void 0 ? void 0 : props.pb) + "px",
-    minHeight: (props === null || props === void 0 ? void 0 : props.minH) + "px",
-    maxHeight: (props === null || props === void 0 ? void 0 : props.maxH) + "px",
-    margin: (props === null || props === void 0 ? void 0 : props.margin) + "px",
-    marginTop: (props === null || props === void 0 ? void 0 : props.mt) + "px",
-    background: (_props$background = props === null || props === void 0 ? void 0 : props.background) !== null && _props$background !== void 0 ? _props$background : null,
-    backgroundColor: (_props$bgColor = props === null || props === void 0 ? void 0 : props.bgColor) !== null && _props$bgColor !== void 0 ? _props$bgColor : null,
-    marginBottom: (_ref = (props === null || props === void 0 ? void 0 : props.mb) + "px") !== null && _ref !== void 0 ? _ref : null,
-    overflow: (_props$overflow = props === null || props === void 0 ? void 0 : props.overflow) !== null && _props$overflow !== void 0 ? _props$overflow : null,
-    overflowX: (_props$overflowX = props === null || props === void 0 ? void 0 : props.overflowX) !== null && _props$overflowX !== void 0 ? _props$overflowX : null,
-    overflowY: (_props$overflowY = props === null || props === void 0 ? void 0 : props.overflowY) !== null && _props$overflowY !== void 0 ? _props$overflowY : null,
-    dp: (_props$display = props === null || props === void 0 ? void 0 : props.display) !== null && _props$display !== void 0 ? _props$display : null,
-    backgroundImage: (_props$bgGradient = props === null || props === void 0 ? void 0 : props.bgGradient) !== null && _props$bgGradient !== void 0 ? _props$bgGradient : null,
-    borderRadius: (_ref2 = (props === null || props === void 0 ? void 0 : props.br) + "px") !== null && _ref2 !== void 0 ? _ref2 : null,
-    border: (_props$border = props === null || props === void 0 ? void 0 : props.border) !== null && _props$border !== void 0 ? _props$border : null,
-    borderWidth: (_ref3 = (props === null || props === void 0 ? void 0 : props.borderWidth) + "px") !== null && _ref3 !== void 0 ? _ref3 : null,
-    borderColor: (_props$borderColor = props === null || props === void 0 ? void 0 : props.borderColor) !== null && _props$borderColor !== void 0 ? _props$borderColor : null,
-    borderTop: (_ref4 = (props === null || props === void 0 ? void 0 : props.borderTop) + "px") !== null && _ref4 !== void 0 ? _ref4 : null,
-    borderBottom: (_ref5 = (props === null || props === void 0 ? void 0 : props.borderBottom) + "px") !== null && _ref5 !== void 0 ? _ref5 : null,
-    borderLeft: (_ref6 = (props === null || props === void 0 ? void 0 : props.borderLeft) + "px") !== null && _ref6 !== void 0 ? _ref6 : null,
-    borderRight: (_ref7 = (props === null || props === void 0 ? void 0 : props.borderRight) + "px") !== null && _ref7 !== void 0 ? _ref7 : null,
-    verticalAlign: (_props$vAlign = props === null || props === void 0 ? void 0 : props.vAlign) !== null && _props$vAlign !== void 0 ? _props$vAlign : null,
-    flex: (_props$flex = props === null || props === void 0 ? void 0 : props.flex) !== null && _props$flex !== void 0 ? _props$flex : null,
-    gap: (_ref8 = (props === null || props === void 0 ? void 0 : props.gap) + "px") !== null && _ref8 !== void 0 ? _ref8 : null,
-    rowGap: (_ref9 = (props === null || props === void 0 ? void 0 : props.rowGap) + "px") !== null && _ref9 !== void 0 ? _ref9 : null,
-    flexDirection: (_props$flexDirection = props === null || props === void 0 ? void 0 : props.flexDirection) !== null && _props$flexDirection !== void 0 ? _props$flexDirection : null,
-    flexGrow: (_props$flexGrow = props === null || props === void 0 ? void 0 : props.flexGrow) !== null && _props$flexGrow !== void 0 ? _props$flexGrow : null,
-    flexWrap: (_props$flexWrap = props === null || props === void 0 ? void 0 : props.flexWrap) !== null && _props$flexWrap !== void 0 ? _props$flexWrap : null,
-    order: (_props$order = props === null || props === void 0 ? void 0 : props.order) !== null && _props$order !== void 0 ? _props$order : null,
-    flexShrink: (_props$flexShrink = props === null || props === void 0 ? void 0 : props.flexShrink) !== null && _props$flexShrink !== void 0 ? _props$flexShrink : null,
-    pointerEvents: (_props$pointerEvents = props === null || props === void 0 ? void 0 : props.pointerEvents) !== null && _props$pointerEvents !== void 0 ? _props$pointerEvents : null,
-    visibility: (_props$visibility = props === null || props === void 0 ? void 0 : props.visibility) !== null && _props$visibility !== void 0 ? _props$visibility : null,
-    wordBreak: (_props$wordBreak = props === null || props === void 0 ? void 0 : props.wordBreak) !== null && _props$wordBreak !== void 0 ? _props$wordBreak : null,
-    cursor: (_props$cursor = props === null || props === void 0 ? void 0 : props.cursor) !== null && _props$cursor !== void 0 ? _props$cursor : null,
-    float: (_props$float = props === null || props === void 0 ? void 0 : props.float) !== null && _props$float !== void 0 ? _props$float : null,
-    boxSize: (_props$boxSize = props === null || props === void 0 ? void 0 : props.boxSize) !== null && _props$boxSize !== void 0 ? _props$boxSize : null,
-    boxShadow: (_props$boxShadow = props === null || props === void 0 ? void 0 : props.boxShadow) !== null && _props$boxShadow !== void 0 ? _props$boxShadow : null,
-    backdropFilter: (_props$backdropFilter = props === null || props === void 0 ? void 0 : props.backdropFilter) !== null && _props$backdropFilter !== void 0 ? _props$backdropFilter : null,
-    columnCount: (_props$columnCount = props === null || props === void 0 ? void 0 : props.columnCount) !== null && _props$columnCount !== void 0 ? _props$columnCount : null,
-    columnGap: (_props$columnGap = props === null || props === void 0 ? void 0 : props.columnGap) !== null && _props$columnGap !== void 0 ? _props$columnGap : null,
-    fontSize: (_props$fontSize = props === null || props === void 0 ? void 0 : props.fontSize) !== null && _props$fontSize !== void 0 ? _props$fontSize : null,
-    textAlign: (_props$alignText = props === null || props === void 0 ? void 0 : props.alignText) !== null && _props$alignText !== void 0 ? _props$alignText : null,
-    fontWeight: (_props$fontWeight = props === null || props === void 0 ? void 0 : props.fontWeight) !== null && _props$fontWeight !== void 0 ? _props$fontWeight : null,
-    color: (_props$color = props === null || props === void 0 ? void 0 : props.color) !== null && _props$color !== void 0 ? _props$color : null
+    width: props === null || props === void 0 ? void 0 : props.w,
+    height: props === null || props === void 0 ? void 0 : props.h,
+    padding: props === null || props === void 0 ? void 0 : props.p,
+    paddingLeft: props === null || props === void 0 ? void 0 : props.pl,
+    paddingRight: props === null || props === void 0 ? void 0 : props.pr,
+    paddingTop: props === null || props === void 0 ? void 0 : props.pt,
+    paddingBottom: props === null || props === void 0 ? void 0 : props.pb,
+    minHeight: props === null || props === void 0 ? void 0 : props.minH,
+    maxHeight: props === null || props === void 0 ? void 0 : props.maxH,
+    margin: props === null || props === void 0 ? void 0 : props.margin,
+    marginTop: props === null || props === void 0 ? void 0 : props.mt,
+    background: props === null || props === void 0 ? void 0 : props.background,
+    backgroundColor: props === null || props === void 0 ? void 0 : props.bgColor,
+    marginBottom: props === null || props === void 0 ? void 0 : props.mb,
+    overflow: props === null || props === void 0 ? void 0 : props.overflow,
+    overflowX: props === null || props === void 0 ? void 0 : props.overflowX,
+    overflowY: props === null || props === void 0 ? void 0 : props.overflowY,
+    dp: props === null || props === void 0 ? void 0 : props.display,
+    backgroundImage: props === null || props === void 0 ? void 0 : props.bgGradient,
+    borderRadius: props === null || props === void 0 ? void 0 : props.br,
+    border: props === null || props === void 0 ? void 0 : props.border,
+    borderWidth: props === null || props === void 0 ? void 0 : props.borderWidth,
+    borderColor: props === null || props === void 0 ? void 0 : props.borderColor,
+    borderTop: props === null || props === void 0 ? void 0 : props.borderTop,
+    borderBottom: props === null || props === void 0 ? void 0 : props.borderBottom,
+    borderLeft: props === null || props === void 0 ? void 0 : props.borderLeft,
+    borderRight: props === null || props === void 0 ? void 0 : props.borderRight,
+    verticalAlign: props === null || props === void 0 ? void 0 : props.vAlign,
+    flex: props === null || props === void 0 ? void 0 : props.flex,
+    gap: props === null || props === void 0 ? void 0 : props.gap,
+    rowGap: props === null || props === void 0 ? void 0 : props.rowGap,
+    flexDirection: props === null || props === void 0 ? void 0 : props.flexDirection,
+    flexGrow: props === null || props === void 0 ? void 0 : props.flexGrow,
+    flexWrap: props === null || props === void 0 ? void 0 : props.flexWrap,
+    order: props === null || props === void 0 ? void 0 : props.order,
+    flexShrink: props === null || props === void 0 ? void 0 : props.flexShrink,
+    pointerEvents: props === null || props === void 0 ? void 0 : props.pointerEvents,
+    visibility: props === null || props === void 0 ? void 0 : props.visibility,
+    wordBreak: props === null || props === void 0 ? void 0 : props.wordBreak,
+    cursor: props === null || props === void 0 ? void 0 : props.cursor,
+    float: props === null || props === void 0 ? void 0 : props.float,
+    boxSize: props === null || props === void 0 ? void 0 : props.boxSize,
+    boxShadow: props === null || props === void 0 ? void 0 : props.boxShadow,
+    backdropFilter: props === null || props === void 0 ? void 0 : props.backdropFilter,
+    columnCount: props === null || props === void 0 ? void 0 : props.columnCount,
+    columnGap: props === null || props === void 0 ? void 0 : props.columnGap,
+    fontSize: props === null || props === void 0 ? void 0 : props.fontSize,
+    textAlign: props === null || props === void 0 ? void 0 : props.alignText,
+    fontWeight: props === null || props === void 0 ? void 0 : props.fontWeight,
+    color: props === null || props === void 0 ? void 0 : props.color
   }, style);
 
+  (0, _react.useEffect)(e => {
+    Object.keys(propsStyle).forEach(key => {
+      if (propsStyle[key] === undefined) {
+        delete propsStyle[key];
+      }
+    });
+    setFilterStyle(propsStyle);
+  }, [props]);
   return /*#__PURE__*/_react.default.createElement("div", _extends({
     className: props.className,
-    style: propsStyle
+    style: filterStyle
   }, other), props.children);
 }

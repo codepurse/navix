@@ -17,6 +17,8 @@ var _ti = require("react-icons/ti");
 
 var _styleIt = _interopRequireDefault(require("style-it"));
 
+var _loadingTable = _interopRequireDefault(require("./loadingTable"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -43,7 +45,9 @@ Table.propTypes = {
   _styleHeader: _propTypes.PropTypes.array,
   rowClick: _propTypes.PropTypes.func,
   style: _propTypes.PropTypes.array,
-  styleComponents: _propTypes.PropTypes.array
+  isLoading: _propTypes.PropTypes.bool,
+  styleComponents: _propTypes.PropTypes.array,
+  loadingCount: _propTypes.PropTypes.number
 };
 Table.defaultProps = {
   data: [],
@@ -56,11 +60,12 @@ Table.defaultProps = {
   _styleHeader: [],
   rowClick: () => {},
   style: [],
-  styleComponents: []
+  styleComponents: [],
+  isLoading: false
 };
 
 function Table(props) {
-  var _props$stripedColor;
+  var _props$stripedColor, _props$loadingCount;
 
   const [sortBy, setSortBy] = (0, _react.useState)("");
   const [orderBy, setOrderBy] = (0, _react.useState)("");
@@ -130,5 +135,7 @@ function Table(props) {
     }));
   }), dataTable.length === 0 ? props !== null && props !== void 0 && props.emptyText ? /*#__PURE__*/_react.default.createElement("p", {
     className: "nvxTableEmpty"
-  }, "No data found") : "" : ""))));
+  }, "No data found") : "" : "", props.isLoading ? /*#__PURE__*/_react.default.createElement(_loadingTable.default, {
+    count: (_props$loadingCount = props.loadingCount) !== null && _props$loadingCount !== void 0 ? _props$loadingCount : props.columns.length
+  }) : null))));
 }
