@@ -6,9 +6,12 @@
   font-weight: 500;
   color: #1b1b1b;
   background: #f7f8fa;
-  border: 2px solid #eeeeee;
+  border: 2px solid #ccc;
   box-shadow: none;
   outline: none;
+  &:focus {
+    outline: 2px solid #2039d2;
+  }
 }
 .inputIconLeft {
   position: absolute;
@@ -27,4 +30,9 @@
 .input-wrapper {
   position: relative;
   width: max-content;
+}
+
+[data-invalid="invalid"] {
+  outline: 2px solid $error;
+  background-color: $error-bg;
 }

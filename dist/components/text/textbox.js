@@ -1,23 +1,35 @@
 "use strict";
 
+require("core-js/modules/es.object.assign.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = textbox;
+exports.default = Textbox;
+
+require("core-js/modules/web.dom-collections.iterator.js");
+
+require("core-js/modules/es.regexp.to-string.js");
 
 require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.regexp.test.js");
 
+require("core-js/modules/es.string.replace.js");
+
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = require("prop-types");
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
+
+var _styleIt = _interopRequireDefault(require("style-it"));
 
 var _textStyles = require("./textStyles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -26,30 +38,44 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 const TEXT_SIZES = ["lg", "sm", "md"];
-const TEXT_TYPES = ["default", "disabled", "danger"];
 const TEXT_ALIGN_TEST = ["left", "center", "right"];
-textbox.propTypes = {
+Textbox.propTypes = {
   placeholder: _propTypes.PropTypes.string,
   fill: _propTypes.PropTypes.bool,
   iconLeft: _propTypes.PropTypes.node,
   iconRight: _propTypes.PropTypes.node,
-  onclick: _propTypes.PropTypes.func,
+  onClick: _propTypes.PropTypes.func,
   disabled: _propTypes.PropTypes.bool,
   size: _propTypes.PropTypes.oneOf(TEXT_SIZES),
-  type: _propTypes.PropTypes.oneOf(TEXT_TYPES),
+  type: _propTypes.PropTypes.string,
   alignText: _propTypes.PropTypes.oneOf(TEXT_ALIGN_TEST),
   onlyNuber: _propTypes.PropTypes.bool,
   onlyLetter: _propTypes.PropTypes.bool,
   value: _propTypes.PropTypes.string,
-  onChange: _propTypes.PropTypes.func,
+  fontSize: _propTypes.PropTypes.string,
   max: _propTypes.PropTypes.number,
-  min: _propTypes.PropTypes.number
+  min: _propTypes.PropTypes.number,
+  isInvalid: _propTypes.PropTypes.bool,
+  onKeyPress: _propTypes.PropTypes.func,
+  styleLeftIcon: _propTypes.PropTypes.array,
+  styleRightIcon: _propTypes.PropTypes.array
+};
+Textbox.defaultProps = {
+  disabled: false,
+  fill: false,
+  onClick: () => {},
+  onKeyPress: () => {},
+  size: "md",
+  isInvalid: false,
+  type: "text",
+  styleLeftIcon: [],
+  styleRightIcon: []
 };
 
-function textbox(props) {
-  var _props$css, _props$css2, _props$css2$text, _props$css3, _props$css3$text;
-
+function Textbox(props) {
   const textClassName = (0, _classnames.default)("txtNvxDefault", props.className);
+  const [formatStyle, setFormatStyle] = (0, _react.useState)();
+  let r = (Math.random() + 1).toString(36).substring(7); // for the sake of chancing style of placeholder
 
   const numberOnly = event => {
     if (!/[0-9]/.test(event.key)) {
@@ -63,29 +89,43 @@ function textbox(props) {
     }
   };
 
+  const JSToCSS = JS => {
+    let cssString = "";
+
+    for (let objectKey in JS) {
+      cssString += objectKey.replace(/([A-Z])/g, g => "-".concat(g[0].toLowerCase())) + ": " + JS[objectKey] + ";\n";
+    }
+
+    return cssString;
+  };
+
+  (0, _react.useEffect)(e => {
+    setFormatStyle(JSToCSS(props.stylePlaceholder));
+  }, []);
   const propsStyle = {
-    backgroundColor: (0, _textStyles.textType)(props.type),
     borderColor: (0, _textStyles.borderType)(props.type),
     width: props.fill && "100%",
     textAlign: props.alignText ? props.alignText : "",
     paddingLeft: props.iconLeft ? "35px" : null,
-    paddingRight: props.iconRight ? "35px" : null
+    paddingRight: props.iconRight ? "35px" : null,
+    fontSize: props.fontSize ? props.fontSize : (0, _textStyles.textSize)(props.size)
   };
 
-  const customStyle = _objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.text);
+  const customStyle = _objectSpread(_objectSpread({}, propsStyle), props.style);
 
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return _styleIt.default.it("\n    .".concat(r, "::placeholder {\n      ").concat(formatStyle, "\n    }\n    "), /*#__PURE__*/React.createElement("div", {
     className: "input-wrapper",
     style: {
       width: props.fill && "100%"
     }
-  }, /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/React.createElement("input", _extends({}, props, {
     style: customStyle,
-    type: "text",
+    type: props.type,
     disabled: props.disabled && true,
-    className: textClassName,
+    className: textClassName + " ".concat(r),
     value: props.value,
     maxLength: props.max,
+    "data-invalid": props.isInvalid ? "invalid" : "",
     placeholder: props.placeholder,
     minLength: props.min,
     onKeyPress: event => {
@@ -94,17 +134,14 @@ function textbox(props) {
       } else if (props.onlyLetter) {
         letterOnly(event);
       }
-    },
-    onChange: e => {
-      try {
-        props.onChange(e);
-      } catch (error) {}
+
+      props.onKeyPress();
     }
-  }), /*#__PURE__*/_react.default.createElement("i", {
+  })), /*#__PURE__*/React.createElement("i", {
     className: "inputIconLeft",
-    style: (_props$css2 = props.css) === null || _props$css2 === void 0 ? void 0 : (_props$css2$text = _props$css2.text) === null || _props$css2$text === void 0 ? void 0 : _props$css2$text.iconLeft
-  }, props.iconLeft), /*#__PURE__*/_react.default.createElement("i", {
+    style: props.styleLeftIcon
+  }, props.iconLeft), /*#__PURE__*/React.createElement("i", {
     className: "inputIconRight",
-    style: (_props$css3 = props.css) === null || _props$css3 === void 0 ? void 0 : (_props$css3$text = _props$css3.text) === null || _props$css3$text === void 0 ? void 0 : _props$css3$text.iconRight
-  }, props.iconRight));
+    style: props.styleRightIcon
+  }, props.iconRight)));
 }
