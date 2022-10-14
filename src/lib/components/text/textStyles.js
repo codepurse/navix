@@ -31,10 +31,10 @@ export const textSize = (value) => {
     case "lg":
       return "18px";
     case "md":
-      return "15px";
+      return "14px";
     case "sm":
-      return "13px";
+      return "12px";
     default:
-      return "15px";
+      return "14px";
   }
 };

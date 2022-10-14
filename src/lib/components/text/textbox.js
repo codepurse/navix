@@ -1,34 +1,50 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import React from "react";
-import { borderType, textType } from "./textStyles";
+import { useEffect, useState } from "react";
+import Style from "style-it";
+import { borderType, textSize } from "./textStyles";
 
 const TEXT_SIZES = ["lg", "sm", "md"];
 
-const TEXT_TYPES = ["default", "disabled", "danger"];
-
 const TEXT_ALIGN_TEST = ["left", "center", "right"];
 
-textbox.propTypes = {
+Textbox.propTypes = {
   placeholder: PropTypes.string,
   fill: PropTypes.bool,
   iconLeft: PropTypes.node,
   iconRight: PropTypes.node,
-  onclick: PropTypes.func,
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(TEXT_SIZES),
-  type: PropTypes.oneOf(TEXT_TYPES),
+  type: PropTypes.string,
   alignText: PropTypes.oneOf(TEXT_ALIGN_TEST),
   onlyNuber: PropTypes.bool,
   onlyLetter: PropTypes.bool,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  fontSize: PropTypes.string,
   max: PropTypes.number,
   min: PropTypes.number,
+  isInvalid: PropTypes.bool,
+  onKeyPress: PropTypes.func,
+  styleLeftIcon: PropTypes.array,
+  styleRightIcon: PropTypes.array,
 };
-export default function textbox(props) {
-  const textClassName = classNames("txtNvxDefault", props.className);
 
+Textbox.defaultProps = {
+  disabled: false,
+  fill: false,
+  onClick: () => {},
+  onKeyPress: () => {},
+  size: "md",
+  isInvalid: false,
+  type: "text",
+  styleLeftIcon: [],
+  styleRightIcon: [],
+};
+export default function Textbox(props) {
+  const textClassName = classNames("txtNvxDefault", props.className);
+  const [formatStyle, setFormatStyle] = useState();
+  let r = (Math.random() + 1).toString(36).substring(7); // for the sake of chancing style of placeholder
   const numberOnly = (event) => {
     if (!/[0-9]/.test(event.key)) {
       event.preventDefault();
@@ -41,26 +57,50 @@ export default function textbox(props) {
     }
   };
 
+  const JSToCSS = (JS) => {
+    let cssString = "";
+    for (let objectKey in JS) {
+      cssString +=
+        objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) +
+        ": " +
+        JS[objectKey] +
+        ";\n";
+    }
+
+    return cssString;
+  };
+
+  useEffect((e) => {
+    setFormatStyle(JSToCSS(props.stylePlaceholder));
+  }, []);
+
   const propsStyle = {
-    backgroundColor: textType(props.type),
     borderColor: borderType(props.type),
     width: props.fill && "100%",
     textAlign: props.alignText ? props.alignText : "",
     paddingLeft: props.iconLeft ? "35px" : null,
     paddingRight: props.iconRight ? "35px" : null,
+    fontSize: props.fontSize ? props.fontSize : textSize(props.size),
   };
 
-  const customStyle = { ...propsStyle, ...props.css?.text };
+  const customStyle = { ...propsStyle, ...props.style };
 
-  return (
+  return Style.it(
+    `
+    .${r}::placeholder {
+      ${formatStyle}
+    }
+    `,
     <div className="input-wrapper" style={{ width: props.fill && "100%" }}>
       <input
+        {...props}
         style={customStyle}
-        type="text"
+        type={props.type}
         disabled={props.disabled && true}
-        className={textClassName}
+        className={textClassName + ` ${r}`}
         value={props.value}
         maxLength={props.max}
+        data-invalid={props.isInvalid ? "invalid" : ""}
         placeholder={props.placeholder}
         minLength={props.min}
         onKeyPress={(event) => {
@@ -69,17 +109,13 @@ export default function textbox(props) {
           } else if (props.onlyLetter) {
             letterOnly(event);
           }
-        }}
-        onChange={(e) => {
-          try {
-            props.onChange(e);
-          } catch (error) {}
+          props.onKeyPress();
         }}
       ></input>
-      <i className="inputIconLeft" style={props.css?.text?.iconLeft}>
+      <i className="inputIconLeft" style={props.styleLeftIcon}>
         {props.iconLeft}
       </i>
-      <i className="inputIconRight" style={props.css?.text?.iconRight}>
+      <i className="inputIconRight" style={props.styleRightIcon}>
         {props.iconRight}
       </i>
     </div>
