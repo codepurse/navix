@@ -21,11 +21,15 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = require("prop-types");
 
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
 
 var _styleIt = _interopRequireDefault(require("style-it"));
 
 var _textStyles = require("./textStyles");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -113,12 +117,12 @@ function Textbox(props) {
 
   const customStyle = _objectSpread(_objectSpread({}, propsStyle), props.style);
 
-  return _styleIt.default.it("\n    .".concat(r, "::placeholder {\n      ").concat(formatStyle, "\n    }\n    "), /*#__PURE__*/React.createElement("div", {
+  return _styleIt.default.it("\n    .".concat(r, "::placeholder {\n      ").concat(formatStyle, "\n    }\n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "input-wrapper",
     style: {
       width: props.fill && "100%"
     }
-  }, /*#__PURE__*/React.createElement("input", _extends({}, props, {
+  }, /*#__PURE__*/_react.default.createElement("input", _extends({}, props, {
     style: customStyle,
     type: props.type,
     disabled: props.disabled && true,
@@ -137,10 +141,10 @@ function Textbox(props) {
 
       props.onKeyPress();
     }
-  })), /*#__PURE__*/React.createElement("i", {
+  })), /*#__PURE__*/_react.default.createElement("i", {
     className: "inputIconLeft",
     style: props.styleLeftIcon
-  }, props.iconLeft), /*#__PURE__*/React.createElement("i", {
+  }, props.iconLeft), /*#__PURE__*/_react.default.createElement("i", {
     className: "inputIconRight",
     style: props.styleRightIcon
   }, props.iconRight)));

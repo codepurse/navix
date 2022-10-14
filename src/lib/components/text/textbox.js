@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "style-it";
 import { borderType, textSize } from "./textStyles";
 
