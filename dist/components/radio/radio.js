@@ -85,7 +85,7 @@ function Radio(props) {
     }
   };
 
-  return _styleIt.default.it("\n    .nvxRadio + .nvxRadioLabel::before  {\n      border: 1px solid ".concat(props !== null && props !== void 0 && props.color ? props === null || props === void 0 ? void 0 : props.color : "#00679d", ";\n      }\n    .nvxRadio + .nvxRadioLabel::after {\n      border: 1px solid ").concat(props === null || props === void 0 ? void 0 : props.color, ";\n      background: ").concat(props !== null && props !== void 0 && props.color ? props.color : "#00679d", ";\n      }\n    "), /*#__PURE__*/_react.default.createElement("div", {
+  return _styleIt.default.it("\n    .nvxRadio + .nvxRadioLabel::before  {\n      border: 1px solid ".concat(props !== null && props !== void 0 && props.color ? props === null || props === void 0 ? void 0 : props.color : "var(--blue-600)", ";\n      }\n    .nvxRadio + .nvxRadioLabel::after {\n      border: 1px solid ").concat(props === null || props === void 0 ? void 0 : props.color, ";\n      background: ").concat(props !== null && props !== void 0 && props.color ? props.color : "var(--blue-600)", ";\n      }\n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxRadioDiv"
   }, /*#__PURE__*/_react.default.createElement("input", {
     className: "nvxRadio " + radioSize(props.size) + " ".concat(props.className),

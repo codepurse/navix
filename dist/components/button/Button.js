@@ -13,6 +13,8 @@ var _propTypes = require("prop-types");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _navixProvider = require("../../context/navixProvider");
+
 var _buttonStyles = require("../button/buttonStyles");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -27,7 +29,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const BUTTON_SIZES = ["lg", "sm", "md"];
+const BUTTON_SIZES = ["xxxl", "xxl", "xl", "lg", "sm", "md", "xs"];
 const BUTTON_TYPES = ["default", "primary", "success", "warning", "danger"];
 const BUTTON_ALIGN_TEST = ["left", "center", "right"];
 const BUTTON_TARGET = ["_self", "_blank", "_parent", "_top", "string"];
@@ -54,6 +56,7 @@ Button.propTypes = {
 function Button(props) {
   var _props$css, _props$css2;
 
+  const value = (0, _react.useContext)(_navixProvider.NavixSource);
   const buttonClassName = (0, _classnames.default)("btnNvxDefault", props.className, {
     "btn--loading btnLoad": props.isLoading === true
   }, (0, _buttonStyles.buttonCname)(props.type), (0, _buttonStyles.buttonType)(props.category, props.type));
@@ -62,8 +65,7 @@ function Button(props) {
     width: props.fill && "100%",
     opacity: props.disabled ? "0.5" : "",
     fontSize: (0, _buttonStyles.buttonSize)(props.size),
-    borderRadius: props.circular ? "500px" : null,
-    borderColor: props.variant === "cancel"
+    borderRadius: props.circular ? "500px" : null
   };
 
   const customStyle = _objectSpread(_objectSpread(_objectSpread({}, propsStyle), (_props$css = props.css) === null || _props$css === void 0 ? void 0 : _props$css.button), props.style);

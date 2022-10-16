@@ -31,13 +31,21 @@ export const buttonCname = (value) => {
 
 export const buttonSize = (value) => {
   switch (value) {
+    case "xxxl":
+      return "var(--font-size-xxxl)";
+    case "xxl":
+      return "var(--font-size-xxl)";
+    case "xl":
+      return "var(--font-size-xl)";
     case "lg":
-      return "18px";
+      return "var(--font-size-lg)";
     case "md":
-      return "15px";
+      return "var(--font-size-md)";
     case "sm":
-      return "13px";
+      return "var(--font-size-sm)";
+    case "xs":
+      return "var(--font-size-xs)";
     default:
-      return "15px";
+      return "var(--font-size-md)";
   }
 };

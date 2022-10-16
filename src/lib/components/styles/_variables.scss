@@ -48,19 +48,48 @@ $error: #d32f2f;
 // 0.5rem 1rem 1.5rem 3rem 5rem 10rem
 
 :root {
-  --sand: #{$sand};
-  --sand2: #{$sand2};
-  --sand3: #{$sand3};
-  --sand4: #{$sand4};
-  --offwhite: #{$off-white};
-  --body: #{$body};
-  --body-medium: #{$body-medium};
-  --body-light: #{$body-light};
-  --body-lightest: #{$body-lightest};
-  --error: #{$error};
-  --errorlight: #{$error-light};
-  --accent: #{$accent};
-  --accent2: #{$accent2};
-  --accent3: #{$accent3};
-  --shadow: #{$shadow};
+  /* ======= core units for design tokens ========= */
+  --base-unit: 0.25rem;
+  --base-half-unit: calc(var(--base-unit) / 2);
+
+  --font-base-unit: var(--base-unit);
+  --font-size-xxxl: calc(var(--font-base-unit) * 16);
+  --font-size-xxl: calc(var(--font-base-unit) * 13);
+  --font-size-xl: calc(var(--font-base-unit) * 10);
+  --font-size-lg: calc(var(--font-base-unit) * 7);
+  --font-size-md: calc(var(--font-base-unit) * 4);
+  --font-size-sm: calc(var(--font-base-unit) * 3.5);
+  --font-size-xs: calc(var(--font-base-unit) * 3);
+
+  --font-weight-lighter: 100;
+  --font-weight-light: 200;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-bolder: 900;
+
+  --line-height-base-unit: 1;
+  --line-height-small: calc(var(--line-height-base-unit) * 1.1);
+  --line-height-medium: calc(var(--line-height-base-unit) * 1.3);
+  --line-height-large: calc(var(--line-height-base-unit) * 1.5);
+
+  --border-radius-circle: 50%;
+  --border-radius-large: 15px;
+  --border-radius-medium: 10px;
+  --border-radius-small: 5px;
+
+  --blue-600: #2039d2;
+  --blue-700: #05137c;
+  --blue-500: #0095ff;
+  --blue-300: #79c1e0;
+  --blue-200: #c0e5f9;
+
+  --orange-600: #fd5602;
+
+  --space-size-xxxl: 70px;
+  --space-size-xxl: 55px;
+  --space-size-xl: 40px;
+  --space-size-lg: 25px;
+  --space-size-md: 15px;
+  --space-size-sm: 10px;
+  --space-size-xs: 5px;
 }

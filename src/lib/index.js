@@ -34,6 +34,7 @@ import useArray from "./hooks/useArray";
 import useConsole from "./hooks/useConsole";
 import useCookie from "./hooks/useCookie";
 import useDebounce from "./hooks/useDebounce";
+import useOverRuleTheme from "./hooks/useOverrRule";
 import useToggle from "./hooks/useToggle";
 import useUpdate from "./hooks/useUpdateEffect";
 export {
@@ -76,4 +77,5 @@ export {
   Steps,
   StepsList,
   Table,
+  useOverRuleTheme,
 };

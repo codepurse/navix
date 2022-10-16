@@ -68,11 +68,11 @@ export default function Radio(props) {
   return Style.it(
     `
     .nvxRadio + .nvxRadioLabel::before  {
-      border: 1px solid ${props?.color ? props?.color : "#00679d"};
+      border: 1px solid ${props?.color ? props?.color : "var(--blue-600)"};
       }
     .nvxRadio + .nvxRadioLabel::after {
       border: 1px solid ${props?.color};
-      background: ${props?.color ? props.color : "#00679d"};
+      background: ${props?.color ? props.color : "var(--blue-600)"};
       }
     `,
     <div className="nvxRadioDiv">

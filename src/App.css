@@ -38,7 +38,7 @@ html {
     align-items: center;
     min-height: 100vh;
     min-width: 400px;
-    background: var(--grey1);
+    background: var(--testprimary);
   }
 
 

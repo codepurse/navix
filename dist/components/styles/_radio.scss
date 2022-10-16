@@ -58,7 +58,7 @@
     display: inline-block;
     width: 10px;
     aspect-ratio: 1;
-    border: 1px solid $primary;
+    border: 1px solid var(--blue-600);
     border-radius: 50%;
     position: absolute;
     left: 5px;

@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import { PropTypes } from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
+import { NavixSource } from "../../context/navixProvider";
 import { buttonCname, buttonSize, buttonType } from "../button/buttonStyles";
-const BUTTON_SIZES = ["lg", "sm", "md"];
+const BUTTON_SIZES = ["xxxl", "xxl", "xl", "lg", "sm", "md", "xs"];
 
 const BUTTON_TYPES = ["default", "primary", "success", "warning", "danger"];
 
@@ -32,6 +33,7 @@ Button.propTypes = {
 };
 
 export default function Button(props) {
+  const value = useContext(NavixSource);
   const buttonClassName = classNames(
     "btnNvxDefault",
     props.className,
@@ -48,7 +50,6 @@ export default function Button(props) {
     opacity: props.disabled ? "0.5" : "",
     fontSize: buttonSize(props.size),
     borderRadius: props.circular ? "500px" : null,
-    borderColor: props.variant === "cancel",
   };
 
   const customStyle = { ...propsStyle, ...props.css?.button, ...props.style };

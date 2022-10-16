@@ -227,6 +227,12 @@ Object.defineProperty(exports, "useDebounce", {
     return _useDebounce.default;
   }
 });
+Object.defineProperty(exports, "useOverRuleTheme", {
+  enumerable: true,
+  get: function get() {
+    return _useOverrRule.default;
+  }
+});
 Object.defineProperty(exports, "useToggle", {
   enumerable: true,
   get: function get() {
@@ -311,6 +317,8 @@ var _useConsole = _interopRequireDefault(require("./hooks/useConsole"));
 var _useCookie = _interopRequireDefault(require("./hooks/useCookie"));
 
 var _useDebounce = _interopRequireDefault(require("./hooks/useDebounce"));
+
+var _useOverrRule = _interopRequireDefault(require("./hooks/useOverrRule"));
 
 var _useToggle = _interopRequireDefault(require("./hooks/useToggle"));
 

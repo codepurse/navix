@@ -47,7 +47,7 @@
       transition: 0.3s cubic-bezier(0.42, 0, 0, 1.68);
     }
     input:checked + .slider {
-      background-color: #003a61;
+      background-color: var(--blue-6000);
     }
 
     input:checked + .slider:before {

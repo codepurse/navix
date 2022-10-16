@@ -27,7 +27,7 @@ $width: 100px;
 }
 
 .path {
-  stroke: #003a61;
+  stroke: var(--blue-600);
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
   animation: dash 1.5s ease-in-out infinite;

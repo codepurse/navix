@@ -80,7 +80,9 @@ export default function Checkbox(props) {
       background: ${props?.background ?? "white"};
       }
       .nvxCbx .checkbox input:checked {
-        box-shadow: inset 10px 10px 0px 191px ${props?.checkedBgColor}
+        box-shadow: inset 10px 10px 0px 191px ${
+          props?.checkedBgColor ?? "var(--blue-600)"
+        }
      }
      .nvxCbx .checkbox.bounce {
       --stroke: ${props?.checkedCaretColor ?? "white"};

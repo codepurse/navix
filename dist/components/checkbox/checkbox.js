@@ -51,7 +51,7 @@ Checkbox.defaultProps = {
 };
 
 function Checkbox(props) {
-  var _props$background, _props$checkedCaretCo;
+  var _props$background, _props$checkedBgColor, _props$checkedCaretCo;
 
   const [check, setCheck] = (0, _react.useState)(false);
   const ref = (0, _react.useRef)("");
@@ -89,7 +89,7 @@ function Checkbox(props) {
       setCheck(props.checked);
     } else {}
   }, [props.checked]);
-  return _styleIt.default.it("\n    .nvxCbx .checkbox input  {\n      background: ".concat((_props$background = props === null || props === void 0 ? void 0 : props.background) !== null && _props$background !== void 0 ? _props$background : "white", ";\n      }\n      .nvxCbx .checkbox input:checked {\n        box-shadow: inset 10px 10px 0px 191px ").concat(props === null || props === void 0 ? void 0 : props.checkedBgColor, "\n     }\n     .nvxCbx .checkbox.bounce {\n      --stroke: ").concat((_props$checkedCaretCo = props === null || props === void 0 ? void 0 : props.checkedCaretColor) !== null && _props$checkedCaretCo !== void 0 ? _props$checkedCaretCo : "white", ";\n   }\n   \n    "), /*#__PURE__*/_react.default.createElement("div", {
+  return _styleIt.default.it("\n    .nvxCbx .checkbox input  {\n      background: ".concat((_props$background = props === null || props === void 0 ? void 0 : props.background) !== null && _props$background !== void 0 ? _props$background : "white", ";\n      }\n      .nvxCbx .checkbox input:checked {\n        box-shadow: inset 10px 10px 0px 191px ").concat((_props$checkedBgColor = props === null || props === void 0 ? void 0 : props.checkedBgColor) !== null && _props$checkedBgColor !== void 0 ? _props$checkedBgColor : "var(--blue-600)", "\n     }\n     .nvxCbx .checkbox.bounce {\n      --stroke: ").concat((_props$checkedCaretCo = props === null || props === void 0 ? void 0 : props.checkedCaretColor) !== null && _props$checkedCaretCo !== void 0 ? _props$checkedCaretCo : "white", ";\n   }\n   \n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxCbx " + checkboxSize(props === null || props === void 0 ? void 0 : props.size)
   }, props.positionLabel === "left" ? /*#__PURE__*/_react.default.createElement("span", {
     style: (props !== null && props !== void 0 && props.labelStyle, {
