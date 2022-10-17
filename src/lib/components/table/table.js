@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   TiArrowSortedDown,
   TiArrowSortedUp,
@@ -93,49 +93,55 @@ export default function Table(props) {
                     : ""
                 }
               >
-                {data.headerName}{" "}
-                {data?.sortable ? (
-                  <i
-                    className="nvxTableSortIcon"
-                    onClick={(e) => {
-                      setSortBy(data.key);
-                      if (sortBy === "" || sortBy !== data.key) {
-                        setOrderBy("asc");
-                        const strAscending = [...dataTable].sort((a, b) =>
-                          a[data.key] > b[data.key] ? 1 : -1
-                        );
-                        setData(strAscending);
-                      } else {
-                        if (orderBy === "asc") {
-                          setOrderBy("desc");
-                          const strDescending = [...dataTable].sort((a, b) =>
-                            a[data.key] > b[data.key] ? -1 : 1
-                          );
-                          setData(strDescending);
-                        } else if (orderBy === "desc") {
-                          setOrderBy("");
-                          setSortBy("");
-                          setData(origData);
-                        } else {
-                          setOrderBy("asc");
-                          const strAscending = [...dataTable].sort((a, b) =>
-                            a[data.key] > b[data.key] ? 1 : -1
-                          );
-                          setData(strAscending);
-                        }
-                      }
-                    }}
-                  >
-                    {sortBy !== data.key ? (
-                      <TiArrowUnsorted />
-                    ) : orderBy === "asc" ? (
-                      <TiArrowSortedUp />
-                    ) : (
-                      <TiArrowSortedDown />
-                    )}
-                  </i>
+                {typeof data.headerName === "function" ? (
+                  React.createElement(data.headerName, { data: data })
                 ) : (
-                  ""
+                  <Fragment>
+                    {data.headerName}{" "}
+                    {data?.sortable ? (
+                      <i
+                        className="nvxTableSortIcon"
+                        onClick={(e) => {
+                          setSortBy(data.key);
+                          if (sortBy === "" || sortBy !== data.key) {
+                            setOrderBy("asc");
+                            const strAscending = [...dataTable].sort((a, b) =>
+                              a[data.key] > b[data.key] ? 1 : -1
+                            );
+                            setData(strAscending);
+                          } else {
+                            if (orderBy === "asc") {
+                              setOrderBy("desc");
+                              const strDescending = [...dataTable].sort(
+                                (a, b) => (a[data.key] > b[data.key] ? -1 : 1)
+                              );
+                              setData(strDescending);
+                            } else if (orderBy === "desc") {
+                              setOrderBy("");
+                              setSortBy("");
+                              setData(origData);
+                            } else {
+                              setOrderBy("asc");
+                              const strAscending = [...dataTable].sort((a, b) =>
+                                a[data.key] > b[data.key] ? 1 : -1
+                              );
+                              setData(strAscending);
+                            }
+                          }
+                        }}
+                      >
+                        {sortBy !== data.key ? (
+                          <TiArrowUnsorted />
+                        ) : orderBy === "asc" ? (
+                          <TiArrowSortedUp />
+                        ) : (
+                          <TiArrowSortedDown />
+                        )}
+                      </i>
+                    ) : (
+                      ""
+                    )}
+                  </Fragment>
                 )}
               </th>
             ))}
