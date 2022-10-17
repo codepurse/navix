@@ -65,8 +65,8 @@ export default function Tabs(props) {
   );
 
   return (
-    <Box id="tsum-tabs" {...props}>
-      <Box id="tsum-tabs-main" style={style}>
+    <Box id="nvxTsum-tabs" {...props}>
+      <Box id="nvxTsum-tabs-main" style={style}>
         <TabContext.Provider value={{ propStyle, activeKey, variant }}>
           {(() => {
             if (countHeader > 1) {

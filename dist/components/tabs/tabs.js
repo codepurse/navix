@@ -75,9 +75,9 @@ function Tabs(props) {
     props.onChange(activeKey);
   }, [activeKey]);
   return /*#__PURE__*/_react.default.createElement(_box.default, _extends({
-    id: "tsum-tabs"
+    id: "nvxTsum-tabs"
   }, props), /*#__PURE__*/_react.default.createElement(_box.default, {
-    id: "tsum-tabs-main",
+    id: "nvxTsum-tabs-main",
     style: style
   }, /*#__PURE__*/_react.default.createElement(_tabsContext.TabContext.Provider, {
     value: {

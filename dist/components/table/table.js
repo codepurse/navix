@@ -92,7 +92,9 @@ function Table(props) {
   }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, props.columns.map((data, i) => /*#__PURE__*/_react.default.createElement("th", {
     key: i,
     style: data._style ? data._style : props !== null && props !== void 0 && props._styleHeader ? props === null || props === void 0 ? void 0 : props._styleHeader : ""
-  }, data.headerName, " ", data !== null && data !== void 0 && data.sortable ? /*#__PURE__*/_react.default.createElement("i", {
+  }, typeof data.headerName === "function" ? /*#__PURE__*/_react.default.createElement(data.headerName, {
+    data: data
+  }) : /*#__PURE__*/_react.default.createElement(_react.Fragment, null, data.headerName, " ", data !== null && data !== void 0 && data.sortable ? /*#__PURE__*/_react.default.createElement("i", {
     className: "nvxTableSortIcon",
     onClick: e => {
       setSortBy(data.key);
@@ -117,7 +119,7 @@ function Table(props) {
         }
       }
     }
-  }, sortBy !== data.key ? /*#__PURE__*/_react.default.createElement(_ti.TiArrowUnsorted, null) : orderBy === "asc" ? /*#__PURE__*/_react.default.createElement(_ti.TiArrowSortedUp, null) : /*#__PURE__*/_react.default.createElement(_ti.TiArrowSortedDown, null)) : "")))), /*#__PURE__*/_react.default.createElement("tbody", null, dataTable.map((data, i) => {
+  }, sortBy !== data.key ? /*#__PURE__*/_react.default.createElement(_ti.TiArrowUnsorted, null) : orderBy === "asc" ? /*#__PURE__*/_react.default.createElement(_ti.TiArrowSortedUp, null) : /*#__PURE__*/_react.default.createElement(_ti.TiArrowSortedDown, null)) : ""))))), /*#__PURE__*/_react.default.createElement("tbody", null, dataTable.map((data, i) => {
     var _props$columns;
 
     return /*#__PURE__*/_react.default.createElement("tr", {

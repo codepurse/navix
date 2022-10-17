@@ -4,7 +4,9 @@ import Checkbox from "./lib/components/checkbox/checkbox";
 import Overlay from "./lib/components/overlay/overlay";
 import Space from "./lib/components/space/space";
 import "./lib/components/styles/main.scss";
-import Table from "./lib/components/table/table";
+import TabContent from "./lib/components/tabs/tabContent";
+import TabHeader from "./lib/components/tabs/tabHeader";
+import Tabs from "./lib/components/tabs/tabs";
 function App() {
   const columns = [
     {
@@ -71,7 +73,12 @@ function App() {
   return (
     <>
       <div style={{ width: "800px" }}>
-        <Table columns={columns} data={data} />
+        <Tabs defaultKey="3" mb="0">
+          <TabHeader label="Tab One" id="3"></TabHeader>
+          <TabHeader label="Tab Two" id="4"></TabHeader>
+          <TabContent id="3"></TabContent>
+          <TabContent id="4"></TabContent>
+        </Tabs>
       </div>
     </>
   );
