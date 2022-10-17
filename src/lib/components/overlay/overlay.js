@@ -26,7 +26,6 @@ Overlay.defaultProps = {
 
 export default function Overlay(props) {
   const [toggle, setToggle] = useState(false);
-
   const overLayCname = (value) => {
     switch (value) {
       case "left":
@@ -43,16 +42,6 @@ export default function Overlay(props) {
       setToggle(props.isOpen);
     } else {
     }
-    document.addEventListener("click", (event) => {
-      const specifiedElement = document.getElementById("nvxOverlay");
-      const isClickInside = specifiedElement.contains(event.target);
-      if (!isClickInside) {
-        console.log("click outside");
-        setToggle(false);
-      } else {
-        console.log("click inside");
-      }
-    });
   }, [props.isOpen]);
 
   const overlayClassName = classNames("", overLayCname(props.position), {
@@ -62,7 +51,15 @@ export default function Overlay(props) {
   return (
     <section
       className="nvxOverlay"
-      id="nvxOverlay"
+      onBlur={(e) => {
+        if (props?.isOpen === true || props?.isOpen === false) {
+        } else {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setToggle(false);
+          }
+        }
+      }}
+      tabIndex="-1"
       onMouseOver={(e) => {
         props.onMouseOver();
       }}
