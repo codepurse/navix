@@ -47,7 +47,7 @@ function TabHeader(props) {
     } else if (event.propStyle.backgroundColor) {
       return event.propStyle.backgroundColor;
     } else {
-      return "#003A61";
+      return "var(--blue-600)";
     }
   };
 

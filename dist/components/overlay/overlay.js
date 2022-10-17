@@ -59,25 +59,20 @@ function Overlay(props) {
     if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {
       setToggle(props.isOpen);
     } else {}
-
-    document.addEventListener("click", event => {
-      const specifiedElement = document.getElementById("nvxOverlay");
-      const isClickInside = specifiedElement.contains(event.target);
-
-      if (!isClickInside) {
-        console.log("click outside");
-        setToggle(false);
-      } else {
-        console.log("click inside");
-      }
-    });
   }, [props.isOpen]);
   const overlayClassName = (0, _classnames.default)("", overLayCname(props.position), {
     nvxOverlayCenter: props.center === true && props.position !== "right"
   });
   return /*#__PURE__*/_react.default.createElement("section", {
     className: "nvxOverlay",
-    id: "nvxOverlay",
+    onBlur: e => {
+      if ((props === null || props === void 0 ? void 0 : props.isOpen) === true || (props === null || props === void 0 ? void 0 : props.isOpen) === false) {} else {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setToggle(false);
+        }
+      }
+    },
+    tabIndex: "-1",
     onMouseOver: e => {
       props.onMouseOver();
     },
