@@ -43,6 +43,16 @@ export default function Overlay(props) {
       setToggle(props.isOpen);
     } else {
     }
+    document.addEventListener("click", (event) => {
+      const specifiedElement = document.getElementById("nvxOverlay");
+      const isClickInside = specifiedElement.contains(event.target);
+      if (!isClickInside) {
+        console.log("click outside");
+        setToggle(false);
+      } else {
+        console.log("click inside");
+      }
+    });
   }, [props.isOpen]);
 
   const overlayClassName = classNames("", overLayCname(props.position), {
@@ -52,12 +62,7 @@ export default function Overlay(props) {
   return (
     <section
       className="nvxOverlay"
-      onBlur={(e) => {
-        if (props?.isOpen === true || props?.isOpen === false) {
-        } else {
-          setToggle(false);
-        }
-      }}
+      id="nvxOverlay"
       onMouseOver={(e) => {
         props.onMouseOver();
       }}
@@ -65,6 +70,7 @@ export default function Overlay(props) {
         props.onMouseLeave();
       }}
       onClick={(e) => {
+        e.stopPropagation();
         if (props?.isOpen === true || props?.isOpen === false) {
           setToggle(props.isOpen);
         } else {
