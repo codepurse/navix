@@ -31,9 +31,11 @@ import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
 import Tooltip from "./components/tooltip/tooltip";
 import useArray from "./hooks/useArray";
+import useClickOutside from "./hooks/useClickOutside";
 import useConsole from "./hooks/useConsole";
 import useCookie from "./hooks/useCookie";
 import useDebounce from "./hooks/useDebounce";
+import useEventListener from "./hooks/useEventListener";
 import useOverRuleTheme from "./hooks/useOverrRule";
 import useToggle from "./hooks/useToggle";
 import useUpdate from "./hooks/useUpdateEffect";
@@ -78,4 +80,6 @@ export {
   StepsList,
   Table,
   useOverRuleTheme,
+  useClickOutside,
+  useEventListener,
 };
