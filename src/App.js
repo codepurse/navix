@@ -24,7 +24,11 @@ function App() {
                   <Checkbox label="Textbook"></Checkbox>
                 </Box>
                 <Box mt="15px">
-                  <Checkbox label="Learning application"></Checkbox>
+                  <Checkbox
+                    label="Learning application"
+                    label="Checkbox left"
+                    positionLabel="left"
+                  ></Checkbox>
                 </Box>
                 <Box mt="15px">
                   <Checkbox label="Additonal material"></Checkbox>

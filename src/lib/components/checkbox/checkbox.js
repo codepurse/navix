@@ -29,6 +29,7 @@ Checkbox.defaultProps = {
 
 export default function Checkbox(props) {
   const [check, setCheck] = useState(false);
+  const rndId = Math.floor((1 + Math.random()) * 0x10000);
   const ref = useRef("");
   var propsStyle = {
     backgroundColor: props.disabled && "lightgray",
@@ -91,18 +92,20 @@ export default function Checkbox(props) {
     `,
     <div className={"nvxCbx " + checkboxSize(props?.size)}>
       {props.positionLabel === "left" ? (
-        <span
+        <label
+          htmlFor={rndId}
           style={
             (props?.labelStyle, { marginRight: "10px", marginLeft: "0px" })
           }
         >
           {props.label}
-        </span>
+        </label>
       ) : null}
       <label className={checkboxClassName}>
         <input
           type="checkbox"
           ref={ref}
+          id={rndId}
           checked={check}
           disabled={props.disabled}
           onChange={(e) => {
@@ -121,9 +124,12 @@ export default function Checkbox(props) {
         </svg>
       </label>
       {props.positionLabel === "right" ? (
-        <span style={(props?.labelStyle, { marginLeft: "10px" })}>
+        <label
+          htmlFor={rndId}
+          style={(props?.labelStyle, { marginLeft: "10px" })}
+        >
           {props.label}
-        </span>
+        </label>
       ) : null}
     </div>
   );
