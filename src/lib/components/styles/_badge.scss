@@ -1,9 +1,34 @@
-.nvxSpan {
-  color: #2a6b89;
-  padding: 4px;
-  border-radius: 5px;
-  font-weight: 600;
-  border: 2px solid;
-  background-color: #f2f6f8;
+.nvxBadge {
+  border-radius: var(--border-radius-large);
+  font-weight: 500;
+  display: inline-block;
+  border: 1px solid currentColor;
+  font-size: var(--font-size-md);
   margin: 4px;
+  padding: var(--space-size-xs);
+}
+
+.nvxBadgeNeutral {
+  color: var(--badge-color-neutral);
+  background-color: var(--badge-bgcolor-neutral);
+}
+
+.nvxBadgeInfo {
+  color: var(--badge-color-info);
+  background-color: var(--badge-bgcolor-info);
+}
+
+.nvxBadgeWarning {
+  color: var(--badge-color-warning);
+  background-color: var(--badge-bgcolor-warning);
+}
+
+.nvxBadgeSucess {
+  color: var(--badge-color-sucess);
+  background-color: var(--badge-bgcolor-sucess);
+}
+
+.nvxBadgeDanger {
+  color: var(--badge-color-danger);
+  background-color: var(--badge-bgcolor-danger);
 }

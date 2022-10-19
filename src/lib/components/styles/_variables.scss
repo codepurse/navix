@@ -95,4 +95,17 @@ $error: #d32f2f;
 
   --shadow-mild: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  // for badge
+
+  --badge-bgcolor-neutral: #dde3e8;
+  --badge-color-neutral: #495c6d;
+  --badge-bgcolor-info: #ebf2fd;
+  --badge-color-info: #3b7be9;
+  --badge-bgcolor-sucess: #b2efdd;
+  --badge-color-sucess: #099871;
+  --badge-bgcolor-danger: #f7babf;
+  --badge-color-danger: #d4202c;
+  --badge-bgcolor-warning: #fff3dc;
+  --badge-color-warning: #e8be5f;
 }

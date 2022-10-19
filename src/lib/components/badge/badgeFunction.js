@@ -1,34 +1,14 @@
 export const badgeType = (value) => {
   switch (value) {
-    case "primary":
-      return {
-        color: "#2a6b89",
-        backgroundColor: "#f2f6f8",
-        borderColor: "#2a6b89",
-      };
+    case "info":
+      return "nvxBadgeInfo";
     case "danger":
-      return {
-        color: "#e63b3b",
-        backgroundColor: "#ffe7e7",
-        borderColor: "#e63b3b",
-      };
+      return "nvxBadgeDanger";
     case "warning":
-      return {
-        color: "#ffcc33",
-        backgroundColor: "#fff1c8",
-        borderColor: "#ffcc33",
-      };
+      return "nvxBadgeWarning";
     case "sucess":
-      return {
-        color: "#3fbf62",
-        backgroundColor: "#ebf7ee",
-        borderColor: "#3fbf62",
-      };
+      return "nvxBadgeSucess";
     default:
-      return {
-        color: "#2a6b89",
-        backgroundColor: "#f2f6f8",
-        borderColor: "#2a6b89",
-      };
+      return "nvxBadgeNeutral";
   }
 };
