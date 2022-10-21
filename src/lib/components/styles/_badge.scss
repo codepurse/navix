@@ -4,8 +4,8 @@
   display: inline-block;
   border: 1px solid currentColor;
   font-size: var(--font-size-md);
-  margin: 4px;
   padding: var(--space-size-xs);
+  width: max-content;
 }
 
 .nvxBadgeNeutral {
