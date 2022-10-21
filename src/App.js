@@ -7,7 +7,17 @@ function App() {
     <>
       <div style={{ width: "800px" }}>
         <Button type="primary" style={{ position: "relative" }}>
-          Profile <Badge type="danger">aasrasdsad</Badge>
+          Profile{" "}
+          <Badge
+            type="info"
+            size="sm"
+            position={"top-right"}
+            onClick={(e) => {
+              console.log("test");
+            }}
+          >
+            top
+          </Badge>
         </Button>
       </div>
     </>
