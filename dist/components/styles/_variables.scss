@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap");
 $max-width: 1140px;
+$primary-color: #ff6b6b;
+$primary-color-hover: scale-color($primary-color, $lightness: 32%);
 
 //text
 $body: #312f2c;
@@ -77,6 +80,12 @@ $error: #d32f2f;
   --border-radius-medium: 10px;
   --border-radius-small: 5px;
 
+  --dark-700: #000000;
+  --dark-500: #333;
+  --dark-300: #6666;
+  --dark-200: #ccc;
+  --dark-100: #eee;
+
   --blue-600: #2039d2;
   --blue-700: #05137c;
   --blue-500: #0095ff;
@@ -95,4 +104,46 @@ $error: #d32f2f;
 
   --shadow-mild: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  // for badge
+
+  --badge-bgcolor-neutral: #dde3e8;
+  --badge-color-neutral: #495c6d;
+  --badge-bgcolor-info: #ebf2fd;
+  --badge-color-info: #3b7be9;
+  --badge-bgcolor-sucess: #b2efdd;
+  --badge-color-sucess: #099871;
+  --badge-bgcolor-danger: #f7babf;
+  --badge-color-danger: #d4202c;
+  --badge-bgcolor-warning: #fff3dc;
+  --badge-color-warning: #e8be5f;
+
+  // timeline
+}
+
+.pName {
+  font-weight: 500;
+  span {
+    color: gray !important;
+    font-weight: 400;
+  }
+}
+
+.divSampleTime {
+  margin-top: 10px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border-radius: 8px;
+  .pTime {
+    color: var(--dark-500);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .pDesc {
+    font-size: 14px;
+    color: var(--dark-500);
+    line-height: var(--line-height-large);
+    font-weight: 500;
+  }
 }

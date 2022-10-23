@@ -29,6 +29,7 @@ import TabContent from "./components/tabs/tabContent";
 import TabHeader from "./components/tabs/tabHeader";
 import Tabs from "./components/tabs/tabs";
 import Textbox from "./components/text/textbox";
+import Timeline from "./components/timeline/timeline";
 import Tooltip from "./components/tooltip/tooltip";
 import useArray from "./hooks/useArray";
 import useClickOutside from "./hooks/useClickOutside";
@@ -82,4 +83,5 @@ export {
   useOverRuleTheme,
   useClickOutside,
   useEventListener,
+  Timeline,
 };

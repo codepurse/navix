@@ -54,6 +54,7 @@ function Checkbox(props) {
   var _props$background, _props$checkedBgColor, _props$checkedCaretCo;
 
   const [check, setCheck] = (0, _react.useState)(false);
+  const rndId = Math.floor((1 + Math.random()) * 0x10000);
   const ref = (0, _react.useRef)("");
   var propsStyle = {
     backgroundColor: props.disabled && "lightgray",
@@ -91,7 +92,8 @@ function Checkbox(props) {
   }, [props.checked]);
   return _styleIt.default.it("\n    .nvxCbx .checkbox input  {\n      background: ".concat((_props$background = props === null || props === void 0 ? void 0 : props.background) !== null && _props$background !== void 0 ? _props$background : "white", ";\n      }\n      .nvxCbx .checkbox input:checked {\n        box-shadow: inset 10px 10px 0px 191px ").concat((_props$checkedBgColor = props === null || props === void 0 ? void 0 : props.checkedBgColor) !== null && _props$checkedBgColor !== void 0 ? _props$checkedBgColor : "var(--blue-600)", "\n     }\n     .nvxCbx .checkbox.bounce {\n      --stroke: ").concat((_props$checkedCaretCo = props === null || props === void 0 ? void 0 : props.checkedCaretColor) !== null && _props$checkedCaretCo !== void 0 ? _props$checkedCaretCo : "white", ";\n   }\n   \n    "), /*#__PURE__*/_react.default.createElement("div", {
     className: "nvxCbx " + checkboxSize(props === null || props === void 0 ? void 0 : props.size)
-  }, props.positionLabel === "left" ? /*#__PURE__*/_react.default.createElement("span", {
+  }, props.positionLabel === "left" ? /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: rndId,
     style: (props !== null && props !== void 0 && props.labelStyle, {
       marginRight: "10px",
       marginLeft: "0px"
@@ -101,6 +103,7 @@ function Checkbox(props) {
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     ref: ref,
+    id: rndId,
     checked: check,
     disabled: props.disabled,
     onChange: e => {
@@ -117,7 +120,8 @@ function Checkbox(props) {
     viewBox: "0 0 21 21"
   }, /*#__PURE__*/_react.default.createElement("polyline", {
     points: "5 10.75 8.5 14.25 16 6"
-  }))), props.positionLabel === "right" ? /*#__PURE__*/_react.default.createElement("span", {
+  }))), props.positionLabel === "right" ? /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: rndId,
     style: (props !== null && props !== void 0 && props.labelStyle, {
       marginLeft: "10px"
     })

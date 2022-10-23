@@ -26,22 +26,15 @@
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 90%;
   line-height: 1;
   width: 100%;
   color: #312f2c;
   background: white !important;
-  font-family: "Helvetica";
+  font-family: "Poppins";
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  min-width: 400px;
-  background: var(--testprimary);
+  font-family: "Poppins";
 }
 
 .divSampleAcc {

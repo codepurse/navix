@@ -3,45 +3,60 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.badgeType = void 0;
+exports.positionType = exports.fontSize = exports.badgeType = void 0;
+
+const fontSize = size => {
+  var options = {
+    xs: "var(--font-size-xs)",
+    sm: "var(--font-size-sm)",
+    md: "var(--font-size-md)",
+    lg: "var(--font-size-lg)"
+  };
+  return options[size] || options[null];
+};
+
+exports.fontSize = fontSize;
 
 const badgeType = value => {
-  switch (value) {
-    case "primary":
-      return {
-        color: "#2a6b89",
-        backgroundColor: "#f2f6f8",
-        borderColor: "#2a6b89"
-      };
-
-    case "danger":
-      return {
-        color: "#e63b3b",
-        backgroundColor: "#ffe7e7",
-        borderColor: "#e63b3b"
-      };
-
-    case "warning":
-      return {
-        color: "#ffcc33",
-        backgroundColor: "#fff1c8",
-        borderColor: "#ffcc33"
-      };
-
-    case "sucess":
-      return {
-        color: "#3fbf62",
-        backgroundColor: "#ebf7ee",
-        borderColor: "#3fbf62"
-      };
-
-    default:
-      return {
-        color: "#2a6b89",
-        backgroundColor: "#f2f6f8",
-        borderColor: "#2a6b89"
-      };
-  }
+  var options = {
+    info: "nvxBadgeInfo",
+    danger: "nvxBadgeDanger",
+    warning: "nvxBadgeWarning",
+    sucess: "nvxBadgeSucess"
+  };
+  return options[value] || options["nvxBadgeNeutral"];
 };
 
 exports.badgeType = badgeType;
+
+const positionType = value => {
+  var options = {
+    "top-right": {
+      position: "absolute",
+      top: "0",
+      left: "100%",
+      transform: "translate(-50%,-50%)"
+    },
+    "bottom-right": {
+      position: "absolute",
+      top: "100%",
+      left: "100%",
+      transform: "translate(-50%,-50%)"
+    },
+    "top-left": {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      transform: "translate(-50%,-50%)"
+    },
+    "bottom-left": {
+      position: "absolute",
+      top: "100%",
+      left: "0",
+      transform: "translate(-50%,-50%)"
+    }
+  };
+  return options[value] || options[null];
+};
+
+exports.positionType = positionType;

@@ -197,6 +197,12 @@ Object.defineProperty(exports, "Textbox", {
     return _textbox.default;
   }
 });
+Object.defineProperty(exports, "Timeline", {
+  enumerable: true,
+  get: function get() {
+    return _timeline.default;
+  }
+});
 Object.defineProperty(exports, "Tooltip", {
   enumerable: true,
   get: function get() {
@@ -319,6 +325,8 @@ var _tabHeader = _interopRequireDefault(require("./components/tabs/tabHeader"));
 var _tabs = _interopRequireDefault(require("./components/tabs/tabs"));
 
 var _textbox = _interopRequireDefault(require("./components/text/textbox"));
+
+var _timeline = _interopRequireDefault(require("./components/timeline/timeline"));
 
 var _tooltip = _interopRequireDefault(require("./components/tooltip/tooltip"));
 
