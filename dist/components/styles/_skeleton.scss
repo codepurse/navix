@@ -1,0 +1,20 @@
+.nvxSkeleton {
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+  background-size: 500px 100px;
+  animation-name: nvxSkeleton-moving-gradient;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes nvxSkeleton-moving-gradient {
+  0% {
+    background-position: -250px 0;
+  }
+
+  100% {
+    background-position: 250px 0;
+  }
+}

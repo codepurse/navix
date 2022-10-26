@@ -31,10 +31,12 @@ html {
   color: #312f2c;
   background: white !important;
   font-family: "Poppins";
+  height: 100vh;
 }
 
 body {
   font-family: "Poppins";
+  height: 100vh;
 }
 
 .divSampleAcc {
