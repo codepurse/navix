@@ -6,10 +6,14 @@ import {
   TiArrowUnsorted,
 } from "react-icons/ti";
 import Style from "style-it";
+import Tooltip from "../tooltip/tooltip";
 import LoadingTable from "./loadingTable";
+import ButtonIcon from "../buttonIcon/ButtonIcon";
+import Space from "../space/space";
 
 const TABLE_VARIANT = ["striped", "basic"];
 const TABLE_LAYOUT = ["auto", "fixed"];
+const BUTTON_VARIANT = ["delete", "edit", "view"];
 
 Table.propTypes = {
   data: PropTypes.array,
@@ -26,6 +30,14 @@ Table.propTypes = {
   isLoading: PropTypes.bool,
   styleComponents: PropTypes.array,
   loadingCount: PropTypes.number,
+  defaultActions: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.oneOf(BUTTON_VARIANT),
+      title: PropTypes.string.isRequired,
+      // onClick parameter 1: event handled, parameter 2: data of row
+      onClick: PropTypes.func.isRequired,
+    })
+  ),
 };
 
 Table.defaultProps = {
@@ -41,6 +53,7 @@ Table.defaultProps = {
   style: [],
   styleComponents: [],
   isLoading: false,
+  defaultActions: [],
 };
 
 export default function Table(props) {
@@ -65,6 +78,25 @@ export default function Table(props) {
   const propsStyle = {
     tableLayout: props.layout,
     ...props?.style,
+  };
+
+  const lightTooltip = (action, data) => {
+    // match the button variant, if the passed action.type doesn't match then it will be ignored
+    let actionType = BUTTON_VARIANT.find((el) => el === action.type);
+
+    return (
+      <Tooltip content={action.title} direction="top">
+        {actionType !== undefined && (
+          <ButtonIcon
+            variant={actionType}
+            onClick={(e) => {
+              action.onClick(e, data);
+            }}
+            size="md"
+          />
+        )}
+      </Tooltip>
+    );
   };
 
   return Style.it(
@@ -156,14 +188,28 @@ export default function Table(props) {
               }}
             >
               {props?.columns?.map((col, j) => {
-                return (
-                  <td key={j} style={data?._style}>
-                    {typeof data[col.key] === "function"
-                      ? React.createElement(data[col.key], { data: data })
-                      : data[col.key]}
-                  </td>
-                );
+                if (props.defaultActions.length !== 0 && col.key === "action") {
+                  return null;
+                } else {
+                  return (
+                    <td key={j} style={data?._style}>
+                      {typeof data[col.key] === "function"
+                        ? React.createElement(data[col.key], { data: data })
+                        : data[col.key]}
+                    </td>
+                  );
+                }
               })}
+
+              {props.defaultActions.length !== 0 && (
+                <td style={data?._style}>
+                  <Space gap={5}>
+                    {props?.defaultActions?.map((action) => {
+                      return lightTooltip(action, data);
+                    })}
+                  </Space>
+                </td>
+              )}
             </tr>
           ))}
           {dataTable.length === 0 ? (

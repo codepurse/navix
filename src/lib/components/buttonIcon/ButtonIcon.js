@@ -41,7 +41,7 @@ export default function ButtonIcon(props) {
       style={propsStyle}
       onClick={(e) => {
         if (!props.disabled) {
-          props.onClick();
+          props.onClick(e);
         }
       }}
       onMouseOver={(e) => {
